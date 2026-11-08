@@ -13,6 +13,8 @@ import numpy as np
 import pandas as pd
 import yfinance as yf
 
+from safe_paths import check_ticker, inside
+
 ROOT = Path(__file__).resolve().parent.parent
 SUPPORT, RESIST = "#17a2b8", "#e67e22"  # 支撐／超賣、壓力／超買：不隨漲跌配色變動
 
@@ -192,7 +194,7 @@ def main():
     ap.add_argument("ticker")
     ap.add_argument("--quote", action="store_true", help="只印最新報價")
     args = ap.parse_args()
-    ticker = args.ticker.upper()
+    ticker = check_ticker(args.ticker)
 
     df = add_indicators(download(ticker))
     summary = summarize(df, ticker)
@@ -203,7 +205,7 @@ def main():
         print(json.dumps({k: summary[k] for k in keys}, ensure_ascii=False, indent=2))
         return
 
-    out_dir = ROOT / "work" / ticker
+    out_dir = inside(ROOT / "work" / ticker, ROOT / "work")
     out_dir.mkdir(parents=True, exist_ok=True)
     df.round(4).to_csv(out_dir / "prices.csv")
     (out_dir / "indicators.json").write_text(

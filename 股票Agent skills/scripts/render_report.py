@@ -18,6 +18,8 @@ import sys
 from html import escape
 from pathlib import Path
 
+from safe_paths import check_date, check_ticker, inside
+
 ROOT = Path(__file__).resolve().parent.parent
 
 ROLES = [("macro", "總經"), ("industry", "產業"), ("fundamental", "基本面"), ("technical", "技術面")]
@@ -320,20 +322,21 @@ def main():
     ap.add_argument("ticker")
     ap.add_argument("--html-only", action="store_true")
     args = ap.parse_args()
-    ticker = args.ticker.upper()
-    wd = ROOT / "work" / ticker
+    ticker = check_ticker(args.ticker)
+    wd = inside(ROOT / "work" / ticker, ROOT / "work")
 
     html = build_html(ticker, wd)
     report = load(wd / "report.json")
     out_dir = ROOT / "reports"
     out_dir.mkdir(exist_ok=True)
-    stem = f"{ticker}_{report.get('as_of', '').replace('-', '')}"
-    html_path = out_dir / f"{stem}.html"
+    # as_of 來自 AI 寫的 report.json，必須是日期格式，避免檔名被拿來做路徑穿越
+    stem = f"{ticker}_{check_date(report.get('as_of')).replace('-', '')}"
+    html_path = inside(out_dir / f"{stem}.html", out_dir)
     html_path.write_text(html, encoding="utf-8")
     if args.html_only:
         print(html_path)
         return
-    pdf_path = out_dir / f"{stem}.pdf"
+    pdf_path = inside(out_dir / f"{stem}.pdf", out_dir)
     to_pdf(html_path, pdf_path)
     print(pdf_path)
 
