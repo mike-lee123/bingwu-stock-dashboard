@@ -1523,6 +1523,28 @@ tabs_list = [
 col_sel = st.selectbox("🎯 選擇要進入的實戰分頁艙", tabs_list)
 st.markdown("---")
 
+
+def bw_find_module_dir(folder_name, marker_file, env_var):
+  """依序尋找外掛模組資料夾：環境變數 → 本程式同層 → 上一層 → 工作目錄 → 桌面。
+
+  雲端部署（如 /home/appuser）沒有桌面資料夾，模組會跟著 repo 放在本程式旁邊。
+  找不到時回傳桌面路徑，讓錯誤訊息顯示預設位置。
+  """
+  here = os.path.dirname(os.path.abspath(__file__))
+  candidates = []
+  if os.environ.get(env_var):
+    candidates.append(os.environ[env_var])
+  candidates += [
+      os.path.join(here, folder_name),
+      os.path.join(os.path.dirname(here), folder_name),
+      os.path.join(os.getcwd(), folder_name),
+      os.path.join(os.path.expanduser("~"), "Desktop", folder_name),
+  ]
+  for d in candidates:
+    if os.path.isfile(os.path.join(d, marker_file)):
+      return d
+  return candidates[-1]
+
 if col_sel == "📈 現貨大聯軍":
   st.write("### ⚙️ 大聯軍雙時區多重共振雷達面板 (CYC + CMACD + 乖離率)")
   c1, c2, c3 = st.columns(3)
@@ -3159,7 +3181,7 @@ elif col_sel == "🌅 0930強勢股艙":
   st.subheader(
       "🌅 0930 強勢股艙 (盤前型態+籌碼 → 08:30 試撮 → 09:00–09:30 守開盤/放量/相對大盤)"
   )
-  BW_0930_DIR = os.path.join(os.path.expanduser("~"), "Desktop", "0930強勢股")
+  BW_0930_DIR = bw_find_module_dir("0930強勢股", "intraday.py", "BW_0930_DIR")
   if BW_0930_DIR not in sys.path:
     sys.path.insert(0, BW_0930_DIR)
   try:
@@ -3368,8 +3390,8 @@ elif col_sel == "🧠 AI投資研究團隊艙":
   st.subheader(
       "🧠 AI 投資研究團隊艙 (研究總監＋總經／產業／基本面／技術面分析師＋反方風控官 → 機構級研報)"
   )
-  BW_RESEARCH_DIR = os.path.join(
-      os.path.expanduser("~"), "Desktop", "股票Agent skills"
+  BW_RESEARCH_DIR = bw_find_module_dir(
+      "股票Agent skills", "research_dashboard.py", "BW_RESEARCH_DIR"
   )
   if BW_RESEARCH_DIR not in sys.path:
     sys.path.insert(0, BW_RESEARCH_DIR)
