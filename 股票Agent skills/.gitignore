@@ -1,0 +1,11 @@
+# 含明文金鑰的文件，絕不上傳
+*.docx
+~$*
+.env
+.streamlit/secrets.toml
+
+# 暫存與中間產物
+__pycache__/
+work/*/archive/
+work/DEMO/
+reports/*.html

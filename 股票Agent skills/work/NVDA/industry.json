@@ -1,0 +1,76 @@
+{
+  "role": "industry",
+  "ticker": "NVDA",
+  "as_of": "2026-11-02",
+  "stance": "bullish",
+  "confidence": 3,
+  "headline": "鎖住供應鏈守住龍頭，但ASIC增速更快、份額緩降",
+  "theses": [
+    {
+      "claim": "NVIDIA 以 2,790 億美元供應／產能承諾（上季 1,190 億美元）鎖住上游，Data Center 單季營收 890 億美元、YoY +117%，在供給受限的市場中拿到最大份額",
+      "evidence": "10-Q（季底 2026-07-26）：supply and capacity commitments 由 1,190 億增至 2,790 億美元，主要為資料中心系統的記憶體與製造產能；總未來承諾 3,660 億美元。8-K：營收 962 億美元（YoY +106%、QoQ +18%），Data Center 890 億美元，GAAP／Non-GAAP 毛利率 75.0%；Q3 指引 1,080 億美元 ±2%（不含中國 DC 運算營收）。二手報導：CFO Kress 稱供給瓶頸將持續到 FY2028 年底。",
+      "source": "NVIDIA 10-Q https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000075/nvda-20260726.htm；8-K https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000073/q2fy27pr.htm；CFO 談話為二手（36Kr https://eu.36kr.com/en/p/3957380273159302）",
+      "source_date": "2026-08-26"
+    },
+    {
+      "claim": "上游 CoWoS 與 HBM 是全產業瓶頸且仍緊：多家估計 TSMC 2026 年底 CoWoS 月產能約 9.5 萬至 13 萬片，NVIDIA 取得約一半到六成；SK hynix 稱記憶體短缺持續至 2030 年",
+      "evidence": "JPMorgan（2025-09，超過 6 個月）估 2026 年底 9.5 萬片／月、2027 年底 11.2 萬片；Morgan Stanley（2025-12）估 12–13 萬片；NVIDIA 份額 >50%～約 60%（供應鏈報導，二手）。TSMC Q3 2026（10-15）：營收約 467 億美元、YoY 約 +50%，管理層稱 AI 需求「高於供給」，未量化 CoWoS 產能。SK hynix Q3 2026 營收 104.6 兆韓元、營益 83.3 兆韓元，HBM4 自 4Q26 成為主力，2027–28 年過半產能已簽長約。",
+      "source": "TSMC Q3 2026 法說（二手摘要 https://www.webull.com/news/15751044230423552）；CoWoS 估計（二手彙整 https://www.itiger.com/news/1121636208）；SK hynix（Korea Times https://www.koreatimes.co.kr/business/companies/20261028/sk-hynix-logs-record-q3-operating-profit-of-628-bil）",
+      "source_date": "2026-10-28"
+    },
+    {
+      "claim": "客製 ASIC 成長速度高於 NVIDIA：Broadcom AI 半導體單季 167 億美元、YoY +221%，指引下季 217 億美元（+236%），規模約為 NVIDIA Data Center 營收的 19%（本分析師以兩家同期營收計算）",
+      "evidence": "Broadcom FQ3 2026（季底 2026-08-02）8-K：營收約 296 億美元（+86%），AI 半導體 167 億美元；FQ4 指引營收約 348 億、AI 半導體 217 億。客戶含 Google TPU、Meta MTIA（合作延至 2029）、OpenAI 10 GW 客製晶片。Marvell FQ2 2027 Data Center 營收 21.7 億美元（+46%），稱客製業務下半年將顯著加速。對照 NVIDIA DC +117%，ASIC 的增速約為 NVIDIA 的兩倍。",
+      "source": "Broadcom 8-K https://www.sec.gov/Archives/edgar/data/0001730168/000173016826000076/avgo-08022026x8kxex99.htm；Marvell IR https://investor.marvell.com/news-events/press-releases/detail/1031/marvell-technology-inc-reports-second-quarter-of-fiscal-year-2027-financial-results",
+      "source_date": "2026-09-02"
+    },
+    {
+      "claim": "市占率估計落在 70%～85%，且多數來源顯示呈緩降趨勢：IDC 約 81%、Silicon Analysts 約 75%（2024 年峰值約 87%）、Morgan Stanley 約 85%（以 AI 處理器營收計）；TrendForce 估 2026 年 ASIC 伺服器出貨占比升至 27.8%",
+      "evidence": "定義不同造成差距：MS／IDC 以營收計，NVIDIA 的高單價系統（含網路）使占比偏高；TrendForce 以 AI 伺服器出貨計，GPU 系統 69.7%、ASIC 系統 27.8%，為 2023 年以來最高。Bloomberg Intelligence 估 NVIDIA 至 2030 年維持 70%～75%。以上皆為二手彙整，原始報告未取得。",
+      "source": "aimultiple https://aimultiple.com/accelerated-computing；commandlinux https://commandlinux.com/statistics/ai-gpu-market-share-nvidia-vs-amd-vs-intel/；TrendForce（經 circuitsassembly https://circuitsassembly.com/ca/editorial/menu-news/42927-ai-server-shipments-seen-rising-over-28-in-2026.html）",
+      "source_date": "2026-03-20"
+    },
+    {
+      "claim": "客戶集中度下降但仍高：Q2 FY27 單一直接客戶占營收 16%（去年同期兩家分別為 23%、16%），然而前五大直接客戶占應收帳款 22%／14%／13%／11%／10%（合計 70%）",
+      "evidence": "10-Q：Q2 一家直接客戶占營收 16%；上半年三家分別 16%、15%、13%。應收帳款集中度由 1 月底三家（25%、18%、13%）擴大為五家。存貨由 214 億升至 316 億美元，Q2 存貨提列 7.84 億美元（含 H200 約 4 億美元費用，二手報導）。",
+      "source": "NVIDIA 10-Q https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000075/nvda-20260726.htm；H200 提列為二手（https://cryptobriefing.com/nvidia-400m-charge-h200-inventory/）",
+      "source_date": "2026-08-26"
+    }
+  ],
+  "key_metrics": [
+    {"name": "NVIDIA 總營收", "value": "962 億美元（YoY +106%）", "period": "FY27 Q2（季底 2026-07-26）", "source": "NVIDIA 8-K"},
+    {"name": "NVIDIA Data Center 營收", "value": "890 億美元（YoY +117%）", "period": "FY27 Q2", "source": "NVIDIA 8-K"},
+    {"name": "NVIDIA 供應／產能承諾", "value": "2,790 億美元（上季 1,190 億）", "period": "2026-07-26", "source": "NVIDIA 10-Q"},
+    {"name": "最大單一直接客戶占營收", "value": "16%", "period": "FY27 Q2", "source": "NVIDIA 10-Q"},
+    {"name": "NVIDIA Q3 營收指引", "value": "1,080 億美元 ±2%，毛利率 74.0% ±50bp", "period": "FY27 Q3", "source": "NVIDIA 8-K"},
+    {"name": "Broadcom AI 半導體營收", "value": "167 億美元（YoY +221%）；下季指引 217 億", "period": "FQ3 2026（季底 2026-08-02）", "source": "Broadcom 8-K"},
+    {"name": "AMD Data Center 營收（含 EPYC）", "value": "67 億美元（YoY +107%）；Q3 公司營收指引約 130 億", "period": "Q2 2026（季底 2026-06-27）", "source": "AMD 10-Q / 8-K 簡報"},
+    {"name": "Marvell Data Center 營收", "value": "21.7 億美元（YoY +46%）", "period": "FQ2 2027", "source": "Marvell IR"},
+    {"name": "AWS 自研晶片業務年化營收", "value": ">250 億美元（Q2 說法）；Q3 稱三位數成長、Trainium 承諾 YoY >20 倍", "period": "2026 Q2–Q3", "source": "Amazon（aboutamazon.com Q3 2026）／二手"},
+    {"name": "TSMC CoWoS 月產能（2026 年底估）", "value": "9.5 萬～13 萬片", "period": "2026 年底", "source": "JPMorgan（2025-09）、Morgan Stanley（2025-12），二手"},
+    {"name": "NVIDIA AI 加速器營收市占（估）", "value": "75%～85%", "period": "2026", "source": "IDC／Silicon Analysts／Morgan Stanley，二手彙整"}
+  ],
+  "risks": [
+    "客製 ASIC 規模化：Broadcom AI 營收增速（+221%）約為 NVIDIA DC 的兩倍，Google TPU 對外銷售（Anthropic 最多 100 萬顆、約 3.5 GW，2027 年起）與 Trainium3、Maia 200、MTIA 量產，可能在推論端侵蝕份額與定價",
+    "AMD MI450／Helios 自 2026 年 9 月開始出貨、Q4 放量，已拿下 Anthropic 最多 2 GW 及 Azure 部署，是第一個在機櫃級規模直接對打的 GPU 方案",
+    "產品節奏：SemiAnalysis 報導 Rubin Ultra 的 Kyber NVL144 機櫃延至 2028 年（NVIDIA 否認）；若 Rubin 放量遇到 HBM4 或散熱驗證問題，對手便有空窗",
+    "需求高度集中於少數超大型雲端業者（五家合占應收 70%），而這些客戶正是自研晶片的主要推手；中國 DC 運算營收已歸零"
+  ],
+  "change_my_mind": [
+    "Broadcom 的 AI 營收或 Google TPU 對外營收連續兩季成長快於 NVIDIA DC，且第三方估計 NVIDIA 營收市占跌破 70%",
+    "AMD 11/3 公布的 Q3 財報顯示 Instinct 營收大幅超出預期，或宣布再拿下一家超大型業者 GW 級的訂單",
+    "NVIDIA FY27 Q3（約 11/18）毛利率跌破指引 74% ±50bp 的下緣，代表定價權鬆動",
+    "Rubin 傳出正式延遲或良率問題，或 2,790 億美元承諾出現大量存貨跌價或採購承諾提列"
+  ],
+  "open_questions": [
+    "AMD Q3 2026 財報預計 2026-11-03 盤後公布，今天尚未發布，無法取得最新 Instinct／MI450 營收；AMD 也未單獨揭露 GPU 營收",
+    "NVIDIA FY27 Q2 Data Center 運算／網路營收拆分，以及地理別營收，未能從 8-K 與 10-Q 擷取段落中取得（二手報導稱網路 QoQ +18%、Spectrum-X YoY 2.6 倍，金額未證實）",
+    "10-Q 中「間接客戶」占營收比例的具體數字未取得",
+    "TSMC 未官方量化 CoWoS 產能；NVIDIA 占 CoWoS 份額（50%～60%）只有供應鏈二手報導，且數字彼此矛盾",
+    "HBM 各家份額（SK hynix／Samsung／Micron）的最新數據未取得；唯一估計（Morgan Stanley：SK hynix 占 NVIDIA HBM 供應 54%）已過時",
+    "Google TPU 對外營收預估差距極大（TD Cowen 估 2027 年 625 億美元，Wells Fargo 估 990 億美元），無一手資料",
+    "Intel（Gaudi／Jaguar Shores）最新 AI 加速器營收與進度未查證",
+    "市占率數字皆來自二手彙整，原始 IDC／TrendForce／Morgan Stanley 報告未取得；Marvell 財報確切公布日期未確認",
+    "CUDA 生態被侵蝕程度（例如 PyTorch／Triton／JAX 移轉比例）缺乏可量化數據"
+  ]
+}

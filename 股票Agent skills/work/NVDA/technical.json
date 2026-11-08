@@ -1,0 +1,75 @@
+{
+  "role": "technical",
+  "ticker": "NVDA",
+  "as_of": "2026-11-02",
+  "stance": "neutral",
+  "confidence": 3,
+  "headline": "跌破20/50日線、守200日線，等199–205區止穩",
+  "theses": [
+    {
+      "claim": "短線趨勢轉弱：收盤204.64低於SMA20 221.46與SMA50 221.68，SMA20已下穿SMA50；但仍在SMA200 204.09之上（僅高0.27%），SMA200近20日由200.38升至204.09仍上彎，長線結構未破",
+      "evidence": "work/NVDA/indicators.json 與 prices.csv 2026-10-30 列；SMA50 十個交易日前為222.96，現221.68，開始走平向下",
+      "source": "Yahoo Finance 日線，經 scripts/fetch_prices.py 計算（work/NVDA/prices.csv），資料最後日期 2026-10-30",
+      "source_date": "2026-10-30"
+    },
+    {
+      "claim": "動能偏空但未超賣：RSI(14) 35.07（未破30），MACD -3.64 低於訊號線 -2.16，柱狀體 -1.48 且較前一日 -1.03 擴大；10/30 單日 -4.22%、量 1.68 億股為 20 日均量的 1.66 倍，屬放量下跌",
+      "evidence": "RSI 自 10/06 的 67.27 一路回落；MACD 柱狀體自 10/12 轉負後連續 15 個交易日為負",
+      "source": "work/NVDA/prices.csv、work/NVDA/indicators.json（Yahoo Finance 日線，經 scripts/fetch_prices.py 計算）",
+      "source_date": "2026-10-30"
+    },
+    {
+      "claim": "近 20 日量價結構偏空：下跌日 13 天、平均量 1.036 億股，高於上漲日 6 天的 0.912 億股；但近 60 日上漲日均量 1.199 億股仍高於下跌日 1.075 億股，屬中期籌碼尚未全面撤出的修正",
+      "evidence": "以 prices.csv 收盤價日變動分類計算；20 日均量/60 日均量 = 0.90",
+      "source": "work/NVDA/prices.csv（Yahoo Finance 日線，經 scripts/fetch_prices.py 計算）",
+      "source_date": "2026-10-30"
+    },
+    {
+      "claim": "FY27 Q2 財報（2026-08-26 盤後）後市場反應正面但遭逐步回吐：次日 +8.74%（209.43→227.73，量 2.99 億股），5 個交易日累計 +7.04%；現價 204.64 已低於財報前收盤 209.43，財報跳空缺口完全回補",
+      "evidence": "2026-08-26 收盤 209.4257；08-27 收 227.7252；09-02 收 224.1592",
+      "source": "work/NVDA/prices.csv（Yahoo Finance 還原權值日線）",
+      "source_date": "2026-10-30"
+    },
+    {
+      "claim": "相對強弱：近 63 個交易日 NVDA -0.86%，SPY -0.01%、SMH -4.21%，NVDA 弱於大盤 0.85 個百分點但強於半導體 3.35 個百分點；近 1 個月 NVDA -10.39%，SMH -14.21%、SPY -0.91%，屬半導體族群性修正而非 NVDA 個股獨弱（10/30 當日 SMH -6.98% 跌幅大於 NVDA -4.22%）",
+      "evidence": "yfinance 下載 NVDA/SPY/SMH auto_adjust 收盤；日曆 3 個月（2026-07-30 起）則為 NVDA +5.04%、SPY +2.14%、SMH -3.05%",
+      "source": "Yahoo Finance（yfinance 下載），自行計算",
+      "source_date": "2026-10-30"
+    }
+  ],
+  "key_metrics": [
+    {"name": "建議進場區間", "value": "199–205 美元（SMA200 204.09 與支撐 199.12 之間；分批，需出現收盤站穩或 MACD 柱狀體收斂確認）", "period": "財報前（預估 2026-11-18）", "source": "work/NVDA/indicators.json 支撐壓力計算"},
+    {"name": "停損價", "value": "189 美元（收盤跌破第二支撐 189.80，約距進場中值 202 下方 6.4%、約 2.1 倍 ATR）", "period": "持有期間", "source": "work/NVDA/indicators.json 支撐 189.80、ATR14 6.22"},
+    {"name": "技術面第一目標價", "value": "221.5 美元（SMA20 221.46 / SMA50 221.68 匯聚區；途中壓力 213.75）", "period": "1–2 個月", "source": "work/NVDA/indicators.json"},
+    {"name": "風險報酬比", "value": "約 1.5 倍（以 202 進場：上檔 +19.5 / 下檔 -13）", "period": "以進場中值計", "source": "自行計算"},
+    {"name": "收盤價", "value": "204.64 美元", "period": "2026-10-30", "source": "Yahoo Finance"},
+    {"name": "距 52 週高點", "value": "-15.91%（高點 243.37，盤中，2026-10 第 2 週）", "period": "52 週", "source": "work/NVDA/indicators.json"},
+    {"name": "RSI(14)", "value": "35.07", "period": "2026-10-30", "source": "work/NVDA/indicators.json"},
+    {"name": "MACD / 訊號 / 柱狀體", "value": "-3.64 / -2.16 / -1.48（柱狀體擴大中）", "period": "2026-10-30", "source": "work/NVDA/indicators.json"},
+    {"name": "布林通道", "value": "上軌 241.07、下軌 201.85；帶寬 17.7%（近 250 日 80 百分位 17.7%，近 120 日均值 14.2%）", "period": "20 日", "source": "work/NVDA/prices.csv 計算"},
+    {"name": "ATR(14)", "value": "6.22 美元（3.04%）", "period": "14 日", "source": "work/NVDA/indicators.json"},
+    {"name": "支撐 / 壓力", "value": "支撐 199.12、189.80；壓力 213.75、227.67、230.21", "period": "2026-10-30", "source": "work/NVDA/indicators.json"},
+    {"name": "財報後 1 日 / 5 日漲跌幅", "value": "+8.74% / +7.04%", "period": "2026-08-26 收盤基準", "source": "work/NVDA/prices.csv"},
+    {"name": "近 63 交易日相對表現", "value": "NVDA -0.86%；SPY -0.01%；SMH -4.21%", "period": "2026-08-03 至 2026-10-30", "source": "yfinance 計算"},
+    {"name": "上漲日 vs 下跌日均量（20 日）", "value": "0.912 億 vs 1.036 億股（6 漲 / 13 跌）", "period": "近 20 交易日", "source": "work/NVDA/prices.csv 計算"},
+    {"name": "上漲日 vs 下跌日均量（60 日）", "value": "1.199 億 vs 1.075 億股（26 漲 / 33 跌）", "period": "近 60 交易日", "source": "work/NVDA/prices.csv 計算"},
+    {"name": "20 日均量 / 60 日均量", "value": "0.90", "period": "2026-10-30", "source": "work/NVDA/indicators.json"}
+  ],
+  "risks": [
+    "收盤跌破 SMA200（204.09）與 199.12 支撐後，下一個明顯支撐在 189.80（8 月初低點），下檔空間約 7%",
+    "10/30 放量（20 日均量 1.66 倍）下跌、MACD 柱狀體再度擴大，短線賣壓可能延續",
+    "預估 11-18 財報前後波動放大：ATR 3.04%、布林帶寬處近一年 80 百分位，停損可能被跳空穿越",
+    "半導體族群（SMH 1 個月 -14.2%）系統性修正若延續，個股相對強勢無法抵擋絕對跌幅"
+  ],
+  "change_my_mind": [
+    "收盤連續 2 日跌破 199 且量大於 20 日均量 → 轉為 bearish",
+    "收盤重新站上 SMA20/50（約 221.5）且 MACD 柱狀體轉正 → 轉為 bullish",
+    "RSI 跌破 30 後出現正背離並回升 → 視為短線超賣反彈訊號，提高進場積極度",
+    "NVDA 相對 SMH 強勢消失（63 日相對表現轉負） → 下調信心"
+  ],
+  "open_questions": [
+    "2026-10-30 半導體族群（SMH -6.98%）大跌的具體觸發原因未查證",
+    "下一次財報日期（11-17 或 11-18）公司尚未正式確認",
+    "prices.csv 為還原權值價格，8 月前的價格經股利調整，與當時實際成交價略有差異"
+  ]
+}

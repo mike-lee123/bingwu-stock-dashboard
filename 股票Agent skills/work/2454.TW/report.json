@@ -1,0 +1,82 @@
+{
+  "ticker": "2454.TW",
+  "company": "聯發科技股份有限公司（聯發科）",
+  "as_of": "2026-11-02",
+  "quarter": "FY2026 Q3",
+  "rating": "買進",
+  "confidence": 3,
+  "price_current": 3970,
+  "price_target": 5400,
+  "currency": "TWD",
+  "one_liner": "AI ASIC業務從故事轉為實質營收、Q4財測大幅上修，機率加權上漲空間仍達約+36%，但目標價對EPS/PE假設極度敏感、客戶集中度偏高，故以區間表述並將信心度下修至中等。",
+  "summary": [
+    "Q3 2026營收NT$1,680.58億（QoQ+10.4%/YoY+18.3%）、EPS NT$17.5元優於財測上緣，Q4財測大幅上修至NT$2,101-2,218億（QoQ+25-32%），AI accelerator（AI ASIC）單季貢獻約US$2.5B（經公司財測匯率重算約占Q4營收36-38%，高於原始媒體報導的30%），2027年AI ASIC目標上看US$16B高端",
+    "獨立估值方法對輸入假設極度敏感：在分析師自己揭露的『合理』區間內（FY2028E EPS 219.66-422元、PE 23-31倍），目標價可以從+62%滑到-8%，顯示原始單點目標價NT$6,432的精確度是假象。已改用更保守、不受cherry-pick質疑的中心輸入重新估算，機率加權目標價下修至NT$5,400，仍對應約+36%上漲空間，支撐買進評等但信心度由4下修至3",
+    "三大風險經風控官攻擊後修正：(1) 客戶集中度（最大客戶推估2027年占營收43%）為單一Bernstein二手估計被三方重複引用，非獨立交叉驗證，應視為中等可信度的方向性風險；(2) CoWoS封裝產能瓶頸於2026年全年持續緊繃且反覆下修（Google TPU產量1月下修25%、8月SemiAnalysis再下修、10月TrendForce報導聯發科Google TPU v9出貨延至2028Q1），緩解要等2027年TSMC產能擴張才會發生；(3) Q3存貨天數暴增至127天、營業現金流首度轉負，靠US$3.9B可轉債（NVIDIA/Alphabet認購）撐住現金水位，其轉換價NT$4,513.75高於本報告保守SOTP基準(NT$4,283)，故此認購更應解讀為策略卡位而非股價信心背書",
+    "技術面與基本面方向背離：財測大幅上修後股價仍自52週高點回落27%、跌破20/50日均線、外資近20個交易日中18天賣超，顯示市場尚未用資金買單這次財測上修，財報後僅2個交易日資料不足以判斷方向，需後續5-10個交易日驗證",
+    "Section 232關稅100%的政策尾部風險（若台灣未達成40%供應鏈移美目標）未反映在任何估值情境中，應獨立監控，一旦觸發需跳出現有目標價區間重新評估"
+  ],
+  "theses": [
+    {
+      "title": "AI ASIC從故事轉為實質營收，財測全面上修",
+      "body": "Q3營收與EPS優於財測上緣，Q4財測大幅上修至QoQ+25-32%，AI accelerator單季貢獻約US$2.5B並已簽下第二家非中國客戶；管理層將2027年AI ASIC目標上修至US$16B高端，2027年營業利益率目標至少20%。此為本報告維持買進評等的核心支柱，但其兌現高度依賴單一大客戶（市場認定為Google TPU）的放量節奏，詳見風險矩陣。"
+    },
+    {
+      "title": "目標價已改採區間表述，反映估值方法對假設的高度敏感性",
+      "body": "原始機率加權遠期本益比法算出NT$6,432，與五大外資目標價均值NT$6,468幾乎吻合，但經覆核發現此吻合更可能反映共同錨定於同一組樂觀EPS/PE假設，而非真正獨立驗證。改用FY2028E EPS取共識區間低端(219.66元，而非自選245元)、PE取歷史區間中點(25倍，而非上緣28倍)重算，基準情境降至NT$5,164；機率加權後（樂觀20%/基準45%/悲觀35%，悲觀權重較原25%上修以反映trailing P/E已達77.8倍歷史高位的雙重壓縮風險）得NT$5,400，對應+36%上漲空間，區間NT$4,750-6,400。"
+    },
+    {
+      "title": "市場尚未用資金為這次財測上修買單，背離本身是待觀察的風險而非確認的訊號",
+      "body": "財測上修後股價仍下跌、跌破中期均線、外資持續賣超，可能反映：(a) 高點已過度反映樂觀情境，現在的回落是修正到合理區間；(b) 市場對客戶集中度、CoWoS瓶頸、現金流轉負等風險的定價比財測數字更敏感；(c) 財報公布僅2個交易日，樣本不足尚無法下定論。本報告不對單日K線形態過度解讀，將此背離列為持續觀察項，而非投資論點的支撐證據。"
+    }
+  ],
+  "valuation": {
+    "method": "機率加權遠期本益比法（修正版：T+12m EPS = 2/12×FY2027E+10/12×FY2028E，FY2028E EPS與PE倍數均改採區間內較保守、不受cherry-pick質疑的輸入，以SOTP EV/Sales法與外資目標價均值交叉驗證）",
+    "body": "基準情境：FY2027E EPS=141.06元（財報後市場共識，未調整）、FY2028E EPS=219.66元（共識區間219.66-422元之低端，取代原自選的245元中性值以避免cherry-pick）、PE=25倍（自稱歷史區間23-31倍之中點，取代原上緣28倍），blend EPS=206.56元，基準價=NT$5,164。SOTP分部加總法算出保守下界NT$4,283（反映若市場不給予NVIDIA/Google策略入股的稀缺性溢價時的估值），作為悲觀情境的交叉驗證下界參考；外資目標價均值NT$6,468僅作為方向性參考，不再視為獨立驗證證據（詳見conflicts）。",
+    "scenarios": [
+      {"name": "樂觀", "price": 9771, "probability": "20%", "assumption": "第二代AI ASIC/第二客戶進度超預期、FY2027E EPS上修至175元、FY2028E EPS達300元，本益比擴張至35倍"},
+      {"name": "基準", "price": 5164, "probability": "45%", "assumption": "Q4財測如期達成，FY2027E EPS=141.06元（市場共識）、FY2028E EPS=219.66元（共識區間低端）、PE=25倍"},
+      {"name": "悲觀", "price": 3207, "probability": "35%", "assumption": "存貨未能去化、AI ASIC延遲、客戶集中度風險顯現，FY2027E EPS降至119元、FY2028E EPS僅190元，PE壓縮至18倍（機率由原25%上修至35%，反映trailing P/E 77.8倍歷史高位下雙重壓縮風險被低估的批評）"}
+    ]
+  },
+  "conflicts": "四位分析師矛盾與裁決：(1) 基本面看多(+62%原始估)與總經看空(Fed鷹派、10年期美債4.93%)方向衝突——裁決：原始28倍PE假設未充分扣減利率逆風，已改用25倍中點重算，目標價下修至NT$5,164-5,400但仍支撐買進；(2) 客戶集中度數字被macro/industry/fundamental三份報告『各自引用』但實為同一Bernstein二手轉述鏈，非獨立交叉驗證——裁決：方向性風險(集中度高且攀升)成立，但43%/65%精確數字可信度應視為單一來源估計；(3) 技術面短空(跌破20/50MA、外資連續賣超)與長多(站穩200MA、近1年+141pp)背離，且與基本面上修方向相反——裁決：不將此背離解讀為任一方向的確認訊號，列為待觀察項；(4) 基本面分析師自己的本益比法(原NT$6,432)與SOTP法(NT$4,283)內部差距達50%——裁決：此為本報告最大的估值風險來源，已採納風控官批評，改用區間表述(NT$4,750-6,400)而非單點數字，信心度由4下修至3；(5) industry.json(6月舊資料，稱CoWoS缺口收斂)與macro.json(10月資料，稱缺口擴大)方向矛盾——裁決：依新查證的時間序(1月/8月/10月三次下修)，採信macro.json較新敘事，CoWoS瓶頸在2026年持續緊繃，industry.json資料已過時。",
+  "rating_cap_applied": "C1(fatal)已透過『接受批評+改用保守輸入重算+目標價改區間表述+信心度下修至3』的方式解決，未觸發評等上限至中性的規則。C2-C6(major)皆已透過接受修正、更正數字或補充查證化解為resolved；僅C7(major，Broadcom/Marvell市占95%與聯發科20%目標的算術相容性)為partially（僅以總經背景數據做方向性合理推論，未取得具體TAM數字驗證），未達到『兩條以上major不是resolved』的信心度上限3門檻（只有1條）。但總監基於整體不確定性(尤其C1揭露的估值脆弱性)，仍主動將信心度設為3，而非維持fundamental分析師原本的4。",
+  "catalysts": [
+    {"date": "2027-01下旬", "event": "FY2026 Q4法說會：驗證Q4 AI ASIC營收US$2.5B財測是否達標、營業現金流是否轉正、存貨天數是否回落至110天以下"},
+    {"date": "2026-12-09~10（預估）", "event": "Fed 12月FOMC：市場預期82.6%機率再升息25bp，若點陣圖轉鷹將壓抑本益比假設"},
+    {"date": "2027年Q1", "event": "Google TPU v9出貨時程確認（TrendForce報導可能遞延至2028年Q1），將直接影響2027年AI ASIC US$16B目標的可信度"},
+    {"date": "持續追蹤", "event": "美台Section 232供應鏈移美談判進度，若破局可能觸發最高100%關稅的尾部風險"}
+  ],
+  "risk_matrix": [
+    {"risk": "AI ASIC最大客戶集中度持續攀升（推估2027年占營收43%）", "probability": "高", "impact": "高", "mitigant": "已確認第二家非中國客戶，但2028年才貢獻營收；公司法說會未正式揭露客戶別占比，數字可信度為單一來源估計"},
+    {"risk": "CoWoS先進封裝產能瓶頸延遲AI ASIC放量節奏", "probability": "高", "impact": "高", "mitigant": "TSMC產能預計2027年底擴張至170-200K wpm，且聯發科Q4/2027財測已是在充分知悉此限制後給出的上修數字"},
+    {"risk": "存貨天數暴增(127天)與營業現金流轉負，若非超前備貨而是需求疑慮", "probability": "中", "impact": "中", "mitigant": "應收帳款天數同步下降(47→43天)，顯示並非銷售放緩；US$3.9B零票面可轉債暫時撐住現金水位"},
+    {"risk": "Fed維持鷹派、10年期美債殖利率高檔，壓抑成長股本益比倍數", "probability": "中", "impact": "高", "mitigant": "新台幣貶值至32.48對沖部分匯兌損益，但無法對沖倍數壓縮"},
+    {"risk": "目標價對EPS/PE假設極度敏感，區間可達+62%至-8%", "probability": "高（已確認的方法論脆弱性）", "impact": "高", "mitigant": "已改用保守中心輸入並以區間表述，機率加權中心估計(NT$5,400)仍支撐買進，但應定期用新一季財報數字重新校準"},
+    {"risk": "Section 232關稅尾部風險（最高100%關稅）", "probability": "低", "impact": "極高", "mitigant": "目前為休戰狀態非解決，未反映於任何估值情境，須獨立監控"}
+  ],
+  "kill_criteria": [
+    "2027年1月底Q4法說會：營業活動現金流連續第二季為負，且存貨週轉天數未降至110天以下 → 代表Q3存貨暴增是需求端疑慮而非超前備貨，應降評",
+    "市場認定的最大AI ASIC客戶公開確認下一代設計delay超出目前Q1 2028時程，或明確加碼轉向Broadcom/Marvell → 應立即下修2027年US$16B目標與目標價",
+    "外資賣超天數延伸至30個交易日以上仍未反轉，且收盤價跌破關鍵支撐NT$3,655 → 技術面與資金面確認轉空，應下修評等",
+    "美國10年期公債殖利率站穩5%以上超過2週，或Fed 12月FOMC點陣圖顯示2027年仍維持升息路徑 → 應將PE假設再下修並重算目標價",
+    "美台供應鏈移美談判出現破局訊號或Section 232關稅升至100% → 應跳出現有目標價區間框架，重新評估評等"
+  ],
+  "upgrade_criteria": [],
+  "sources": [
+    "MediaTek Q3 2026 earnings call transcript (stockanalysis.com/quote/tpe/2454/transcripts/720948-q3-2026)",
+    "TechNews〈聯發科第三季EPS達17.5元毛利率達到46.3%〉finance.technews.tw/2026/10/30",
+    "鉅亨網〈聯發科法說〉news.cnyes.com/news/id/6642290",
+    "壹蘋新聞網〈聯發科財報｜Q3每股賺17.5元！營業現金轉淨流出〉news.nextapple.com/finance/20261030",
+    "風傳媒〈創台灣資本市場紀錄！聯發科發行39億美元海外可轉債〉storm.mg/article/11160722",
+    "BigGo Finance〈MediaTek Q4 Revenue Guidance...2027 AI ASIC Revenue to Hit $16 Billion High End〉finance.biggo.com",
+    "BigGo Finance〈SemiAnalysis Cuts Google TPU Shipment Forecast; MediaTek Shares Plunge 4% Intraday〉finance.biggo.com/news/2321b566-ceec-46d5-896a-e9f05c23f8e5",
+    "TrendForce〈MediaTek's Google TPU v9 Shipments May Slip to 1Q28〉trendforce.com/news/2026/10/19",
+    "TrendForce〈TSMC CoWoS Supply-Demand Gap Reportedly Seen Narrowing〉trendforce.com (2026-06-15，已於本報告更新為過時資料)",
+    "Taipei Times「MediaTek gains new AI customer」taipeitimes.com/News/biz/archives/2026/10/31/2003866887",
+    "科技新報〈外資給聯發科最高目標價7,300元〉finance.technews.tw/2026/11/02",
+    "CNBC/Vantage Markets Fed meeting coverage (2026-10-28/29); 中央銀行 cbc.gov.tw 新臺幣銀行間收盤匯率",
+    "Counterpoint Research 轉引自 wccftech/Memeburn 智慧手機晶片市占報告",
+    "work/2454.TW/macro.json, industry.json, fundamental.json, technical.json, devils-advocate.json, rebuttal.json（本報告內部交件）"
+  ]
+}

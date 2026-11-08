@@ -1,0 +1,110 @@
+{
+  "role": "fundamental",
+  "ticker": "2454.TW",
+  "as_of": "2026-11-02",
+  "stance": "bullish",
+  "confidence": 4,
+  "headline": "Q4財測大幅上修、AI ASIC放量驗證，但存貨暴增與現金流轉負是隱憂",
+  "theses": [
+    {
+      "claim": "Q3 2026營收NT$1,680.58億元(季增10.4%、年增18.3%)優於財測上緣，EPS 17.5元(季增14.6%、年增10.6%)；公司將Q4營收財測大幅上修至NT$2,101-2,218億元(季增25-32%、年增40-48%)，全年成長展望優於原先財測的高個位數成長",
+      "evidence": "Q3毛利率46.3%(季增0.1pp、年減0.2pp)，營業利益率16.1%(季增1.1pp)，Non-GAAP營業利益率16.6%；Q4毛利率財測45%±1.5pp、營業費用率26%±2pp（註：原研究簡報brief.md將Q3營收誤標為「168.058億元」，經核對MOPS財報與多家媒體報導，正確數量級為NT$1,680.58億元=NT$168.058billion，本報告已修正此單位換算錯誤）",
+      "source": "MediaTek Q3 2026 earnings call transcript (stockanalysis.com/quote/tpe/2454/transcripts/720948-q3-2026); TechNews〈聯發科第三季EPS達17.5元毛利率達到46.3%〉finance.technews.tw/2026/10/30; 鉅亨網〈聯發科法說〉news.cnyes.com/news/id/6642290",
+      "source_date": "2026-10-30"
+    },
+    {
+      "claim": "AI accelerator(AI ASIC)業務由故事轉為實質營收：Q4財測貢獻約US$2.5B(約占Q4營收30%)，2027年全年AI ASIC目標上看US$16B高端(約占全球AI加速器ASIC市場20%)，且已確認非中國第二家客戶(2028年才開始貢獻營收)，第二代產品預計2028年Q1量產、性能較上一代提升數倍",
+      "evidence": "第一客戶自2026年9月開始初期出貨；管理層預期全年營業利益率2027年應達20%以上；CEO蔡力行表示公司「有非常強勁的競爭對手」但對贏得市場份額有信心",
+      "source": "MediaTek Q3 2026 earnings call transcript; BigGo Finance〈MediaTek Q4 Revenue Guidance... 2027 AI ASIC Revenue to Hit $16 Billion High End〉finance.biggo.com/news/TW_2454.TW_2026-10-30",
+      "source_date": "2026-10-30"
+    },
+    {
+      "claim": "資產負債表與現金流出現結構性摩擦訊號：Q3存貨淨額暴增至NT$1,535.31億元、存貨週轉天數達127天(Q2為102天、去年同期僅68天)；營業活動現金流首度轉為淨流出NT$42.56億元，靠籌資活動淨流入NT$1,077.03億元(主要為8月完成的US$3.9B零票面利率海外可轉債)撐住期末現金餘額NT$2,690.58億元",
+      "evidence": "應收帳款天數則由47天降至43天(應收帳款淨額NT$802.96億元)，顯示存貨增加並非銷售放緩所致，市場解讀為提前為Q4 TPU/ASIC出貨備貨；該可轉債NVIDIA認購US$3.5B(占89.7%)、Alphabet亦參與認購，轉換價NT$4,513.75元/股，於2026-08-31完成訂價，創台灣資本市場最大海外可轉債發行紀錄",
+      "source": "壹蘋新聞網〈聯發科財報｜Q3每股賺17.5元！毛利率46.3%符合財測 營業現金轉淨流出〉news.nextapple.com/finance/20261030; Yahoo新聞〈【聯發科法說】Q3庫存大增至127天 驚見營業現金流轉負〉tw.news.yahoo.com (2026-10-30); 風傳媒〈創台灣資本市場紀錄！聯發科發行39億美元海外可轉債〉storm.mg/article/11160722 (2026-08-31)",
+      "source_date": "2026-10-30"
+    },
+    {
+      "claim": "業務結構持續轉向AI/邊緣運算：智慧邊緣平台(含AI PC/平板/車用座艙/5G薄晶片等，AI ASIC計入此分部)占Q3營收58%、季增20%、年增63%；手機業務占37%、季減1%、年減17%，連續呈現衰退；電源管理IC占5%、季增1%、年增18%(主要受資料中心需求帶動)",
+      "evidence": "旗艦手機表現較佳，公司推出首款2奈米製程Dimensity 9600 Pro；但整體手機分部年增率仍為負17%，反映中低階競爭與需求疲弱未隨AI敘事轉強",
+      "source": "MediaTek Q3 2026 earnings call transcript (stockanalysis.com)",
+      "source_date": "2026-10-30"
+    },
+    {
+      "claim": "財報後外資目標價全面上修，五大外資(UBS/高盛/大摩/花旗/野村)目標價平均約NT$6,468元(UBS NT$7,300、高盛NT$7,100、大摩NT$6,188、花旗NT$5,950、野村NT$5,800)，另有麥格理喊至NT$10,000元(以2028年EPS NT$285.6元×35倍本益比推算)；此平均數與本報告獨立以機率加權情境法算出的目標價NT$6,432元高度吻合，交叉驗證估值合理性",
+      "evidence": "現價NT$3,970(2026-11-02收盤)較五大外資目標價平均折價約39%，但前波52週高點NT$5,480已顯示市場對AI ASIC放量有一定定價基礎；市場2027年EPS共識(財報後最新)約NT$141.06元(年增101.77%)，2028年EPS估值分歧極大(NT$219.66~NT$422)",
+      "source": "科技新報〈驚豔AI ASIC領域執行力與新客戶拓展，外資給聯發科最高目標價7,300元〉finance.technews.tw/2026/11/02; 經濟日報〈聯發科目標價 高盛喊到5,000元〉及後續調升報導 money.udn.com/money/story/5607; 旺得富〈聯發科法說翻轉財測 明年EPS預估上修逾3成〉wantrich.chinatimes.com/news/20261031900092",
+      "source_date": "2026-11-02"
+    }
+  ],
+  "key_metrics": [
+    {"name": "Q3 2026營收", "value": "NT$1,680.58億元 (QoQ +10.4%, YoY +18.3%)", "period": "2026Q3", "source": "MediaTek Q3 2026 earnings call transcript"},
+    {"name": "Q3 2026毛利率", "value": "46.3% (QoQ +0.1pp, YoY -0.2pp)", "period": "2026Q3", "source": "MediaTek Q3 2026 earnings call transcript"},
+    {"name": "Q3 2026營業利益率", "value": "16.1% GAAP / 16.6% Non-GAAP (QoQ +1.1pp)", "period": "2026Q3", "source": "MediaTek Q3 2026 earnings call transcript"},
+    {"name": "Q3 2026 EPS", "value": "NT$17.5元 (QoQ +14.6%, YoY +10.6%)", "period": "2026Q3", "source": "cnyes/TechNews 2026-10-30"},
+    {"name": "Q4 2026營收財測", "value": "NT$2,101-2,218億元 (QoQ +25-32%, YoY +40-48%)", "period": "2026Q4 guidance", "source": "MediaTek Q3 2026 earnings call transcript"},
+    {"name": "Q4 2026毛利率財測", "value": "45% ±1.5pp", "period": "2026Q4 guidance", "source": "MediaTek Q3 2026 earnings call transcript"},
+    {"name": "AI ASIC Q4貢獻", "value": "約US$2.5B (約占Q4營收30%)", "period": "2026Q4 guidance", "source": "BigGo Finance 2026-10-30"},
+    {"name": "2027 AI ASIC營收目標", "value": "上看US$16B高端 (約占全球AI加速器ASIC市場20%)", "period": "FY2027目標", "source": "MediaTek Q3 2026 earnings call transcript"},
+    {"name": "存貨週轉天數", "value": "127天 (Q2:102天, 去年同期:68天)", "period": "2026Q3", "source": "Yahoo新聞/MOPS財報 2026-10-30"},
+    {"name": "應收帳款天數", "value": "43天 (Q2:47天)", "period": "2026Q3", "source": "Yahoo新聞/MOPS財報 2026-10-30"},
+    {"name": "營業活動現金流", "value": "NT$-42.56億元 (轉負)", "period": "2026Q3", "source": "壹蘋新聞網 2026-10-30"},
+    {"name": "期末現金及約當現金", "value": "NT$2,690.58億元", "period": "2026Q3末", "source": "壹蘋新聞網 2026-10-30"},
+    {"name": "海外可轉債規模", "value": "US$3.9B, 0%票面利率, 轉換價NT$4,513.75元 (NVIDIA認購US$3.5B/89.7%, Alphabet參與)", "period": "2026-08-31定價", "source": "風傳媒 2026-08-31"},
+    {"name": "2026年現金股利", "value": "全年合計NT$53.5元 (1月配29元, 7月配24.5元)，連續26年配息", "period": "FY2026", "source": "Goodinfo/Sinotrade 豐雲學堂"},
+    {"name": "現價(2026-11-02收盤)", "value": "NT$3,970元", "period": "2026-11-02", "source": "scripts/fetch_prices.py (Yahoo Finance還原權值日線)"},
+    {"name": "外資目標價區間(財報後)", "value": "NT$5,800-7,300元 (5家主流外資平均NT$6,468元)，麥格理最高喊NT$10,000元", "period": "2026-10-30~11-02", "source": "科技新報/經濟日報/旺得富 2026-10-30~11-02"},
+    {"name": "2027年EPS市場共識(財報後)", "value": "約NT$141.06元 (年增101.77%)，個別外資估119~182元不等", "period": "FY2027E", "source": "旺得富 2026-10-31"},
+    {"name": "2028年EPS估值分歧", "value": "NT$219.66~422元(區間極寬，本土法人與高盛/麥格理差異大)", "period": "FY2028E", "source": "多方外資報告彙整 2026-05~11"}
+  ],
+  "risks": [
+    "存貨週轉天數暴增至127天(較去年同期68天近乎倍增)，若Q4 AI ASIC/TPU出貨不如預期順暢去化，恐出現庫存減值或Q1 2027毛利率再受壓",
+    "營業活動現金流Q3首度轉負(NT$-42.56億元)，目前靠US$3.9B可轉債等籌資活動撐住現金水位，需觀察未來1-2季是否隨出貨轉正，否則現金品質轉差的訊號將強化",
+    "客戶集中度風險：第三方(Bernstein)估計單一AI ASIC客戶(市場普遍解讀為Google)2027年占營收比重可能達43%，公司法說會本身未揭露客戶別營收占比，且明確表示「有非常強勁的競爭對手」(Broadcom/Marvell等)，單一客戶時程或自研COT模式轉變衝擊會被放大",
+    "估值已反映大量未來成長：目前trailing P/E約77.8倍(GuruFocus)遠高於過去10年中位數，2028年EPS共識分歧達NT$220-420元近2倍差距，顯示本益比估值對終值假設高度敏感；財報前GF Value量化模型曾顯示約35%下行空間，若Fed維持鷹派(見macro分析)壓抑成長股倍數，目標價estimation存在下修風險"
+  ],
+  "change_my_mind": [
+    "若2027年1月底Q4法說顯示營業現金流未轉正、存貨天數未隨出貨消化明顯下降，代表Q3備貨非單純為Q4 AI ASIC出貨鋪路，將下修評等",
+    "若第二代AI ASIC(原訂2028年Q1量產)出現進一步延遲或良率問題的具體證據(呼應TrendForce此前對Google TPU v9遞延的報導)，將下修2027-28年EPS與目標價",
+    "若外資/第三方證實最大AI ASIC客戶占比持續攀升且出現砍單、縮減訂單或轉向自研COT模式的具體訊號，將下修",
+    "若美國10年期公債殖利率持續高於5%或Fed 12月FOMC明確轉鷹，將把本益比假設下修2-3倍，目標價隨之下修"
+  ],
+  "open_questions": [
+    "現金流與存貨細節數字主要來自媒體基於MOPS財報的轉述報導，非法說會逐字稿原文直接揭露，法說會逐字稿本身未提供現金流/庫存/應收帳款具體數字",
+    "2028年EPS市場共識分歧極大(NT$219.66~422元)，缺乏單一可信的共識中位數，本報告採用的NT$245(基準)/NT$300(樂觀)/NT$190(悲觀)為獨立判斷而非直接引用單一外資數字，需持續追蹤後續財報與法人報告收斂情況",
+    "客戶集中度(單一客戶占比約43%)為第三方(Bernstein)估計，公司未正式揭露客戶別營收占比，需與產業分析師交叉驗證",
+    "SOTP(分部加總)估值法算出的基準情境價格(NT$4,283元)與市場目標價及本報告機率加權目標價(NT$6,400+)落差達約50%，反映市場是否給予NVIDIA/Google策略入股的稀缺性溢價，此溢價能否長期維持尚待觀察，已在估值方法中並列呈現而非強行調和"
+  ],
+  "valuation": {
+    "price_current": 3970,
+    "methods": [
+      {
+        "name": "機率加權遠期本益比法 (Blended Forward P/E on T+12m EPS = 2/12×FY2027E + 10/12×FY2028E)",
+        "price": 6432,
+        "assumptions": "as_of 2026-11-02，T+12=2027-11，故未來12個月EPS = 2/12×FY2027E+10/12×FY2028E。基準情境FY2027E EPS=141.06元(財報後市場共識)、FY2028E EPS=245元(本報告於219.66~422元共識區間取中性偏保守值)，混合EPS=227.68元，套用28倍本益比(高於歷史遠期本益比區間23-31x上緣，反映AI ASIC溢價但未採信外資35-40倍的最樂觀倍數)，得基準價NT$6,375元；三情境機率加權(25/50/25)得NT$6,432元"
+      },
+      {
+        "name": "分部加總 EV/Sales 法 (SOTP) — 交叉驗證",
+        "price": 4283,
+        "assumptions": "FY2027E總營收共識NT$1,177億(十億，即NT$1.177兆)，拆分AI ASIC分部(以公司目標US$16B高端×匯率31.9=NT$510億十億)套用9倍EV/Sales(對標Broadcom等AI ASIC同業但略保守)，非AI分部(NT$667億十億)套用3.3倍EV/Sales(傳統IC設計公司水準)；淨現金約NT$145億十億(現金NT$2,690.58億十億減可轉債約當負債NT$1,245億十億)；股數約16.2億股。此法基準價僅NT$4,283元，遠低於遠期本益比法與外資目標價，顯示純粹用營收倍數法尚未捕捉市場給予的策略稀缺性溢價(NVIDIA/Google入股背書)，故本報告以法1為主、法2為保守下界參考"
+      },
+      {
+        "name": "同業目標價交叉驗證 (Broker consensus check)",
+        "price": 6468,
+        "assumptions": "五大主流外資(UBS NT$7,300/高盛NT$7,100/大摩NT$6,188/花旗NT$5,950/野村NT$5,800)財報後目標價簡單平均NT$6,468元，與本報告機率加權法1結果(NT$6,432元)誤差僅0.6%，交叉驗證法1假設大致合理；麥格理NT$10,000元(基於2028E EPS NT$285.6×35倍)視為樂觀情境上緣的佐證，未納入平均"
+      }
+    ],
+    "scenarios": [
+      {"name": "樂觀", "price": 9771, "probability": "25%", "assumption": "第二代AI ASIC/第二客戶進度超預期、FY2027E EPS上修至175元、FY2028E EPS達300元(接近麥格理2028E EPS 285.6元水準)，疊加外資持續上修目標價帶動本益比擴張至35倍"},
+      {"name": "基準", "price": 6375, "probability": "50%", "assumption": "Q4財測如期達成(營收NT$2,101-2,218億、毛利率45%±1.5pp)，FY2027E EPS=141.06元(市場共識)、FY2028E EPS=245元，本益比28倍(反映AI ASIC溢價但審慎於庫存/現金流隱憂)"},
+      {"name": "悲觀", "price": 3207, "probability": "25%", "assumption": "存貨127天未能順利去化、第二代AI ASIC延遲(呼應TrendForce對Google TPU v9遞延1Q28的報導)、客戶集中度風險顯現，FY2027E EPS降至119元(共識低端)、FY2028E EPS僅190元，加上Fed維持鷹派壓抑成長股倍數至18倍"}
+    ],
+    "sensitivity": [
+      {"variable": "基準情境本益比 -3x (28x→25x)", "price": 5692},
+      {"variable": "基準情境本益比 +3x (28x→31x)", "price": 7058},
+      {"variable": "FY2028E EPS -10% (245→220.5元)", "price": 5803},
+      {"variable": "FY2028E EPS +10% (245→269.5元)", "price": 6947}
+    ],
+    "target_price": 6432
+  }
+}

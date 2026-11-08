@@ -1,0 +1,75 @@
+{
+  "role": "macro",
+  "ticker": "2454.TW",
+  "as_of": "2026-11-02",
+  "stance": "bearish",
+  "confidence": 3,
+  "headline": "Fed重啟升息壓估值、台積電CoWoS產能卡AI ASIC放量，匯率小利多不足抵銷",
+  "theses": [
+    {
+      "claim": "Fed於2026年9月已重啟升息(+25bp，為2023年7月以來首次)，10月28日FOMC以10-2投票維持3.75%-4.00%不變(2位理事主張再升25bp)，CME FedWatch顯示12月再升息機率已升至82.6%，10年期美債殖利率10/30站上4.93%，實質利率上行對聯發科AI ASIC成長敘事所支撐的高本益比估值是直接逆風",
+      "evidence": "10-2 vote to hold at 3.75-4.00%; Sept 2026 rate hike was first since July 2023; Dec hike probability 82.6% (up from 78.3%) per CME FedWatch; 10Y UST yield 4.93% on 2026-10-30",
+      "source": "CNBC Fed meeting live updates (2026-10-28); Vantage Markets Fed Rate Decision report (2026-10-29); Advisor Perspectives dshort Fed decision update (2026-10-28); 10-Year Treasury data via dealplexus/investing.com (2026-10-30)",
+      "source_date": "2026-10-30"
+    },
+    {
+      "claim": "新台幣兌美元10月實際均在31.78-32.66區間、月底收32.48，弱於聯發科財測所用的匯率假設(Q3法說用31.5、Q4財測用31.7)，代表實際匯率比財測假設更有利於台幣營收/毛利換算，是少數對本股的總經正向因子",
+      "evidence": "CBC銀行間收盤匯率10月區間31.781-32.617、10/30收32.478；聯發科Q2法說營收預估用31.5元匯率、Q3法說Q4財測用31.7元匯率假設",
+      "source": "中央銀行 新臺幣/美元銀行間收盤匯率 (cbc.gov.tw); 鉅亨網(cnyes)〈聯發科法說〉Q3每股賺17.5元 Q4營收估季增25-32%報導 (news.cnyes.com/news/id/6642290)",
+      "source_date": "2026-10-30"
+    },
+    {
+      "claim": "四大雲端資本支出持續上修，2026年合計約US$7300億(Amazon上修至約US$2200億、Microsoft約US$1900億、Alphabet US$1750-2050億、Meta US$1300-1450億)，是聯發科Google TPU ASIC業務(Bernstein估2027年可達US$150-160億、占營收約43%)最直接的需求總經變數，方向正面",
+      "evidence": "Amazon raised 2026 capex guidance to ~$220B on 2026-07-30 earnings call; Microsoft disclosed ~$190B CY2026 capex plan; Alphabet guided $175-185B (Q3 alone $51.4B); Meta capex guided up to $145B; Bernstein estimate of MediaTek Google ASIC revenue reaching $15-16B / ~43% of total revenue by 2027",
+      "source": "CNBC hyperscaler capex coverage; globaldatacenterhub.com Microsoft capex report; valueaddvc.com Big Tech AI capex tracker; BigGo Finance Bernstein coverage of MediaTek ASIC",
+      "source_date": "2026-10-30"
+    },
+    {
+      "claim": "台積電CoWoS先進封裝產能是所有AI ASIC業者的共同瓶頸——Nvidia一家已囊括台積電先進封裝產能約50%以上(到2027年)，2027年產能缺口估達約70萬片(超過30%)，聯發科須與Nvidia、Broadcom、Marvell共搶同一稀缺產能才能達成2027年US$160億ASIC營收目標，另有報導指Google TPU v9世代出貨可能遞延至2028年Q1(因Core A設計修訂與Intel EMIB-T封裝良率挑戰)，對放量時程構成風險",
+      "evidence": "Nvidia has secured ~50%+ of TSMC's advanced packaging capacity through 2027; estimated 2027 shortfall ~700,000 wafers (30%+); TSMC CoWoS capacity ~125K wpm end-2026 rising to 170-200K wpm end-2027; TrendForce (2026-10-19) reports MediaTek's Google TPU v9 Core A redesign delayed development ~3 weeks, final tape-out pushed to Q2 2027, mass production sample could slip to Q1 2028",
+      "source": "bugtraqsolutions.com TSMC CoWoS capacity report (2026-10-25); supplyics.com CoWoS roadmap analysis; TrendForce News \"MediaTek's Google TPU v9 Shipments May Slip to 1Q28\" (trendforce.com/news/2026/10/19)",
+      "source_date": "2026-10-25"
+    },
+    {
+      "claim": "美中晶片政策面維持現狀而非惡化——美國對台灣產晶片維持2025年框架下的Section 232關稅豁免(配額內免稅)，Trump-Xi 2026年Shenzhen/APEC會晤將貿易休戰延至2027年1月10日且未新增晶片出口管制，但Lutnick曾表態若台灣未將40%晶片供應鏈移至美國，台灣晶片恐面臨最高100%關稅，此尾部風險尚未觸發但仍未解除，加上外資10月對聯發科連14-16個交易日賣超(累計約3.51-3.98萬張)，顯示資金面尚未轉向",
+      "evidence": "25% Section 232 tariff on advanced chips effective 2026-01-15 with Taiwan-origin carve-out tied to US investment quotas; Lutnick's reported threat of up to 100% tariff if Taiwan doesn't reach 40% reshoring target; Trump-Xi summit (reported late Oct 2026) extended truce to 2027-01-10 with chip export controls explicitly kept off the table/unchanged; CNA report of foreign investors net-selling 2454.TW for 14 straight sessions (~35,100 lots) amid broader Asia-to-US capital rotation ahead of US midterms",
+      "source": "Gibson Dunn semiconductor tariff/export licensing analysis; globalpolicywatch.com Section 232/BIS/Taiwan deal review; mtnconsulting Substack on Trump-Xi Shenzhen summit; 中央社(CNA) 外資買超台股159億加碼ETF 連14日減碼台積電聯發科 (2026-10-28); Goodinfo 2454三大法人買賣超 月統計",
+      "source_date": "2026-10-28"
+    }
+  ],
+  "key_metrics": [
+    {"name": "Fed Funds Rate (target range)", "value": "3.75%-4.00%（held, 10-2 vote）", "period": "2026-10-28 FOMC", "source": "CNBC/Vantage Markets"},
+    {"name": "Dec 2026 FOMC 升息機率 (CME FedWatch)", "value": "82.6%（+25bp）", "period": "2026-10-29", "source": "CME FedWatch via Vantage Markets"},
+    {"name": "US 10年期公債殖利率", "value": "4.93%", "period": "2026-10-30", "source": "investing.com/dealplexus/tradingeconomics"},
+    {"name": "DXY 美元指數", "value": "101.96", "period": "2026-10-30", "source": "tradingeconomics"},
+    {"name": "USD/TWD 銀行間收盤匯率", "value": "32.478（10月區間31.781-32.617）", "period": "2026-10-30", "source": "中央銀行 cbc.gov.tw"},
+    {"name": "聯發科財測匯率假設", "value": "31.7 TWD/USD（Q4 2026財測）", "period": "Q3 2026法說", "source": "cnyes news.cnyes.com/news/id/6642290"},
+    {"name": "台灣央行政策利率", "value": "2.00%（連續多季持平，9/17最近一次會議維持）", "period": "2026-09-17", "source": "tradingeconomics/FX.co"},
+    {"name": "四大雲端2026年資本支出合計", "value": "約US$7,300億", "period": "CY2026", "source": "valueaddvc.com Big Tech AI capex tracker"},
+    {"name": "台積電CoWoS先進封裝產能", "value": "約125K wpm(2026年底)→170-200K wpm(2027年底)", "period": "2026-2027", "source": "supplyics.com/bugtraqsolutions.com"},
+    {"name": "Nvidia佔台積電先進封裝產能比重", "value": "約50%以上(至2027年)", "period": "2027", "source": "bugtraqsolutions.com (2026-10-25)"},
+    {"name": "外資持有2454.TW比例", "value": "55.47%，10月淨賣超約12,556張（連14-16日賣超）", "period": "2026年10月", "source": "Goodinfo三大法人買賣超月統計"},
+    {"name": "SMH/SOXX 近一月資金流", "value": "SMH -US$176M(-0.3%)／SOXX -US$897M(-1.9%)", "period": "至2026-10-30", "source": "ETF.com/trefis.com"},
+    {"name": "Section 232半導體關稅稅率", "value": "25%（2026-01-15生效，台灣產晶片配額內豁免）", "period": "2026-01-15起", "source": "Gibson Dunn/KPMG taxnewsflash"},
+    {"name": "ISM製造業PMI", "value": "9月54.5（連續9個月擴張），10月預測54.7", "period": "2026年9-10月", "source": "ISM/tradingeconomics"},
+    {"name": "WSTS全球半導體市場預估", "value": "2026年約US$1.655兆（記憶體+250%、邏輯+37%）", "period": "2026全年預估", "source": "WSTS Q2結果更新報告"}
+  ],
+  "risks": [
+    "Fed升息路徑若延續至2027年(12月再升息機率已達82.6%)，實質利率維持高檔將持續壓抑AI/半導體成長股估值倍數",
+    "台積電CoWoS先進封裝產能被Nvidia佔用逾半，疊加Google TPU v9世代出貨傳遞延至2028年Q1，聯發科2027年US$160億ASIC營收目標的放量節奏可能不如預期",
+    "Section 232關稅尾部風險未解除——若台灣未達成美方要求的40%供應鏈移美目標，台灣產晶片恐面臨最高100%關稅，目前僅是休戰非解決",
+    "客戶集中度風險：Bernstein估計Google相關ASIC營收2027年可能占聯發科總營收達43%，單一大客戶的時程變化、良率問題或轉向COT自研模式的衝擊會被放大"
+  ],
+  "change_my_mind": [
+    "若Fed在12月SEP點陣圖顯示轉向鴿派或暫停升息路徑，將緩解成長股估值壓力，轉為正面催化",
+    "若台積電證實有額外CoWoS/先進封裝產能明確保留給聯發科的Google專案，消除產能排擠風險",
+    "若外資轉為連續數日淨買超2454.TW，顯示資金面風向已反轉",
+    "若美台完成最終Section 232協議且明確排除100%關稅威脅，尾部風險解除"
+  ],
+  "open_questions": [
+    "2026年10月PCE數據預計2026-11-26才公布，目前查無實際值，無法確認通膨降溫趨勢是否會讓Fed在12月真的暫停升息",
+    "台灣央行12月(Q4)利率決議尚未公布，目前僅知9/17維持2.00%",
+    "聯發科客戶集中度(如Google佔比43%)目前主要依賴Bernstein等第三方估計，公司未在法說會正式揭露具體客戶別營收占比，需與產業/基本面分析師交叉核對",
+    "MSCI台灣指數權重是否因本次股價回落而調整2454.TW權重，本次搜尋未查到最新資料"
+  ]
+}

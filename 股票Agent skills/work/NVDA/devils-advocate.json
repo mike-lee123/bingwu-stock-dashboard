@@ -1,0 +1,101 @@
+{
+  "role": "devils-advocate",
+  "ticker": "NVDA",
+  "as_of": "2026-11-02",
+  "challenges": [
+    {
+      "id": "C1",
+      "target": "總監初稿矛盾 2＋fundamental thesis 4/5：「獲利品質轉弱、表外曝險大增，初稿暫時把它當作折價因素」；industry thesis 1：「2,790 億承諾鎖住上游，在供給受限市場拿到最大份額」",
+      "attack": "這不只是「折價因素」，是需求品質的問題，而且第一道裂縫已經出現。(1) Q2 營業現金流 240.77 億，只有 Non-GAAP 淨利 539.54 億的 44.6%；DSO 45→60 天。以 45 天 DSO 推算，應收帳款多出約 155 億美元，也就是約 16% 的當季營收還沒有收到現金。(2) 成長最快的是 ACIE（AI 雲／產業／企業）：403 億，QoQ +25%；Hyperscale 只有 +13%。NVIDIA 給客戶的支撐也集中在這一塊：雲端服務回租協議 290 億、AI 雲協議 360 億、股權投資承諾 250 億、SB Energy/OpenAI 擔保上限 1,050 億加 AI 雲擔保 35 億，合計約 1,985 億美元，是 ACIE 年化營收 1,613 億的 1.23 倍。(3) 新事證：Microsoft 10-28 法說會把 CY2026 資本支出從 1,750 億降到 1,700 億，原因是「部分第三方 GPU-as-a-Service 合約延到下半財年」。這正是 NVIDIA 用回租和擔保撐起來的 neocloud 通路，第一次出現交期延後。(4) 同季 NVIDIA 庫藏股加股利共 257 億，高於營業現金流 241 億；6 月又發了 250 億公司債。公司一邊借錢回購，一邊用資產負債表墊客戶的帳款。如果 ACIE 的成長有相當比例是 NVIDIA 自己的信用撐出來的，那麼 FY28 +70% 的「供給受限」展望，就把「融資撐起的需求」當成了「真實的終端需求」。一旦 neocloud 融資收緊，營收、應收、承諾與擔保會同時反轉，這正是基本面悲觀情境 127.5 美元（-38%）的路徑。",
+      "evidence": "CFO commentary：AR 631 億、DSO 60 天（上季 45 天），原因是「extended payment terms on large, multi-quarter agreements」；承諾從 1,190 億升到 2,790 億，「primarily related to the procurement of memory」；公司自述「entered into arrangements that help select customers secure the land, power and data center capacity」，AI 雲夥伴擔保 35 億、SB Energy 擔保 1,050 億。10-Q：「Financing arrangements with certain investment-grade customers... will continue to affect the timing of operating cash flows」；前五大客戶占應收 22/14/13/11/10%（合計 70%）。8-K（2026-08-17）：擔保觸發條件是 OpenAI 破產或欠付租金，最長 20 年，2028 年起生效。Microsoft 下修 CY2026 資本支出為二手報導（Business Insider，經 letsdatascience 轉述），另一家二手來源 XTB 寫「約 1,750 億」，兩者矛盾。比率由 Python 計算。",
+      "source": "NVIDIA CFO commentary https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000073/q2fy27cfocommentary.htm（2026-08-26，一手）；NVIDIA 10-Q https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000075/nvda-20260726.htm（一手）；NVIDIA 8-K https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000069/nvda-20260817.htm（一手）；Microsoft capex：https://letsdatascience.com/news/microsoft-cuts-2026-capex-forecast-to-170-billion-on-delayed-741510fe（2026-10-28，二手）、https://www.xtb.com/int/market-analysis/news-and-research/microsoft-results-cloud-growth-overshadows-capex-questions（二手）",
+      "severity": "fatal",
+      "what_would_resolve": "等 FY27 Q3 財報與 10-Q（約 11-18）出來後，拿出下列至少三項證據：(a) DSO 回落到 55 天以下，或 Q3 營業現金流 ≥ Non-GAAP 淨利的 70%；(b) 揭露延長付款期的應收金額，並證明這些應收集中在投資等級的超大型雲端業者，而非 neocloud 或 AI 實驗室；(c) ACIE 營收中，有 NVIDIA 回租、擔保或股權投資關係的客戶占比低於 25%（或由管理層正式量化）；(d) Q3 新增的客戶融資、擔保或回租承諾，增速低於 Data Center 營收增速；(e) 從 Microsoft 法說會逐字稿（一手）確認 GPUaaS 延遲只是時程問題，不是砍單。做不到，評等最高中性。"
+    },
+    {
+      "id": "C2",
+      "target": "總監初稿論點 1：「四大雲端業者……2026 年指引都維持或上調」；macro thesis 1",
+      "attack": "數據錯誤。Microsoft 在 10-28 法說會把 CY2026 資本支出從 1,750 億美元下修到 1,700 億（-3%），原因是 GPUaaS 合約延後（二手）。macro 分析師自己也在 open_questions 承認，Microsoft 的全年口徑有 1,700／1,750／1,900 億三種說法，無法確認。總監卻把它寫成「都維持或上調」，把未證實的事寫成了事實。另外，Microsoft 把資料中心與建物的折舊年限從 15 年延長到 25 年，部分租約因此從融資租賃轉為營業租賃，帳面資本支出變低，但實際投資未必跟著減少。這代表 2026／2027 各家的資本支出數字口徑正在變動，「年增率」比較的可信度下降。Alphabet 雖維持 1,950–2,050 億，但 2027 年只說「significantly increase」，沒有給數字，aiweekly 的「>3,000 億」不是公司指引。Amazon 與 Alphabet 財報後股價下跌，加上自由現金流轉負，代表股東對資本支出的耐性正在減弱，不是在增加。",
+      "evidence": "Microsoft：CY2026 capex 1,750→1,700 億，Hood 提到部分 GPU-as-a-Service 合約延至下半財年（Business Insider，經 letsdatascience 轉述）；XTB：當季 capex 393.7 億（YoY +103%），FCF 對淨利覆蓋率從 92% 降到 51%，資料中心折舊年限 15→25 年。Alphabet Q3 法說會：2026 指引不變，2027「significantly increase」，細節留到 Q4 法說會。",
+      "source": "https://letsdatascience.com/news/microsoft-cuts-2026-capex-forecast-to-170-billion-on-delayed-741510fe（2026-10-28，二手）；https://www.xtb.com/int/market-analysis/news-and-research/microsoft-results-cloud-growth-overshadows-capex-questions（2026-10-28，二手）；Alphabet Q3 2026 摘要 https://quartr.com/events/alphabet-goog-q3-2026_3ebmqmdr 、https://aiweekly.co/alerts/alphabet-posts-1276b-q3-with-google-cloud-up-103-to-307b-as-2027-capex-set-to（二手）；work/NVDA/macro.json open_questions",
+      "severity": "major",
+      "what_would_resolve": "取得 Microsoft FY27 Q1 法說會逐字稿或 10-Q（一手），確認 CY2026／FY27 資本支出指引的實際數字與方向，並把初稿的「都維持或上調」改寫成正確敘述；把 2027 年資本支出的說法限縮到公司實際說過的內容（Amazon「明顯高於 2026」、Alphabet「significantly increase」），不要引用未經證實的 3,000 億。"
+    },
+    {
+      "id": "C3",
+      "target": "總監初稿論點 1：「管理層預告 FY28 營收成長約 70%，財報前共識只有 44–45%」；fundamental thesis 2",
+      "attack": "這個「超預期」已經過時，而且被市場吃掉了。fundamental 自己引用的 S&P Global 共識（2026-10-26）是 FY27 營收 4,116.5 億、FY28 6,922.1 億，FY28 隱含成長已經是 +68.2%，幾乎等於管理層的 70%（6,998 億）。所以「FY28 成長約 70%」不再是超預期的來源，而是基本門檻。更嚴苛的是：FY27 共識 4,116.5 億減掉 Q1–Q3（816＋962＋1,080），隱含 Q4 營收 1,258 億，季增 +16.5%，高於 Q3 指引的季增 +12.2%。要達到 FY28 共識，從 Q4 的 1,258 億出發，FY28 每季平均要季增 13.2%，連續四季，而且是在管理層自己說「供給受限」到 FY28 年底的情況下。換句話說，11-18 財報要讓市場滿意，Q3 實際營收大約要 ≥1,120 億（超出指引 3.7% 以上），Q4 指引要 ≥1,250 億。fundamental 的 change_my_mind 把降評門檻設在「Q4 指引季增 <10%」，遠低於共識隱含的 16.5%，門檻設錯了：Q4 指引季增 11–15% 就足以讓股價下跌。",
+      "evidence": "S&P Global 共識（經 stockanalysis 轉引，2026-10-26）：FY27 營收 4,116.5 億、FY28 6,922.1 億、EPS 9.31／15.91；MarketBeat Q3 共識 1,088 億、EPS 2.47。法說會（singjupost 轉錄）：Kress「We expect to grow revenue by approximately 70% in fiscal 2028. This is a supply constrained outlook」「supply to remain a bottleneck at least through the end of fiscal year 2028」。8-K：Q3 指引 1,080 億 ±2%。隱含 Q4 與所需季增率由 Python 計算（brentq 求解）。",
+      "source": "work/NVDA/fundamental.json key_metrics（FY27/FY28 共識）；法說會逐字稿 https://singjupost.com/transcript-nvidia-nvda-q2-fy27-earnings-conference-call/（二手轉錄）；NVIDIA 8-K https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000073/q2fy27pr.htm（一手）；Python 計算",
+      "severity": "major",
+      "what_would_resolve": "(a) 刪除或改寫「共識只有 44–45%」的敘述，改用目前的共識（FY28 約 +68%）；(b) 拿出 FY27 Q4 營收的共識數字（LSEG／FactSet 或至少兩家二手來源），確認是否真的約 1,258 億；(c) 說明供給端（CoWoS、HBM4 產能爬坡）如何支撐 Q4 季增 16% 與 FY28 平均每季季增 13%；(d) 把降評門檻改成相對共識的條件（例如 Q4 指引 < 1,230 億）。"
+    },
+    {
+      "id": "C4",
+      "target": "fundamental valuation：「混合目標價 226.3（三情境加權 50%、EV/Sales 25%、DCF 25%）」；總監初稿評等「買進，+10.6%」",
+      "attack": "目標價對假設極度敏感，而且評等和風險報酬不一致。Python 重算（用 fundamental 自己的模型）：(1) 單一假設往不利方向調一檔：倍數 14x→12x，基準情境 244→209（-14%）；FY28 成長 70%→55%，244→220（-10%）；FY29 EPS +12%→0%，244→224；毛利率 72.5%→70%，244→235。(2) 四個假設同時各調一檔（成長 55%、毛利率 71.5%、FY29 +5%、12x）→ 177 美元，比目標價 226 低 22%，比現價低 13%。(3) 混合法有重複計算：三情境加權裡已有 50% 是基準情境（244），EV/Sales 241 其實是同一組 FY28/FY29 營收假設換個倍數，所以 226 有約 62.5% 權重落在同一個情境上。(4) 只要把情境機率從 25/50/25 調成 20/45/35，加上 EV/Sales 降到 6.5x、基準倍數 12x，混合目標價就變 200，低於現價。(5) 以 fundamental 自己的數字，悲觀情境下檔 -37.7%、機率 25%，上檔目標只有 +10.6%。一個上漲空間 10% 且有四分之一機率跌近四成的部位給「買進」，與初稿自己承認的「風險報酬比並不突出」互相矛盾。另外，14x 是套在 2027-11 的 NTM EPS 上，那是 FY29（緊接在 DCF 假設的營收停滯期之前），對可能處於獲利高峰的週期股來說，14x 並不保守。",
+      "evidence": "Python 敏感度（重建 fundamental 模型：FY27 4,116.5 億 × (1+g)、毛利率、營業費用 465 億、稅率 17%、股數 240 億 → FY28 EPS 16.0，NTM = 0.25×FY28 + 0.75×FY29，×14x = 244.1，與原值 244.2 一致）。格點（成長 40/55/70% × 毛利率 70/71.5/72.5%）：189–197／212–221／235–244。倍數 10/12/14/16x → 174/209/244/279。",
+      "source": "work/NVDA/fundamental.json valuation；Python 計算（scratchpad sens.py）",
+      "severity": "major",
+      "what_would_resolve": "(a) 提出歷史上週期高峰時 NVDA 或同業（AMD、AVGO）的 forward P/E 區間，證明 14x 不是高估；(b) 改用不重複計算的權重（例如三情境加權 100%，或 DCF／倍數各自獨立），並揭露敏感度表；(c) 若評等維持買進，需說明在 -38%／25% 的悲觀情境下，為何上檔 10.6% 仍值得買進，否則評等應降為中性，或在 199–189 的技術停損上方才建立部位。"
+    },
+    {
+      "id": "C5",
+      "target": "總監初稿論點 3：「近一個月下跌 11% 主要來自族群與總經……壓縮的是本益比，不是盈餘」；macro thesis 3/5",
+      "attack": "歸因有矛盾，被和稀泥了。(1) macro 自己的回歸顯示，NVDA 週報酬對實質殖利率變動的相關係數只有 0.06，等於利率解釋不了本益比壓縮；初稿卻把壓縮歸給利率。(2) 10-30 的半導體重挫（SOXX -8.2%）主因是 Intel 給出 150–160 億美元 Q4 指引（低於共識 171 億），股價盤中跌近 30%，原因是 PC 需求與以色列廠意外。這和 AI 需求無關，所以「族群拖累」只能解釋 10-30 一天。(3) macro 把 10-30 的跌勢歸因於「Broadcom AI 指引」，但 Broadcom 財報引發的重挫是 2026-06-05（SOX 單日 -10%），日期錯置。(4) 更重要的訊號是：NVDA 一年報酬 -0.9%，營收卻 YoY +106%；財報後跳空 +8.7% 在兩個月內完全回補，現價已低於財報前收盤 209.43。市場連續一年拒絕給成長倍數，這正是「市場在對高峰盈餘定價」的典型表現，不是單純的利率或輪動。把它解讀成「錯殺」，是敘事偏誤。",
+      "evidence": "macro.json thesis 3：相關係數 0.06、實質殖利率一年 +81bp；macro open_questions 自承 10-30 原因說法互相矛盾。Intel：Q4 指引 150–160 億 vs 共識 171 億，盤中最多跌約 30%（多家二手報導）。Broadcom 引發的拋售：2026-06-05，SOX -10%、NVDA -6%（itiger 2026-06-06）。technical.json：財報後 1 日 +8.74%，現價低於財報前 209.43；indicators.json：1 年 -0.92%。",
+      "source": "work/NVDA/macro.json；work/NVDA/technical.json；work/NVDA/indicators.json；Intel：https://journalarta.com/en/2026/10/30/intel-stock-plunges-nearly-30-weak-outlook/ 、https://tech-insider.org/intel-plunges-25-q4-guidance-15-16-billion-pc-slump-2026/（二手）；Broadcom 6 月重挫：https://www.itiger.com/news/1178739426（2026-06-06，二手）",
+      "severity": "major",
+      "what_would_resolve": "(a) 修正 macro 對 10-30 原因的錯誤歸因；(b) 提出量化證據（例如 NVDA 本益比變化對實質殖利率的回歸，或與 SMH 的相對估值）證明本益比壓縮主要來自利率，否則改寫論點 3，承認「市場對獲利持續性的懷疑」是主要原因之一；(c) 把信心度與這個歸因脫鉤。"
+    },
+    {
+      "id": "C6",
+      "target": "fundamental thesis 3：「Q4 觸底 71–72%、FY28 落在 72–73%」；industry thesis 2：「CoWoS 與 HBM 是全產業瓶頸」",
+      "attack": "瓶頸的另一面，是價值鏈正在把毛利從 NVIDIA 移到記憶體廠。SK hynix Q3 營益 83.3 兆韓元、營收 104.6 兆韓元，營業利益率約 80%，比 NVIDIA 的 Non-GAAP 營業利益率 66.5% 還高。Vera Rubin 機櫃的記憶體成本占比從不到 10% 升到約 26%（MS，二手）。2,790 億的承諾「主要是記憶體採購」，等於是在記憶體價格高點簽下長約。如果 FY28 下半年記憶體價格回落，NVIDIA 承擔的是高價庫存；如果繼續漲，毛利率就要跌破 72%。另外，TrendForce 和 KeyBanc 曾報導 HBM4 驗證延遲，把 Rubin 年度產量從 200 萬顆砍到 150 萬顆（2026-04 前後，可能已過時），而管理層說 Rubin 占 Q3 DC 營收約 20%。Python：毛利率 72.5%→70%，基準價格 244→235（-3.8%）。單獨看不到 major 門檻，但它和 C3 的成長門檻疊加：成長 55% 加毛利率 70%，價格是 212。",
+      "evidence": "法說會（singjupost）：Kress「margins to bottom in Q4 in the 71% to 72% range before settling at 72% to 73% in fiscal year 2028」「Vera Rubin accounting for about 20% of data center revenue in Q3」。CFO commentary：承諾增加「primarily related to the procurement of memory」，Edge 受「elevated memory and systems prices」影響。SK hynix Q3（Korea Times）。Rubin 減產報導（guru3d／rallies.ai，二手，日期約 2026 上半年）。",
+      "source": "https://singjupost.com/transcript-nvidia-nvda-q2-fy27-earnings-conference-call/（二手轉錄）；NVIDIA CFO commentary（一手）；https://www.koreatimes.co.kr/business/companies/20261028/sk-hynix-logs-record-q3-operating-profit-of-628-bil（二手）；https://www.guru3d.com/story/trendforce-nvidia-rubin-gpus-face-delays-due-to-memory-shortages/ 、https://rallies.ai/news/nvidia-cuts-rubin-gpu-output-forecast-to-15m-units-with-rack-shipments-halved（二手）",
+      "severity": "minor",
+      "what_would_resolve": "Q3 實際毛利率 ≥73.5%（指引下緣），且 Q4 指引維持在 71–72% 以上；揭露記憶體長約是固定價還是浮動價；確認 Rubin Q3 出貨占比實際達到約 20%。"
+    },
+    {
+      "id": "C7",
+      "target": "industry thesis 3/4：「ASIC 成長較快，但供給受限下 NVIDIA 做多少賣多少，份額緩降」",
+      "attack": "新資訊強化了份額流失的時點風險。Alphabet Q3 法說會說 TPU 系統對外銷售在 Q4 繼續擴大，2027 年營收「meaningful ramp」。BNP 估 2027 年 TPU 對外營收 >400 億美元，前 MediaTek 專家估 510 億；industry 引用的 TD Cowen 625 億、Wells Fargo 990 億更高。Broadcom AI 營收（167 億）已是 NVIDIA DC 的 18.8%，下季指引 217 億（YoY +236%）。AMD MI450 從 Q3 開始出貨、Q4 放量（11-03 財報可驗證）。這些 2027 年的放量，剛好和 NVIDIA 自己說「供給瓶頸至少到 FY28 年底」重疊。也就是說，供給一鬆綁，對手的產能也同時到位，「做多少賣多少」的保護期可能比 FY28 +70% 假設的更短。",
+      "evidence": "Alphabet Q3 2026 法說會摘要（二手）：TPU system sales「meaningful revenue ramp in 2027」，未給金額；BNP Paribas 估 2027 TPU >400 億。Broadcom 8-K（FQ3 2026）：AI 半導體 167 億，FQ4 指引 217 億。AMD Q4 2025 法說：MI450 營收 Q3 開始，Q4「significant volume」。",
+      "source": "https://quartr.com/events/alphabet-goog-q3-2026_3ebmqmdr（二手）；https://fourweekmba.com/ai-ex-mediatek-expert-sees-google-tpu-sales-at-51b-in-2027/（二手）；Broadcom 8-K https://www.sec.gov/Archives/edgar/data/0001730168/000173016826000076/avgo-08022026x8kxex99.htm（一手）；AMD 10-Q https://www.sec.gov/Archives/edgar/data/0000002488/000000248826000123/amd-20260627.htm（一手）",
+      "severity": "minor",
+      "what_would_resolve": "AMD 11-03 財報的 Instinct／MI450 營收與 Q4 指引低於市場預期；NVIDIA Q3 的 networking 與 Hyperscale 營收季增仍 ≥13%；有第三方數據顯示 2027 年 TPU 對外營收低於 400 億，或主要是新增需求而非替代 NVIDIA。"
+    },
+    {
+      "id": "C8",
+      "target": "fundamental thesis 4：「GAAP EPS 2.46 高於 Non-GAAP 2.22」；valuation market_data：「DCF 另外加回有價股權證券 427.83 億」",
+      "attack": "H1 FY27 GAAP 淨利裡，有股權投資利得 159.36 億＋77.71 億＝237 億美元。這些利得大多來自對 AI 生態系（包括自家客戶）的投資，估值靠的是同一個 AI 資本支出循環。帳上股權投資 990 億，加上 250 億投資承諾，一旦 AI 估值修正，GAAP 會從利得轉為損失。DCF 加回 427.83 億股權證券（約每股 1.8 美元）也是順週期的資產。Non-GAAP 估值不受直接影響，但它會放大悲觀情境的 GAAP 盈餘下滑與帳面淨值衝擊。",
+      "evidence": "fundamental.json thesis 4/5：GAAP 淨利 596.88 億，含股權投資利得 77.71 億（Q1 159.36 億）；帳上股權投資 990 億、股權投資承諾 250 億。",
+      "source": "NVIDIA 10-Q（FY27 Q2）https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000075/nvda-20260726.htm（一手，經 fundamental.json 引用）",
+      "severity": "minor",
+      "what_would_resolve": "在報告中揭露股權投資的組成與前五大被投資公司（是否為 NVIDIA 客戶），並把悲觀情境下的股權減損放進 GAAP 敏感度分析。"
+    },
+    {
+      "id": "C9",
+      "target": "總監裁決（矛盾 4）：「進場時點採用技術面建議，分批布局，停損 189」",
+      "attack": "技術面的停損和財報事件不相容。現價 204.64 只比 SMA200（204.09）高 0.27%，MACD 柱狀體連續 15 天為負且擴大，10-30 放量下跌（20 日均量的 1.66 倍）。財報（約 11-18）距今只有約 12 個交易日，ATR 3.04%，而且 NVDA 財報後單日波動 8.7% 有先例。189 的停損（-7.6%）很可能被財報跳空直接穿越，實際損失會是悲觀情境的缺口幅度，不是 7.6%。在財報前於 199–205 分批建倉，等於在兩週內做一個二元事件賭注。",
+      "evidence": "indicators.json：close 204.64、sma200 204.09、atr14_pct 3.04、macd_hist -1.48；technical.json：10-30 量 1.68 億股為 20 日均量 1.66 倍、財報後 1 日 +8.74%。",
+      "source": "work/NVDA/indicators.json；work/NVDA/technical.json；work/NVDA/prices.csv",
+      "severity": "minor",
+      "what_would_resolve": "把建倉時點改到財報後（確認 Q3 營收 ≥1,120 億且 Q4 指引 ≥1,250 億），或財報前只建小部位並揭露跳空風險；或用選擇權的隱含波動估算財報跳空幅度，證明 189 停損可執行。"
+    }
+  ],
+  "consensus_trap": "市場已經不再是「低估 NVIDIA 成長」，而是已經把管理層的 FY28 +70% 寫進共識（S&P Global FY28 營收 6,922 億，隱含 +68%），而且共識隱含 FY27 Q4 營收 1,258 億、季增 16.5%，比 Q3 指引的季增 12% 還高。「FY28 本益比只有 13 倍很便宜」這句話成立的前提，是這 6,922 億營收是真實、可延續、可收現的終端需求。共識可能錯在三個地方：(1) 一部分需求是 NVIDIA 用延長付款、回租、擔保與股權投資撐出來的（客戶支撐曝險約 1,985 億，是 ACIE 年化營收的 1.23 倍），現金轉換率只有 45%；(2) 雲端業者自由現金流已轉負，Microsoft 已經因 GPUaaS 合約延後而小幅下修 CY2026 資本支出，資本支出循環的邊際買家（neocloud、AI 實驗室）最依賴融資，在 10 年期殖利率約 5%、Fed 還在升息時最脆弱；(3) 13 倍套用的是可能的高峰盈餘，NVDA 一年股價持平、營收翻倍，說明市場已經在用週期股的方式定價，而初稿把它解讀成錯殺。",
+  "bear_case": {
+    "price": "150 美元（-27%）；若 C1 的融資循環加速反轉，下探基本面悲觀情境 127.5 美元（-38%）",
+    "probability": "25%",
+    "narrative": "觸發事件與時間：2026-11-18 前後公布 FY27 Q3。營收約 1,100 億（只超出指引 1.9%，Q2 是 5.7%），Q4 指引 1,200 億（季增 9%），低於共識隱含的 1,258 億；Q4 毛利率指引 71.5%；10-Q 顯示 DSO 升到 65–70 天，營業現金流再度低於 Non-GAAP 淨利的 60%，客戶融資與回租承諾又增加。同時，12-09 Fed 再升 1 碼，10 年期殖利率重回 5.2% 以上；neocloud 的債券利差擴大，Microsoft 所說的 GPUaaS 延遲擴散到其他通路。2027-01 底至 02 初，Meta、Microsoft 給出的 2027 年資本支出年增低於 20%。影響：市場把 FY28 成長預期從 +68% 下修到約 +45%，毛利率 71.5%、FY29 EPS 只成長 5%。Python：FY28 EPS 約 13.2、NTM EPS 約 13.7，本益比壓到 11 倍 → 約 150 美元。若 neocloud 出現違約，NVIDIA 需提列應收或回租損失，則跌向 127.5 美元。時間窗口：3–6 個月（2026-11 至 2027-04）。"
+  },
+  "kill_criteria": [
+    "FY27 Q3（約 2026-11-18）營收低於 1,088 億共識，或 Q4 營收指引低於 1,200 億（季增低於約 11%）",
+    "Q3 DSO 超過 65 天，或營業現金流連續第二季低於 Non-GAAP 淨利的 60%",
+    "Q3 10-Q 揭露的客戶融資、擔保、回租協議或股權投資承諾，季增速度高於 Data Center 營收季增率，或新增單一擔保或融資安排超過 100 億美元",
+    "Microsoft、Alphabet、Amazon、Meta 任一家下修 2026 或 2027 年資本支出指引，或在 Q4 法說會（2027-01／02）給出的 2027 年資本支出年增低於 20%",
+    "Q4 毛利率指引低於 71%，或 FY28 約 70% 的成長展望被下修；股價方面，收盤連續兩日跌破 189 且量大於 20 日均量"
+  ]
+}

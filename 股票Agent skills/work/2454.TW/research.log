@@ -1,0 +1,60 @@
+[2026-11-02T17:41:54] /research-director 2454.TW latest earnings
+{
+  "ticker": "2454.TW",
+  "last_date": "2026-11-02",
+  "close": 3970.0,
+  "change_1d_pct": 1.4,
+  "change_1m_pct": -19.31,
+  "change_3m_pct": 22.72,
+  "change_1y_pct": 206.1,
+  "high_52w": 5480.0,
+  "low_52w": 1101.93,
+  "from_52w_high_pct": -27.55,
+  "sma20": 4362.0,
+  "sma50": 4414.8,
+  "sma200": 3222.35,
+  "above_sma20": false,
+  "above_sma50": false,
+  "above_sma200": true,
+  "rsi14": 38.41,
+  "macd": -169.72,
+  "macd_signal": -121.17,
+  "macd_hist": -48.55,
+  "macd_hist_rising": true,
+  "bb_upper": 5128.6,
+  "bb_lower": 3595.4,
+  "atr14": 202.84,
+  "atr14_pct": 5.11,
+  "vol20_vs_vol60": 0.98,
+  "support": [
+    3856.96,
+    3802.28,
+    3655.0
+  ],
+  "resistance": [
+    4050.0,
+    4125.0,
+    4400.0
+  ],
+  "source": "Yahoo Finance 日線（還原權值），經 scripts/fetch_prices.py 計算"
+}
+
+已寫入 C:\Users\mikelee\Desktop\股票Agent skills\work\2454.TW
+PDF 成功產出。研究總結：
+
+## 2454.TW 聯發科技（MediaTek）— FY2026 Q3 研報
+
+**評等：買進**（信心度 3/5，從基本面分析師原評的 4 下修）
+**12 個月目標價：NT$5,400**（機率加權，區間 NT$4,750–6,400）| 現價 NT$3,970 → 上漲空間 **+36%**
+
+**一句話結論**：AI ASIC 業務從故事轉為實質營收、Q4 財測大幅上修，上漲空間仍可觀，但估值對 EPS/PE 假設極度敏感、客戶集中度偏高，故以區間表述並下修信心度。
+
+### 反方風控官挑出的疑點與處理結果
+- **致命（1條）**：原始目標價 NT$6,432 在分析師自揭的「合理」輸入區間內其實可以滑到 -8%，精確度是假象 → **已化解**：改用更保守、不受 cherry-pick 質疑的輸入重算，目標價改為區間表述，信心度下修，但即使保守估計仍有 +30~36% 空間，買進評等不變。
+- **重大（7條）**：客戶集中度數字其實是同一個 Bernstein 二手數據被三份報告重複引用（非獨立驗證）、AI ASIC 占 Q4 營收被低估（應為 36-38% 而非 30%）、CoWoS 產能缺口兩份報告方向互相矛盾、Google TPU 產量已下修 25% 這個事實未被納入模型討論——**此條我額外查證了完整時間序，確認聯發科 10/30 上修財測時已完全知悉這些限制，故疑慮化解**；trailing P/E 77.8倍下的機率權重分配無實證依據——已上修悲觀情境機率至 35%。6 條皆已化解，僅 1 條（Broadcom/Marvell 市占算術相容性）因缺乏 TAM 具體數據只能部分化解,列入 kill criteria 持續追蹤。
+- **次要（3條）**：可轉債轉換價高於保守估值基準（NVIDIA/Alphabet 認購應解讀為策略卡位而非信心背書）、0.6%估值吻合可能是錨定效應而非真正獨立驗證、單日反彈K線不足以支撐方向性判斷——均已修正報告敘事。
+
+### PDF 報告
+`C:\Users\mikelee\Desktop\股票Agent skills\reports\2454.TW_20261102.pdf`
+
+[2026-11-02T18:05:58] Claude Code 結束，returncode=0

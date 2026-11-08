@@ -1,0 +1,75 @@
+{
+  "role": "macro",
+  "ticker": "NVDA",
+  "as_of": "2026-11-02",
+  "stance": "neutral",
+  "confidence": 3,
+  "headline": "雲端資本支出強勁順風，被升息循環與半導體資金撤出抵銷",
+  "theses": [
+    {
+      "claim": "需求端總經是最強順風：四大雲端業者 2026 年 7–9 月當季資本支出合計約 2,016–2,072 億美元，Alphabet+Amazon+Meta 的 2026 全年指引合計 5,500–5,700 億美元，Amazon 稱 2027 年將『明顯高於』約 2,200 億美元。這足以支撐 NVDA FY27 Q3 營收指引 1,080 億美元（較 Q2 的 962 億美元季增約 12.3%）。",
+      "evidence": "Q3 資本支出：Microsoft FY27 Q1 約 450 億（含融資租賃；不含租賃的 PP&E 為 393.7 億）、Alphabet 514 億（YoY +114%）、Amazon 現金資本支出 759 億、Meta 349.1 億（含融資租賃本金）。2026 全年指引：Alphabet 1,950–2,050 億（維持）、Amazon 約 2,200 億（維持）、Meta 1,350–1,450 億（下緣由 1,300 億上調）。Microsoft FY27 Q2 指引資本支出 >500 億；全年口徑因資料中心折舊年限由 15 年延長至 25 年而改變，次級來源說法不一。Alphabet 2027 年 >3,000 億僅一家次級來源（aiweekly），尚未驗證。合計數字由 Python 計算。",
+      "source": "Meta 8-K Exhibit 99.1 https://www.sec.gov/Archives/edgar/data/0001326801/000162828026066700/meta-09302026xexhibit991.htm（一手）；Amazon Q3 法說會重點 https://www.marketbeat.com/instant-alerts/transcript-amazoncom-q3-earnings-call-highlights-2026-10-29/ 、https://www.constellationr.com/insights/news/aws-q3-revenue-growth-surges-39-capex-stings-amazons-cash-flow（二手）；Alphabet https://ppc.land/alphabets-free-cash-flow-drops-to-negative-9-1bn-despite-26-2bn-profit/ 、https://aiweekly.co/alerts/alphabet-posts-1276b-q3-with-google-cloud-up-103-to-307b-as-2027-capex-set-to（二手）；Microsoft https://investinglive.com/stocks/microsoft-sees-170bn-capex-in-fiscal-2027-but-says-it-will-stay-cash-flow-positive/ 、https://247wallst.com/cards/microsoft-q1-2027-earnings-msft-01m6223bcjxyqzvby9cw8yzzqb（二手）；NVDA 8-K https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000073/q2fy27pr.htm（一手）",
+      "source_date": "2026-10-29"
+    },
+    {
+      "claim": "但資本支出已經超出雲端業者自己的現金流量：Alphabet 當季自由現金流 -91 億美元、Meta -21.2 億美元、Amazon 近 12 個月自由現金流 -424 億美元。雲端業者開始發債和發股來支應資本支出（Alphabet 發行 287 億美元優先無擔保債，並啟動 ATM 增資）。在 10 年期殖利率約 5% 的環境下，AI 建置的融資成本與股東耐性，就成了 NVDA 訂單的邊際限制。",
+      "evidence": "Alphabet 營業現金流約 423 億美元，低於資本支出 514 億；Meta 營業現金流 327.9 億，低於資本支出 349.1 億；Amazon 近 12 個月 FCF 由 +148 億轉為 -424 億。財報後股價反應：Amazon 盤後一度跌超過 10%，Alphabet 財報後跌幅報導約 8%（漲跌方向有來源互相矛盾）。",
+      "source": "https://ppc.land/alphabets-free-cash-flow-drops-to-negative-9-1bn-despite-26-2bn-profit/ 、https://247wallst.com/investing/2026/10/29/alphabet-raised-41-billion-in-one-quarter-to-pay-for-ai/ 、https://www.itiger.com/hant/news/1113600070 、https://letsdatascience.com/news/meta-narrows-2026-capital-spending-range-to-135-billion-145-46f12e07（皆二手；Meta 資本支出為 8-K 一手）",
+      "source_date": "2026-10-29"
+    },
+    {
+      "claim": "利率是逆風。Fed 2026-09-16 升息 1 碼至 3.75–4.00%，10-28 以 10 比 2 按兵不動，兩位異議者都主張再升 1 碼；市場隱含 12-09 再升息的機率約 84–85%，期貨隱含 2027 年 9 月政策利率約 4.7%。10 年期殖利率 4.98%（10-29），10 年期實質殖利率 2.63%，比 8 月初的 2.43% 高 20bp，10-05 曾見 2.95% 高點。高本益比成長股面對的是利率上行循環，不是降息循環。",
+      "evidence": "FOMC 聲明：通膨『仍偏高』，經濟活動『強勁擴張』。FRED：DGS10 2026-10-29 = 4.98%（10-05 高點 5.31%）；DFII10 2026-10-29 = 2.63%；DGS2 4.61%；有效聯邦資金利率 3.88%。我用 Python 對過去 52 週做週資料回歸，NVDA 報酬對實質殖利率變動的相關係數僅 0.06，代表短期價格傳導很弱。不過同期間實質殖利率上升 81bp，NVDA 一年只漲 5.6%，而營收 YoY 為 +106%，本益比被壓縮。這段壓縮能歸因到利率的程度無法單獨量化。",
+      "source": "FOMC 聲明全文（二手轉載）https://investinglive.com/central-banks/the-full-statement-from-the-october-2026-fomc-rate-decision/ ；市場定價 https://admiralmarkets.com/analytics/traders-blog/fomc-october-2026-fed-holds-rates （二手）；FRED DGS10/DFII10/DGS2/DFF https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFII10 （一手數據）",
+      "source_date": "2026-10-29"
+    },
+    {
+      "claim": "通膨由能源驅動、景氣仍在擴張，Fed 因此沒有降息的理由。9 月 CPI YoY 3.72%（MoM +0.65%），核心 CPI 2.57%；9 月 PCE YoY 3.65%，核心 PCE 3.12%；Q3 實質 GDP 年化 +3.4%，資訊處理設備帶動投資成長；WTI 原油 10-30 收 104.1 美元。對 NVDA 而言，景氣與 AI 投資本身仍是正面，負面在於估值折現率與流動性。",
+      "evidence": "FRED CPIAUCSL/CPILFESL/PCEPI/PCEPILFE 原始指數，YoY 與 MoM 由 Python 計算；BEA Q3 GDP 預估值（2026-10-29）：GDP +3.4%，Q3 PCE 物價年化 2.1%、核心 2.5%，『投資成長以資訊處理設備為首』；失業率 4.2%（9 月）。9 月能源 CPI YoY +20.4%（二手）。原油價格取自 yfinance CL=F。",
+      "source": "BEA https://bea.gov/news/2026/gdp-advance-estimate-3rd-quarter-2026 （一手）；FRED CPI/PCE 序列（一手數據）；Admiral Markets（能源 CPI，二手）",
+      "source_date": "2026-10-29"
+    },
+    {
+      "claim": "資金流與政策：半導體族群正遭大規模撤出。截至 10-30 的近 21 個交易日，SOXX -18.2%、SMH -15.4%、QQQ -7.0%，等權重 RSP 反而 +4.5%；10-30 單日 SOXX -8.2%。NVDA -11.4%，跌幅小於族群，可見近一個月的跌勢主要是族群和風格輪動，不是 NVDA 獨有的問題。政策面上，FY27 Q3 指引已假設中國 Data Center 運算營收為零，加上 H200 對華出口受 25% 附加費與許可限制，中國對 NVDA 是下檔有限、上檔屬選擇權的變數。",
+      "evidence": "ETF 與 NVDA 報酬由 yfinance 收盤價以 Python 計算。H200 對華出口：白宮允許銷售給『核准客戶』，附 25% 附加費與許可管制，Blackwell 仍禁售；BIS 2026 年 1 月公布框架。Section 232：2026-01-15 起對 H200 等特定先進晶片課 25% 關稅，被課稅品項可豁免 IEEPA 對等關稅，Phase 2 擴大課稅的狀態未知。另據 IDC，NVDA 在中國資料中心 AI 晶片的市占於 2026 上半年降至 34%。中國 10 月底發布 AI 技術出口管制草案。",
+      "source": "NVDA 8-K（中國假設，一手）；Thomson Reuters https://www.thomsonreuters.com/en-us/help/onesource-global-trade/regulatory-insights/2026/january-15th/trump-admin-tariffs-advanced-ai-chips-232.html ；White & Case https://www.whitecase.com/insight-alert/president-trump-orders-narrowly-targeted-25-section-232-tariff-certain-advanced ；Bloomberg H200 license https://bloomberg.com/news/articles/2026-02-26/nvidia-gets-us-license-for-small-amount-of-h200-exports-to-china ；IDC via Yahoo https://finance.yahoo.com/technology/ai/articles/u-export-restrictions-drive-nvidia-124325286.html ；Taipei Times https://taipeitimes.com/News/editorials/archives/2026/10/31/2003866899 （二手）；yfinance 價格",
+      "source_date": "2026-10-30"
+    }
+  ],
+  "key_metrics": [
+    {"name": "聯邦資金利率目標區間", "value": "3.75%–4.00%（10-28 維持，10-2 投票，2 票主張升息）", "period": "2026-10-28", "source": "FOMC 聲明（investinglive 轉載）"},
+    {"name": "市場隱含 12 月升息機率", "value": "約 84–85%", "period": "2026-10-28", "source": "CME FedWatch / Bloomberg（經 Admiral Markets、investinglive 二手）"},
+    {"name": "10 年期美債殖利率", "value": "4.98%（10-05 高點 5.31%）", "period": "2026-10-29", "source": "FRED DGS10"},
+    {"name": "10 年期實質殖利率（TIPS）", "value": "2.63%（一年上升 81bp）", "period": "2026-10-29", "source": "FRED DFII10"},
+    {"name": "CPI YoY / 核心 CPI YoY", "value": "3.72% / 2.57%", "period": "2026-09", "source": "FRED CPIAUCSL, CPILFESL（BLS）"},
+    {"name": "PCE YoY / 核心 PCE YoY", "value": "3.65% / 3.12%", "period": "2026-09", "source": "FRED PCEPI, PCEPILFE（BEA）"},
+    {"name": "實質 GDP（年化季增）", "value": "+3.4%", "period": "2026 Q3 預估值", "source": "BEA"},
+    {"name": "ISM 製造業 PMI", "value": "54.5（10 月數據 11-02 公布，未取得）", "period": "2026-09", "source": "PNC Economics（二手）"},
+    {"name": "美元指數 DXY / 廣義貿易加權美元", "value": "101.88 / 121.32", "period": "2026-10-30 / 2026-10-23", "source": "yfinance DX-Y.NYB；FRED DTWEXBGS"},
+    {"name": "WTI 原油", "value": "104.12 美元", "period": "2026-10-30", "source": "yfinance CL=F"},
+    {"name": "四大雲端業者當季資本支出合計", "value": "約 2,016–2,072 億美元", "period": "2026 年 7–9 月當季", "source": "各公司財報（Meta 8-K 一手，其餘二手）"},
+    {"name": "GOOGL+AMZN+META 2026 資本支出指引合計", "value": "5,500–5,700 億美元", "period": "CY2026", "source": "各公司 Q3 財報（二手為主）"},
+    {"name": "近 1 月報酬 NVDA / SMH / SOXX / QQQ / RSP", "value": "-11.4% / -15.4% / -18.2% / -7.0% / +4.5%", "period": "21 交易日至 2026-10-30", "source": "yfinance，Python 計算"}
+  ],
+  "risks": [
+    "Fed 12-09 再升息，且點陣圖暗示 2027 年持續緊縮：實質殖利率若重回 3% 以上，高本益比 AI 股的本益比會再被壓縮。",
+    "雲端業者自由現金流轉負後，股東施壓放緩資本支出（Amazon、Alphabet 財報後股價大跌就是警訊），2027 年預算可能比市場預期保守；Meta 要到 Q4 財報才會給 2027 年數字。",
+    "原油 >100 美元的能源衝擊來自中東衝突。若繼續推升通膨預期，可能造成停滯性通膨，景氣也可能從強勁擴張轉為放緩。",
+    "政策風險：Section 232 Phase 2 若擴大晶片關稅、走私或 Megaspeed 事件引發更嚴格的出口管制，加上 11-03 期中選舉帶來的政策不確定性。"
+  ],
+  "change_my_mind": [
+    "轉為偏多：10 月 CPI（11-10 公布）或就業數據走弱，使 12 月升息機率降到 50% 以下且 10 年期實質殖利率跌破 2.4%；或 Meta、Microsoft 給出 2027 年資本支出年增 >30% 的明確指引。",
+    "轉為偏空：Fed 12 月升息並暗示還會再升，10 年期殖利率重回 5.3% 以上；或任一雲端業者下修 2026/2027 資本支出指引；或美國收緊 H200 對華許可、Section 232 擴大至 Blackwell/Rubin。"
+  ],
+  "open_questions": [
+    "2026 年 10 月 ISM 製造業 PMI（11-02 上午公布）在搜尋時尚未取得；9 月 54.5 的數字來自 PNC 二手來源，其他行事曆列出的數字互相矛盾。",
+    "最新 CME FedWatch（10-30 PCE 公布後與 11-02）的 12 月升息機率查不到，目前用的是 10-28 的 84–85%。",
+    "Microsoft 的 CY2026／FY2027 全年資本支出口徑：次級來源有 1,700 億、1,750 億、1,900 億三種說法，加上折舊年限變更，無法確認一手數字。",
+    "Alphabet『2027 年資本支出 >3,000 億美元』只有一家次級來源，需要核對法說會逐字稿。",
+    "10-30 半導體單日重挫（SOXX -8.2%）的原因：報導提到 Intel 暴跌約 30%、Broadcom AI 指引與『強勁就業報告』。但 10 月就業報告排定 11-06 公布，且當日 10 年期殖利率反而下跌，報導說法互相矛盾。",
+    "SMH/SOXX 的 10 月實際淨申購／贖回金額（資金流）查無一手數據，只確認了價格跌幅。",
+    "H200 對華出口的最新出貨量、許可是否在 10 月有變動，以及北京是否限制採購，都查無 10 月的一手資料。",
+    "Section 232 半導體關稅 Phase 2 是否已實施，查無 2026 年 2 月以後的資料。"
+  ]
+}

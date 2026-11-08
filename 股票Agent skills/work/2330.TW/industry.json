@@ -1,0 +1,74 @@
+{
+  "role": "industry",
+  "ticker": "2330.TW",
+  "as_of": "2026-11-02",
+  "stance": "bullish",
+  "confidence": 4,
+  "headline": "代工市占逾七成且續升，GPU與ASIC都在台積電，護城河變寬",
+  "theses": [
+    {
+      "claim": "晶圓代工市占率續創新高：TrendForce 估 2Q26 台積電營收 402 億美元、市占 72.5%（1Q26 為 72.3%），Samsung 由 6.5% 降至 5.9%，SMIC 升至 5.4%；Counterpoint 同期估純晶圓代工市占約 73%",
+      "evidence": "TrendForce 前十大代工合計 534.9 億美元（QoQ +11.5%）；Samsung 營收約 32.6 億美元、QoQ 僅 +1.8%。Counterpoint 若改用「Foundry 2.0」廣義定義（含封測、非記憶體 IDM 等），總額 966 億美元、台積電占 42%、Samsung 約 4%。差異來自市場範圍定義而非方向：兩種口徑下台積電都在擴大份額，Samsung 都在流失。Counterpoint 數字為二手轉述。",
+      "source": "TrendForce 新聞稿 https://www.trendforce.com/presscenter/news/20260909-13225.html；Counterpoint（二手：Design & Reuse https://www.design-reuse.com/news/202531064-q2-foundry-market-grows-29-tsmc-dominates-with-73-share-samsung-stuck-at-7-/ ；SamMobile https://www.sammobile.com/news/despite-uptick-samsung-foundry-revenue-remained-far-behind-tsmc-in-q2-2026/）",
+      "source_date": "2026-09-09"
+    },
+    {
+      "claim": "製程領先仍在擴大：N2 已於 4Q25 量產、3Q26 即占晶圓營收 8%，2027 年 N2 家族年產能將「超過倍增」；A14 2027 風險試產、2028 量產，且 A14 客戶活動數已高於 N2 同期",
+      "evidence": "3Q26 晶圓營收結構：N2 8%、N3 33%、N5 28%、N7 10%，7 奈米以下合計 79%。管理層：N2 在新竹、高雄多期放量且良率良好；N3 新增 3 座廠（台南 1H27、台南另一座 1H28、亞利桑那二廠 3Q27）。弱點：A16（N2P＋Super Power Rail 背面供電）量產由 2026 延至 2027（TSMC 稱取決於客戶產品時程）；High-NA EUV 2030 才導入，晚於 Intel。",
+      "source": "TSMC 3Q26 法說逐字稿 https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/eba4fac72873bf546b669bd2b5d973df5c93215d/TSMC%203Q26%20Transcript.pdf ；SEC 6-K https://www.sec.gov/Archives/edgar/data/0001046179/000104617926000726/a3q26e_withguidancexfinal.htm ；A16 延後（二手：Tom's Hardware https://www.tomshardware.com/tech-industry/semiconductors/tsmc-unveils-process-technology-roadmap-through-2029-a12-a13-n2u-announced-a16-slips-to-2027 ，2026-04-23）",
+      "source_date": "2026-10-15"
+    },
+    {
+      "claim": "對手尚未形成有效替代：Intel Foundry 3Q26 營收 67 億美元（YoY +58%，絕大部分為內部營收）、營業虧損 18.5 億美元，至今只有 Tesla 一家公開的 14A 外部客戶；Samsung SF2 良率估約 55%～60%，低於台積電 N2 的 60%～70%（皆為業界估計）",
+      "evidence": "Intel：14A 0.9 PDK 於 2026-10 交付、2H27 內部風險試產、2028 量產（與 TSMC A14 同年，是最大的追趕威脅）；CEO 稱「未來兩季會有幾家客戶宣布」，Apple 評估 18A-P／14A 僅為供應鏈傳聞；1Q26 外部代工營收僅 1.74 億美元。Samsung：3Q26 代工業績「大幅改善」靠 HBM 基底晶片與先進製程，但未揭露損益；Tesla 165 億美元合約的 AI6 傳延後約半年。",
+      "source": "TrendForce（二手，Intel 3Q26 法說整理）https://www.trendforce.com/news/?p=65954 ；Intel 14A 時程（二手：MarketBeat Q2 逐字稿 https://www.marketbeat.com/earnings/reports/2026-7-23-intel-co-stock/ ）；Samsung 3Q26 新聞稿 https://news.samsung.com/kr/삼성전자-2026년-3분기-실적-발표 ；良率估計（二手：Tom's Hardware https://www.tomshardware.com/tech-industry/samsungs-fab-roadmap-examined ）",
+      "source_date": "2026-10-30"
+    },
+    {
+      "claim": "GPU 與 ASIC 之爭對台積電大致中性：HPC 單季 QoQ +22%、占營收 68%；NVIDIA、AMD、Broadcom（Google TPU、Meta MTIA、OpenAI）、AWS Trainium 的前段晶圓都在台積電，Broadcom AI 營收 YoY +221% 與 NVIDIA DC +117% 都是台積電的成長",
+      "evidence": "CEO：「不論採取哪種做法，都需要最先進製程……所有 AI 業者都在和台積電合作」；AI 加速器營收 2024–2029 CAGR 原指引 mid-to-high 50%，CEO 稱「可能更高」（窄定義，不含 AI CPU）。客戶集中度：2025 年報 A 客戶（市場認為是 NVIDIA）占 19%（2024 年 12%）、B 客戶（Apple）占 17%（2024 年 22%）。中性但非完全中性：ASIC 的封裝開始外溢，Google TPU v9 部分型號規劃 1H28 起採 Intel EMIB-T。Broadcom／NVIDIA 數字沿用 work/NVDA/industry.json。",
+      "source": "TSMC 3Q26 法說逐字稿（同上）；客戶占比（二手，引 CNA 報導 TSMC 財報：Taiwan News https://www.taiwannews.com.tw/news/6310676 ，2026-02-27）；Broadcom 8-K https://www.sec.gov/Archives/edgar/data/0001730168/000173016826000076/avgo-08022026x8kxex99.htm （經 work/NVDA/industry.json）；EMIB-T（二手：TrendForce https://www.trendforce.com/news/?p=65954 ）",
+      "source_date": "2026-10-15"
+    },
+    {
+      "claim": "CoWoS 仍是全產業瓶頸但台積電握有唯一量產級方案：已量產 5 倍光罩尺寸、開發 9 倍與 14 倍；外部估計 2026 年底月產能約 13 萬片、2027 年底 17 萬片（KGI）、2028 年底約 26 萬片",
+      "evidence": "CEO：「目前只有台積電能做 5x reticle，良率極佳」；後段產能「有些短缺」，因此與 GlobalFoundries 合作供應矽中介層。TrendForce（2026-06）估 CoWoS 供需缺口由約 20% 收斂至 2026 年底約 10%，2027 年擴產超過 60%。台積電未官方量化 CoWoS 產能；NVIDIA 研報引用的 JPMorgan（9.5 萬）／Morgan Stanley（12–13 萬）估計已超過 6 個月。",
+      "source": "TSMC 3Q26 法說逐字稿（同上）；KGI 報告 https://www.kgi.com.hk/en/-/media/files/kgishk/research-reports/tw-reports/tsmc_2330-tt_09032026e.pdf ；經濟日報經 TrendForce（二手）https://www.trendforce.com/news/2026/09/14/news-tsmc-reportedly-targets-22-2nm-16-3nm-capacity-boost-by-mid-2027-cowos-to-double-by-2028/ ；TrendForce https://www.trendforce.com/news/2026/06/15/news-tsmc-cowos-supply-demand-gap-reportedly-seen-narrowing-from-20-to-10-by-end-2026-as-capacity-expands",
+      "source_date": "2026-09-14"
+    }
+  ],
+  "key_metrics": [
+    {"name": "台積電晶圓代工市占（TrendForce）", "value": "72.5%（1Q26 72.3%）", "period": "2Q26", "source": "TrendForce"},
+    {"name": "台積電純代工市占（Counterpoint）", "value": "約 73%；Foundry 2.0 廣義口徑 42%", "period": "2Q26", "source": "Counterpoint（二手）"},
+    {"name": "Samsung Foundry 市占（TrendForce）", "value": "5.9%（1Q26 6.5%）", "period": "2Q26", "source": "TrendForce"},
+    {"name": "營收", "value": "467 億美元（QoQ +16.2%）；Q4 指引 523–543 億美元", "period": "3Q26", "source": "TSMC 6-K／法說"},
+    {"name": "平台營收占比", "value": "HPC 68%（QoQ +22%）、手機 21%（+10%）、IoT 4%、車用 4%（+23%）、DCE 1%（-12%）", "period": "3Q26", "source": "TSMC 法說逐字稿"},
+    {"name": "製程營收占比", "value": "N2 8%、N3 33%、N5 28%、N7 10%（7nm 以下 79%）", "period": "3Q26", "source": "TSMC 6-K"},
+    {"name": "前兩大客戶占營收", "value": "A 客戶 19%（2024：12%）、B 客戶 17%（2024：22%）", "period": "2025 全年", "source": "TSMC 財報，經 Taiwan News／CNA（二手）"},
+    {"name": "海外廠毛利率稀釋", "value": "2026 年接近 2 個百分點；五年期後段擴大至 3–4 個百分點", "period": "2026 及以後", "source": "TSMC 法說逐字稿"},
+    {"name": "資本支出", "value": "3Q26 138 億美元；2026 全年 600–640 億美元（維持）；2026–2028 將顯著高於前三年", "period": "2026", "source": "TSMC 法說逐字稿"},
+    {"name": "2026 全年營收成長", "value": "約 44%（美元計）", "period": "2026", "source": "TSMC 法說逐字稿"},
+    {"name": "CoWoS 月產能（外部估計）", "value": "2026 年底約 13 萬片；2027 年底約 17 萬片；2028 年底約 26 萬片", "period": "2026–2028", "source": "經濟日報／TrendForce、KGI（二手）"},
+    {"name": "Intel Foundry", "value": "營收 67 億美元（+58%，多為內部）、營業虧損 18.5 億美元", "period": "3Q26", "source": "TrendForce 整理 Intel 法說（二手）"}
+  ],
+  "risks": [
+    "Intel 14A 與台積電 A14 同在 2028 年量產，若 Intel 在未來兩季宣布 Apple 或其他大型外部客戶，美國客戶可能以「美國本土產能＋政府支持」為由分單，削弱定價權",
+    "先進封裝外溢：Intel EMIB-T 已獲 Google TPU v9（1H28 起）、AWS 測試，加上台積電自身後段產能吃緊需外包 GlobalFoundries，封裝可能是護城河最先出現缺口的地方",
+    "客戶集中度上升：A 客戶（NVIDIA）占比由 12% 升至 19%、HPC 占 68%，AI 資本支出若放緩（NVIDIA 研報所指的客戶融資循環），台積電首當其衝；CEO 已示警消費性、價格敏感市場受零組件漲價衝擊",
+    "海外擴產成本：海外廠稀釋將由約 2% 擴大至 3–4%，若再加上德州／Terafab 等新據點與關稅（Section 232），毛利率結構性下移"
+  ],
+  "change_my_mind": [
+    "Intel 正式宣布 Apple、NVIDIA 或 AMD 等大客戶把主力產品（非低階或測試晶片）下到 18A-P／14A",
+    "TrendForce 季度市占顯示台積電連續兩季下滑超過 1 個百分點，或 Samsung 市占回升至 8% 以上",
+    "Samsung SF2 或 Intel 18A 經第三方證實良率追平台積電 N2，並拿下 GW 級 AI ASIC 訂單",
+    "台積電 N2 或 A14 出現正式延遲，或 CoWoS 主要客戶大量轉向 EMIB-T／其他封裝方案"
+  ],
+  "open_questions": [
+    "TSMC 2025 年報／20-F 的客戶集中度原文未直接取得，19%／17% 為 CNA 與 Taiwan News 二手轉述；2026 年各季客戶占比未揭露",
+    "台積電未官方揭露 CoWoS 產能、先進封裝營收占比，以及 NVIDIA、Broadcom、AMD 各自占 CoWoS 的份額",
+    "Counterpoint「Foundry 2.0」口徑的確切定義未能從原始報告確認；3Q26 TrendForce 代工排名尚未發布",
+    "Samsung Foundry 3Q26 單獨損益與 SF2 實際良率未揭露；Intel 18A 外部客戶、外部代工營收最新數字未取得",
+    "A16 是否已有具名客戶完成投片未查到；亞利桑那各廠實際成本差距（相對台灣）只有管理層的毛利稀釋說法，沒有單位成本數據",
+    "2027 年資本支出金額，管理層表示「現在談太早」"
+  ]
+}

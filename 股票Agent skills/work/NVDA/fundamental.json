@@ -1,0 +1,113 @@
+{
+  "role": "fundamental",
+  "ticker": "NVDA",
+  "as_of": "2026-11-02",
+  "stance": "bullish",
+  "confidence": 3,
+  "headline": "成長超預期且FY28 P/E僅13x，但應收、承諾與擔保膨脹需折價",
+  "theses": [
+    {
+      "claim": "FY27 Q2 營收 962.21 億美元（YoY +106%、QoQ +18%），比 LSEG 共識 921.7 億高約 4.4%；Non-GAAP EPS 2.22 美元，共識 2.10 美元",
+      "evidence": "Data Center 890.23 億（YoY +117%、QoQ +18%），其中 Hyperscale 487.10 億（+102% YoY、+13% QoQ）、ACIE（AI 雲／產業／企業）403.13 億（+138% YoY、+25% QoQ）；Edge Computing 71.98 億（+27% YoY、+13% QoQ）。部門已改為 Data Center / Edge Computing 兩大市場平台，報告分部為 Compute & Networking 882.99 億、Graphics 79.22 億；不再揭露 Gaming / ProViz / Auto，也不揭露 compute 與 networking 拆分（法說會只說 networking QoQ +18% 創新高）。共識數字是二手來源（36Kr 引用 LSEG）",
+      "source": "NVIDIA 8-K EX-99.1 新聞稿 https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000073/q2fy27pr.htm；CFO commentary EX-99.2 https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm；共識：36Kr https://eu.36kr.com/en/p/3957380273159302（二手）",
+      "source_date": "2026-08-26"
+    },
+    {
+      "claim": "Q3 營收指引 1,080 億美元 ±2%（1,058–1,102 億，QoQ +12.2%），高於財報前 LSEG 共識 1,042 億約 3.6%；法說會預告 FY28 營收成長約 70%，且是受供給限制的展望（財報前市場共識約 44–45%）",
+      "evidence": "指引假設中國 Data Center 運算營收為零；Vera Rubin 已在 Q3 開始量產出貨，預計占 Q3 Data Center 營收約 20%；Kress 說供給吃緊至少延續到 FY28 年底。目前 Q3 共識已上調到 1,088 億營收、EPS 2.47 美元（MarketBeat），超預期門檻提高。Q2 實際營收比財報前的指引隱含值（約 910 億，二手）高約 5.7%；若 Q3 照同樣幅度超出，約 1,142 億",
+      "source": "8-K 新聞稿（同上）；法說會逐字稿 https://singjupost.com/transcript-nvidia-nvda-q2-fy27-earnings-conference-call/（二手轉錄）；MarketBeat https://www.marketbeat.com/stocks/nasdaq/nvda/earnings/（二手）；investinglive 財報前瞻（二手）",
+      "source_date": "2026-08-26"
+    },
+    {
+      "claim": "毛利率已到高點：Q2 GAAP / Non-GAAP 毛利率都是 75.0%（YoY +2.6 / +2.5 個百分點），但 Q3 指引降到 74.0% ±50bp，管理層預告 Q4 觸底在 71–72%、FY28 落在 72–73%",
+      "evidence": "毛利率年增來自 Blackwell Ultra 產品組合。下滑原因是記憶體出現「極端定價」（Vera Rubin 機櫃的記憶體成本占比從不到 10% 升到約 26%，這是 Morgan Stanley 的數據，二手）。Non-GAAP 營業費用 82.32 億（YoY +54%），Q3 指引約 90 億；Non-GAAP 營業利益率約 66.5%（639.56 / 962.21）",
+      "source": "CFO commentary EX-99.2；法說會逐字稿（singjupost，二手）；36Kr（二手）",
+      "source_date": "2026-08-26"
+    },
+    {
+      "claim": "獲利品質轉弱：Q2 營業現金流 240.77 億，只有 Non-GAAP 淨利 539.54 億的 45%（Q1 是 503.44 億）；應收帳款 630.59 億，DSO 從 45 天升到 60 天；庫存 315.75 億，QoQ +22%",
+      "evidence": "公司說應收上升是因為給特定投資等級客戶的大型多季合約延長付款期（90 天到 1 年）。應收前五大直接客戶分別占 22% / 14% / 13% / 11% / 10%。庫存是為 Vera Rubin 備貨。H1 營業現金流 744.21 億，是 Non-GAAP 淨利的 75%；H1 自由現金流率 39.3%。GAAP 淨利 596.88 億包含 77.71 億的股權投資利得（Q1 是 159.36 億），所以 GAAP EPS 2.46 高於 Non-GAAP 的 2.22",
+      "source": "10-Q（FY27 Q2）https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm；CFO commentary EX-99.2",
+      "source_date": "2026-08-26"
+    },
+    {
+      "claim": "資產負債表的表外曝險大增：供應與產能承諾從 1,190 億升到 2,790 億（+134%），未來承諾合計 3,660 億；另有替 OpenAI 租約提供的 SB Energy 殘值擔保上限 1,050 億，總最大曝險 1,085 億；6 月新發 250 億公司債",
+      "evidence": "承諾項目還包括多年期雲端服務協議 290 億、AI 雲協議 360 億、股權投資承諾 250 億；帳上股權投資 990 億。擔保條件是 OpenAI 若破產並違約，NVIDIA 要補足差額，最長 20 年，預計 2028 年起生效。長債從 74.69 億增到 323.66 億（7 個年期，票息 4.25%–5.625%）；現金加有價債券 565.86 億，扣掉負債後淨現金約 232 億",
+      "source": "10-Q（FY27 Q2）；8-K Item 1.01/2.03 https://www.sec.gov/Archives/edgar/data/1045810/000104581026000069/nvda-20260817.htm",
+      "source_date": "2026-08-26"
+    }
+  ],
+  "key_metrics": [
+    {"name": "總營收", "value": "962.21 億美元（YoY +106%，QoQ +18%）", "period": "FY27 Q2", "source": "8-K EX-99.1"},
+    {"name": "Data Center 營收", "value": "890.23 億美元（YoY +117%，QoQ +18%）", "period": "FY27 Q2", "source": "CFO commentary"},
+    {"name": "Hyperscale / ACIE", "value": "487.10 億 / 403.13 億美元", "period": "FY27 Q2", "source": "CFO commentary"},
+    {"name": "Edge Computing 營收", "value": "71.98 億美元（YoY +27%，QoQ +13%）", "period": "FY27 Q2", "source": "CFO commentary"},
+    {"name": "GAAP / Non-GAAP 毛利率", "value": "75.0% / 75.0%（Q1 是 74.9% / 75.0%，去年同期 72.4% / 72.5%）", "period": "FY27 Q2", "source": "8-K EX-99.1"},
+    {"name": "GAAP / Non-GAAP 營業費用", "value": "84.08 億 / 82.32 億美元", "period": "FY27 Q2", "source": "8-K EX-99.1"},
+    {"name": "GAAP / Non-GAAP 稀釋 EPS", "value": "2.46 / 2.22 美元", "period": "FY27 Q2", "source": "8-K EX-99.1"},
+    {"name": "營業現金流 / 自由現金流", "value": "240.77 億 / 213.41 億美元（Q1 是 503.44 億 / 485.54 億）", "period": "FY27 Q2", "source": "8-K EX-99.1"},
+    {"name": "應收帳款 / DSO", "value": "630.59 億美元 / 60 天（上季 45 天）", "period": "2026-07-26", "source": "CFO commentary"},
+    {"name": "庫存", "value": "315.75 億美元（上季 258 億）", "period": "2026-07-26", "source": "CFO commentary"},
+    {"name": "供應與產能承諾 / 未來承諾合計", "value": "2,790 億 / 3,660 億美元", "period": "2026-07-26", "source": "10-Q"},
+    {"name": "SB Energy / OpenAI 擔保最大曝險", "value": "1,085 億美元（含 AI 雲 35 億）", "period": "2026-08", "source": "10-Q；8-K 2026-08-17"},
+    {"name": "庫藏股 / 股利", "value": "197 億美元（9,400 萬股）/ 60.47 億美元；剩餘授權 993 億", "period": "FY27 Q2", "source": "10-Q"},
+    {"name": "地區營收（依客戶總部所在地）", "value": "美國 600.74 億（62.4%）、台灣 269.85 億（28.0%）、中國含香港 78.80 億（8.2%）、其他 12.82 億", "period": "FY27 Q2", "source": "10-Q"},
+    {"name": "客戶集中度", "value": "一家直接客戶占總營收 16%；H1 前三大直接客戶分別占 16% / 15% / 13%", "period": "FY27 Q2 / H1", "source": "10-Q"},
+    {"name": "Q3 指引", "value": "營收 1,080 億 ±2%；毛利率 74.0% ±50bp；Non-GAAP 營業費用約 90 億", "period": "FY27 Q3", "source": "8-K EX-99.1"},
+    {"name": "Q3 市場共識", "value": "營收 1,088 億、EPS 2.47 美元（MarketBeat）；另一來源 Benzinga 是 1,039.5 億 / 2.34，可能是舊數字", "period": "FY27 Q3", "source": "MarketBeat、Benzinga（二手），2026-11-02 查詢"},
+    {"name": "FY27 / FY28 共識", "value": "營收 4,116.5 億 / 6,922.1 億；EPS 9.31 / 15.91 美元", "period": "FY27 / FY28", "source": "stockanalysis.com 引用 S&P Global，2026-10-26（二手）"},
+    {"name": "Forward P/E（FY27 / FY28 / NTM）", "value": "22.0x / 12.9x / 13.9x", "period": "以 2026-10-30 收盤 204.64 計", "source": "Python 計算"},
+    {"name": "EV/Sales（FY27 / FY28 / NTM）", "value": "12.0x / 7.1x / 7.7x", "period": "以 2026-10-30 收盤 204.64 計", "source": "Python 計算"},
+    {"name": "PEG（FY28 P/E ÷ FY28 EPS 成長率）", "value": "0.18", "period": "FY28", "source": "Python 計算"}
+  ],
+  "valuation": {
+    "price_current": 204.64,
+    "price_date": "2026-10-30",
+    "market_data": "稀釋股數 242.85 億股（Q2 加權平均）→ 市值約 4.97 兆美元；淨現金 232.2 億（現金 224.43 + 有價債券 341.43 − 負債 333.66）；EV 約 4.946 兆美元。DCF 另外加回有價股權證券 427.83 億",
+    "relative": {
+      "forward_PE_FY27": 22.0,
+      "forward_PE_FY28": 12.9,
+      "forward_PE_NTM": 13.9,
+      "EV_Sales_NTM": 7.67,
+      "PEG_FY28": 0.18,
+      "note": "NTM = FY27 Q4 隱含值（營收 1,258 億、EPS 2.75）+ 0.75 × FY28 共識；共識來自 S&P Global（經 stockanalysis 轉引，2026-10-26）。查不到可靠的歷史 forward P/E 區間與同業倍數，因此沒有拿來比較，已列入 open_questions"
+    },
+    "methods": [
+      {"name": "盈餘倍數法（12 個月後的 NTM P/E）", "price": 244.2, "assumptions": "基準情境：FY28 營收 +70%（公司展望）至 6,998 億、毛利率 72.5%（取 FY28 指引 72–73% 的中點）、營業費用 +35% 至 465 億、稅率 17%、股數 240 億 → FY28 EPS 16.01（與共識 15.91 一致）；FY29 EPS +12%；2027-11 時點的 NTM EPS 17.45 × 14x（等於維持目前 NTM 倍數，不假設倍數上調）"},
+      {"name": "EV/Sales（維持目前倍數）", "price": 241.4, "assumptions": "維持目前 EV/NTM Sales 7.67x，套用在 2027-11 的 NTM 營收 7,523 億（FY28 6,998 億、FY29 +10%）；淨現金 232 億維持不變；股數 240 億"},
+      {"name": "DCF（10 年，12 個月後價值）", "price": 163.9, "assumptions": "WACC 10.5%、永續成長 3%；營收 FY28 6,998 億 → FY29 +10% → FY30 +5% → FY31 0% → FY32 −5%（模擬半導體週期反轉）→ 之後每年 +3%；FCF 率 42% 逐步降到 36%（H1 FY27 實際 39.3%）；加回淨現金與股權證券；現值 148.3、×1.105 得 12 個月價值 163.9。敏感度（WACC 9.5–11.5%、永續成長 2–4%）：現值 126–186。結論：要撐住 205 美元，市場必須相信 FY30 之後營收不會反轉"},
+      {"name": "混合目標價", "price": 226.3, "assumptions": "權重：三情境機率加權 249.9 占 50%、EV/Sales 241.4 占 25%、DCF 163.9 占 25%；給 DCF 權重是為了反映週期與表外承諾的風險"}
+    ],
+    "scenarios": [
+      {"name": "樂觀", "price": 383.7, "probability": "25%", "assumption": "供給鬆綁，FY28 營收 +85% 至 7,616 億；毛利率 74%；FY28 EPS 17.95；FY29 EPS +25%（22.44）；2027-11 NTM EPS 21.31 × 18x"},
+      {"name": "基準", "price": 244.2, "probability": "50%", "assumption": "FY28 營收 +70% 至 6,998 億；毛利率 72.5%；FY28 EPS 16.01；FY29 EPS +12%；NTM EPS 17.45 × 14x（維持目前倍數）"},
+      {"name": "悲觀", "price": 127.5, "probability": "25%", "assumption": "雲端業者資本支出進入消化期、ASIC 替代、延長付款的應收出問題，FY28 營收只 +35% 至 5,557 億；毛利率 70%；FY28 EPS 11.97；FY29 EPS −15%；NTM EPS 10.63 × 12x"}
+    ],
+    "probability_weighted_price": 249.9,
+    "target_price": 226.3,
+    "upside_pct": 10.6,
+    "horizon": "12 個月（至 2027-11）"
+  },
+  "risks": [
+    "營運資金吸走現金：DSO 從 45 天升到 60 天、Q2 營業現金流只有 Non-GAAP 淨利的 45%。如果延長付款期變成常態，帳面獲利和實際現金的落差會繼續擴大",
+    "表外曝險：未來承諾 3,660 億，加上 OpenAI 租約擔保最大 1,085 億、AI 雲與雲端服務協議 650 億，形成「NVIDIA 出錢支撐客戶買 NVIDIA」的循環；一旦 AI 資本支出降溫，可能同時出現庫存減損、承諾損失和擔保賠付",
+    "毛利率下滑：記憶體成本飆升，管理層預告 Q4 觸底 71–72%、FY28 72–73%，比 Q2 的 75% 低 2–3 個百分點；如果記憶體價格比預期更高，可能再往下",
+    "客戶集中與政策：單一直接客戶占營收 16%；中國 Data Center 運算營收已假設為零，H200 出貨受中國政府限制，還要付 25% 關稅且無法轉嫁"
+  ],
+  "change_my_mind": [
+    "FY27 Q3（約 2026-11-17/18 公布）營收低於 1,088 億共識、或 Q4 指引的 QoQ 成長低於 10%，就轉為中性",
+    "Q3 的 DSO 升破 70 天、或營業現金流連續兩季低於 Non-GAAP 淨利的 60%，就下修目標價並降評",
+    "毛利率指引跌破 70%，或 FY28 約 70% 的成長展望被下修",
+    "反過來的情況：營業現金流回到淨利的 85% 以上、DSO 回到 50 天以下，而且 FY28 展望上修到 80% 以上，就把目標價往樂觀情境調高"
+  ],
+  "open_questions": [
+    "Data Center compute 與 networking 的營收拆分：新聞稿和 10-Q 都沒揭露，法說會只說 networking QoQ +18%",
+    "改成 Edge Computing 部門後，舊的 Gaming / ProViz / Automotive 個別營收已不再揭露，無法和過去序列比較",
+    "財報前市場共識只取得二手來源（36Kr、MarketBeat 引用 LSEG），沒有 FactSet / LSEG 原始資料；FY27 EPS 共識各來源差距大（MarketBeat 6.87 vs S&P Global 9.31），MarketBeat 的數字可能已過時",
+    "NVDA 歷史 forward P/E 區間（5 年平均）與同業（AMD、AVGO）目前的 forward P/E：找不到可靠且有日期的來源，相對估值缺少歷史與同業對照",
+    "中國含香港 78.80 億的營收是依客戶總部所在地統計，和「中國 Data Center Hopper 出貨不到 1%」之間差在哪些產品（Edge / Graphics 或轉運），10-Q 沒說明",
+    "SB Energy 擔保的會計處理（是否認列負債、預期損失）與另一家前沿實驗室約 2GW 信用增強的金額，都還沒查到",
+    "FY27 Q3 財報日期公司尚未正式確認（11-17 或 11-18）",
+    "稀釋股數用 Q2 加權平均 242.85 億股；季底實際流通股數沒有另外核對"
+  ]
+}

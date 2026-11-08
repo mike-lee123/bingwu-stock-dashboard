@@ -1,0 +1,39 @@
+{
+  "ticker": "2454.TW",
+  "last_date": "2026-11-02",
+  "close": 3970.0,
+  "change_1d_pct": 1.4,
+  "change_1m_pct": -19.31,
+  "change_3m_pct": 22.72,
+  "change_1y_pct": 206.1,
+  "high_52w": 5480.0,
+  "low_52w": 1101.93,
+  "from_52w_high_pct": -27.55,
+  "sma20": 4362.0,
+  "sma50": 4414.8,
+  "sma200": 3222.35,
+  "above_sma20": false,
+  "above_sma50": false,
+  "above_sma200": true,
+  "rsi14": 38.41,
+  "macd": -169.72,
+  "macd_signal": -121.17,
+  "macd_hist": -48.55,
+  "macd_hist_rising": true,
+  "bb_upper": 5128.6,
+  "bb_lower": 3595.4,
+  "atr14": 202.84,
+  "atr14_pct": 5.11,
+  "vol20_vs_vol60": 0.98,
+  "support": [
+    3856.96,
+    3802.28,
+    3655.0
+  ],
+  "resistance": [
+    4050.0,
+    4125.0,
+    4400.0
+  ],
+  "source": "Yahoo Finance 日線（還原權值），經 scripts/fetch_prices.py 計算"
+}

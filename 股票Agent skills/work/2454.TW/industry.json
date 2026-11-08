@@ -1,0 +1,67 @@
+{
+  "role": "industry",
+  "ticker": "2454.TW",
+  "as_of": "2026-11-02",
+  "stance": "neutral",
+  "confidence": 3,
+  "headline": "ASIC放量但客戶集中、CoWoS瓶頸，護城河喜憂參半",
+  "theses": [
+    {
+      "claim": "聯發科法說會上修 2027 年 AI accelerator（AI ASIC）營收目標至區間高端約 US$16 億（16B），目標拿下整體 AI ASIC 市場約 20% 份額，但 Broadcom／Marvell 兩家合計仍壟斷約 95% 的客製 ASIC 設計市場（Broadcom 約 60-70%、Marvell 約 20-25%），聯發科是後進切入第三大玩家。",
+      "evidence": "管理層於 2026Q3 法說會表示 2027 年 AI ASIC 營收將達 target range 高端約 US$16B，約當整體 AI ASIC 市場 20% 份額；同期產業報告顯示 Broadcom 與 Marvell 合計控制約 95% 的客製 ASIC 協同設計市場。",
+      "source": "Taipei Times「MediaTek gains new AI customer」(轉引法說會逐字稿) https://www.taipeitimes.com/News/biz/archives/2026/10/31/2003866887；Broadcom/Marvell 市占彙整（hashrateindex / cryptobriefing，二手產業報告）",
+      "source_date": "2026-10-31"
+    },
+    {
+      "claim": "聯發科 AI ASIC 業務目前高度集中於單一客戶（市場普遍認定為 Google TPU）：Bernstein 報告估算該客戶相關營收占聯發科總營收比重可能由 2026 年約 11% 快速攀升至 2027 年 43%、2028 年 65%，且已傳出第二家非中國客戶、第二代晶片要到 2028 年初才量產。",
+      "evidence": "Bernstein 分析師報告（經財經媒體轉引）估算 Google 相關 ASIC 營收占聯發科 2027 年總營收 43%、2028 年 65%；10/31 法說會證實已簽下第二家 AI ASIC 客戶（非中國籌碼）但未揭露身份，既有客戶第二代晶片量產時程為 2028 年初。",
+      "source": "BigGo Finance／Yahoo Finance 彙整 Bernstein 報告觀點（二手，未取得 Bernstein 原始報告）；Taipei Times 2026-10-31 法說會報導",
+      "source_date": "2026-10-31"
+    },
+    {
+      "claim": "上游先進封裝 CoWoS 產能仍是結構性瓶頸：Nvidia 已鎖定 TSMC CoWoS 總產能逾 50%，供需缺口預估從目前約 20% 收斂至 2026 年底約 10%，但全球 CoWoS 需求將由 2026 年約 130-140 萬片倍增至 2027 年約 250-270 萬片，連 Google 自身都已因 CoWoS 產能受限，將 2026 年 TPU 生產目標從約 400 萬顆下修約 25% 至 300 萬顆——這直接牽動聯發科作為其 ASIC 設計夥伴的出貨放量速度。",
+      "evidence": "TrendForce 報告指 CoWoS 供需缺口將自 20% 收斂至 10%（2026 年底）；另有產業報導指出 Nvidia 占 TSMC 先進封裝總產能逾 50%、2027 年全球 CoWoS 需求將倍增，且 Google 已因封裝產能受限下修 TPU 生產目標約 25%。",
+      "source": "TrendForce「TSMC CoWoS Supply-Demand Gap Reportedly Seen Narrowing」(2026-06-15) https://www.trendforce.com/news/2026/06/15/news-tsmc-cowos-supply-demand-gap-reportedly-seen-narrowing-from-20-to-10-by-end-2026-as-capacity-expands/；aiexpert.news／bugtraqsolutions 彙整報導（二手）",
+      "source_date": "2026-10-25"
+    },
+    {
+      "claim": "聯發科智慧手機 SoC 出貨量仍居全球第一，2026 年市占率約 31-34%，領先 Qualcomm 的 23-25%；但在最具定價權的旗艦 Android SoC 區隔，聯發科 2026 年市占僅約 12%（雖已自 2022 年的約 5% 提升），顯示其核心業務在高階/高毛利區隔仍落後 Qualcomm 的品牌與出貨優勢。",
+      "evidence": "Counterpoint Research 數據經 Malaysian Wireless／Memeburn／wccftech 等轉引：2026 年全球智慧手機晶片出貨市占聯發科 31-34%、Qualcomm 23-25%；旗艦 Android SoC 市占聯發科由 2022 年約 5% 升至 2026 年約 12%。",
+      "source": "Counterpoint Research（轉引自 wccftech「MediaTek to Remain Market Leader For 2026」、Memeburn「Smartphone Chipset Market Share 2026」）",
+      "source_date": "2026-06-15"
+    },
+    {
+      "claim": "Q4 2026 財測毛利率中值約 45%（區間 43.5%-46.5%），較 Q3 2026 實際 46.3% 下滑約 1.3pp，公司解釋為 AI ASIC 業務佔比提升稀釋毛利率結構，但管理層同時將 2027 年營運利益率目標設定在「至少 20%」，顯示這是產品組合轉變而非單純一次性波動，規模化後靠營運槓桿彌補。",
+      "evidence": "法說會財測：Q4 2026 毛利率 43.5%-46.5%，低於 Q3 46.3%；管理層表態 2027 年 operating margin 目標「at least 20%」，隨 AI ASIC 量產規模化改善。",
+      "source": "Taipei Times「MediaTek gains new AI customer」(2026-10-31) https://www.taipeitimes.com/News/biz/archives/2026/10/31/2003866887",
+      "source_date": "2026-10-31"
+    }
+  ],
+  "key_metrics": [
+    {"name": "AI accelerator（AI ASIC）Q4 2026 財測營收", "value": "約 US$2.5B", "period": "FY2026 Q4", "source": "公司法說會財測，Taipei Times 2026-10-31"},
+    {"name": "2027 年 AI accelerator 營收目標", "value": "約 US$16B（區間高端），約當整體 AI ASIC 市場 20% 份額", "period": "FY2027", "source": "公司法說會財測，Taipei Times 2026-10-31"},
+    {"name": "全球智慧手機 SoC 市占率（聯發科 vs Qualcomm）", "value": "聯發科 31-34% vs Qualcomm 23-25%", "period": "2026 年（Q1-Q2 數據）", "source": "Counterpoint Research（轉引 wccftech/Memeburn）"},
+    {"name": "旗艦 Android SoC 市占率（聯發科）", "value": "約 12%（2022 年約 5%）", "period": "2026 年", "source": "Counterpoint Research（轉引 wccftech）"},
+    {"name": "客製 AI ASIC 設計市場份額（Broadcom／Marvell 合計）", "value": "約 95%（Broadcom 60-70%、Marvell 20-25%）", "period": "2026 年", "source": "產業報告彙整（hashrateindex／cryptobriefing，二手）"},
+    {"name": "TSMC CoWoS 月產能（2026→2027）", "value": "約 12-14 萬片/月 → 2027 年底約 18-20 萬片/月；Nvidia 占逾 50% 分配", "period": "2026-2027", "source": "TrendForce（2026-06-15）、aiexpert.news（2026-10-25）"},
+    {"name": "Q4 2026 毛利率財測", "value": "43.5%-46.5%（中值約 45%），Q3 2026 實際為 46.3%", "period": "FY2026 Q3→Q4", "source": "公司法說會財測，Taipei Times 2026-10-31"}
+  ],
+  "risks": [
+    "AI ASIC 業務客戶集中度極高：第一大客戶（傳為 Google）占未來營收比重可能快速攀升至四成以上，若該客戶轉向完全自研/直接與 TSMC 合作（類似 Apple model），聯發科可能淪為「墊腳石」而非長期夥伴",
+    "上游 CoWoS／先進封裝產能被 Nvidia 優先鎖定（逾 50%），聯發科及其客戶的 AI ASIC 放量速度可能受制於非自身可控的封裝瓶頸，Google 已因此下修自身 TPU 產量目標約 25%",
+    "核心手機 SoC 業務在最具定價權的旗艦區隔仍落後 Qualcomm（市占 12% vs 對手品牌優勢），且全球手機出貨因 DRAM 成本上升、OEM 謹慎下單而承壓，若 AI ASIC 進度不如預期，整體成長動能有限",
+    "Q3 2026 營運現金流轉負（僅見媒體二手報導，金額與原因待公司原始財報/法說會逐字稿覆核），若為結構性（例如 ASIC 業務墊款、存貨增加）而非一次性，將限制資本配置彈性"
+  ],
+  "change_my_mind": [
+    "若聯發科在未來 1-2 季內公布第三家獨立大型雲端業者的 ASIC 設計訂單，且揭露單一客戶營收占比降至 30% 以下，可上修護城河評估為轉強",
+    "若 TSMC CoWoS/CoPoS 產能瓶頸提前於 2026 年底前顯著緩解，且聯發科取得非 Nvidia 優先排序的獨立產能保證，AI ASIC 放量風險可下修",
+    "若查證到 Google 原始財報/法說會或 10-K 中證實其 TPU 長期設計合作仍綁定聯發科（而非逐步轉為純自研+TSMC直接合作），可降低「墊腳石」風險權重；反之若出現 Google 自研團隊擴編或直接向 TSMC 下單 tape-out 的具體證據，應立即下修"
+  ],
+  "open_questions": [
+    "聯發科第二家 AI ASIC 客戶（非中國籌碼）的具體身份、合約規模與量產時程，公司法說會未公開",
+    "Bernstein 報告原文（Google 相關營收占聯發科 2027/2028 年營收 43%/65%）未能取得一手報告全文，僅能引用財經媒體二次轉述，數字可信度需以公司財報實際揭露的客戶集中度（10-Q/年報通常揭露前幾大客戶占比）覆核",
+    "Q3 2026 營運現金流轉負的具體金額與原因（壹蘋新聞報導提及但未查證），需待聯發科官方財報附註或法說會逐字稿確認",
+    "聯發科與 Qualcomm 在 2026-2027 年 TSMC N2 先進製程產能分配的相對優先順序未公開披露，無法判斷手機 SoC 業務是否存在產能排擠風險",
+    "聯發科 10-Q／年報中關於 AI ASIC 客戶集中度（前幾大客戶占營收比例）的官方揭露數字尚未查到一手原始文件，目前僅能引用分析師/媒體估算"
+  ]
+}
