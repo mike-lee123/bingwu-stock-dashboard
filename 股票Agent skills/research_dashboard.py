@@ -233,13 +233,36 @@ def launch_research(ticker):
     return True, f"已在背景啟動 {ticker} 的研究，約 15–30 分鐘完成，總覽會自動更新進度。"
 
 
+def command_builder_panel(why):
+    """無法從儀表板直接啟動時：填入代號，產生可複製的 Claude Code 指令。"""
+    st.caption(f"ℹ️ {why}")
+    with st.form("rs_cmd_builder", border=False):
+        c1, c2 = st.columns([3, 1])
+        raw = c1.text_input("股票代號", placeholder="例如 AMD、2317（台股上市可只打數字）、3105.TWO",
+                            key="rs_cmd_ticker")
+        c2.markdown("<br>", unsafe_allow_html=True)
+        submitted = c2.form_submit_button("📋 產生研究指令", type="primary")
+    if not submitted:
+        return
+    ticker = normalize_ticker(raw or "")
+    if not ticker:
+        st.warning("代號格式不正確。台股上市可只打數字（例如 2317），上櫃請加 .TWO（例如 3105.TWO）。")
+        return
+    st.markdown("**複製下面這行**（右上角有複製鈕），貼到在 `股票Agent skills` 資料夾開啟的 Claude Code：")
+    st.code(f"/research-director {ticker}", language=None)
+    if (WORK / ticker / "report.json").exists():
+        st.caption(f"🔁 {ticker} 已有研究，這次會以「更新」模式執行，舊版先封存。")
+    st.caption("約 15–30 分鐘、使用你的 Claude 用量。完成後按上方「重新載入研究資料」；"
+               "雲端版需把 `work/` 與 `reports/` 推上 GitHub 才看得到新研究。")
+
+
 def new_research_panel(tickers):
     if "rs_flash" in st.session_state:
         st.success(st.session_state.pop("rs_flash"))
     with st.expander("➕ 新增研究", expanded=not tickers):
         ok, why = can_launch()
         if not ok:
-            st.info(why + "\n\n也可以在 `股票Agent skills` 資料夾開 Claude Code，輸入 `/research-director <代號>`。")
+            command_builder_panel(why)
             return
         with st.form("rs_new_research", clear_on_submit=True, border=False):
             c1, c2 = st.columns([3, 1])
@@ -673,7 +696,8 @@ def render_cabin(api=None, template="plotly_dark"):
         st.markdown(DARK_HOST_CSS, unsafe_allow_html=True)
     tickers = list_tickers()
     if not tickers:
-        st.warning(f"{WORK} 底下還沒有研究資料。在 Claude Code 輸入 /research-director <代號> 產生研究。")
+        st.warning("還沒有研究資料，先在下面填入代號開始第一份研究。")
+        new_research_panel(tickers)
         return
     c1, c2 = st.columns([3, 1])
     with c1:
