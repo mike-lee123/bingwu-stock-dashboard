@@ -946,33 +946,31 @@ def fetch_from_yahoo_chart_api(symbol, range_str="2y") -> pd.DataFrame:
 # 🛰️ 併武多源行情報價與即時量化工具引擎 (Shioaji + Yahoo 雙軌防護)
 # ==============================================================================
 
-_sj_contracts_fetched = False
+@st.cache_resource(show_spinner="🔐 Shioaji 登入中...")
+def _bw_shioaji_login(ak: str, sk: str, simulation: bool):
+    """登入並下載合約。以 (金鑰, 模擬/正式) 為快取鍵：Streamlit 每次重跑腳本都沿用同一連線，
+    不同金鑰或模式各自獨立。登入失敗會丟出例外，不會被快取，下次可重試。"""
+    api = sj.Shioaji(simulation=simulation)
+    api.login(api_key=ak, secret_key=sk)
+    try:
+        api.fetch_contracts(contract_type='Stock')
+        for _ in range(10):
+            if hasattr(api.Contracts, "Stocks") and hasattr(api.Contracts.Stocks, "TSE") and len(api.Contracts.Stocks.TSE) > 0:
+                break
+            time.sleep(0.2)
+    except Exception:
+        pass
+    return api
 
 def get_enhanced_shioaji_client(api_key: str = "", secret_key: str = "", simulation: bool = True):
-    global global_sj_api, _sj_contracts_fetched
     if not SHIOAJI_AVAILABLE:
         return None, "未安裝 shioaji 套件"
     ak = api_key.strip()
     sk = secret_key.strip()
     if not ak or not sk:
         return None, "未提供 Shioaji 金鑰"
-    if global_sj_api is not None:
-        return global_sj_api, "連線就緒"
     try:
-        api = sj.Shioaji(simulation=simulation)
-        api.login(api_key=ak, secret_key=sk)
-        if not _sj_contracts_fetched:
-            try:
-                api.fetch_contracts(contract_type='Stock')
-                for _ in range(10):
-                    if hasattr(api.Contracts, "Stocks") and hasattr(api.Contracts.Stocks, "TSE") and len(api.Contracts.Stocks.TSE) > 0:
-                        break
-                    time.sleep(0.2)
-            except Exception:
-                pass
-            _sj_contracts_fetched = True
-        global_sj_api = api
-        return global_sj_api, "連線成功"
+        return _bw_shioaji_login(ak, sk, bool(simulation)), "連線就緒"
     except Exception as e:
         return None, f"Shioaji 登入失敗: {e}"
 
