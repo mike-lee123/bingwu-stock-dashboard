@@ -1,4 +1,5 @@
-﻿import os
+﻿import hashlib
+import os
 import time
 import pandas as pd
 from datetime import datetime, timedelta
@@ -10,8 +11,12 @@ try:
 except ImportError:
     SHIOAJI_AVAILABLE = False
 
-_sj_api = None
-_contracts_fetched = False
+# 每組 (金鑰, 模擬/正式) 各自一個連線；不同金鑰或模式絕不共用同一個 session
+_sj_sessions = {}
+
+
+def _session_key(ak: str, sk: str, simulation: bool) -> str:
+    return hashlib.sha256(f"{ak}\0{sk}\0{bool(simulation)}".encode()).hexdigest()
 
 STOCK_NAME_MAP = {
     "2330": "台積電", "2454": "聯發科", "2317": "鴻海", "2603": "長榮",
@@ -21,7 +26,6 @@ STOCK_NAME_MAP = {
 }
 
 def get_shioaji_client(api_key: str = "", secret_key: str = "", simulation: bool = True):
-    global _sj_api, _contracts_fetched
     if not SHIOAJI_AVAILABLE:
         return None, "未安裝 shioaji 套件"
     
@@ -31,24 +35,23 @@ def get_shioaji_client(api_key: str = "", secret_key: str = "", simulation: bool
     if not ak or not sk:
         return None, "未提供 Shioaji 金鑰"
     
-    if _sj_api is not None:
-        return _sj_api, "連線就緒"
-    
+    key = _session_key(ak, sk, simulation)
+    if key in _sj_sessions:
+        return _sj_sessions[key], "連線就緒"
+
     try:
         api = sj.Shioaji(simulation=simulation)
         api.login(api_key=ak, secret_key=sk)
-        if not _contracts_fetched:
-            try:
-                api.fetch_contracts(contract_type='Stock')
-                for _ in range(10):
-                    if hasattr(api.Contracts, "Stocks") and hasattr(api.Contracts.Stocks, "TSE") and len(api.Contracts.Stocks.TSE) > 0:
-                        break
-                    time.sleep(0.2)
-            except Exception:
-                pass
-            _contracts_fetched = True
-        _sj_api = api
-        return _sj_api, "連線成功"
+        try:
+            api.fetch_contracts(contract_type='Stock')
+            for _ in range(10):
+                if hasattr(api.Contracts, "Stocks") and hasattr(api.Contracts.Stocks, "TSE") and len(api.Contracts.Stocks.TSE) > 0:
+                    break
+                time.sleep(0.2)
+        except Exception:
+            pass
+        _sj_sessions[key] = api
+        return api, "連線成功"
     except Exception as e:
         return None, f"Shioaji 登入失敗: {e}"
 

@@ -1,15 +1,17 @@
 ﻿version: '3.8'
 
+# 只供本機開發使用：連接埠只綁 127.0.0.1，區網或外部連不進來。
+# 密碼可在 .env 設定 POSTGRES_PASSWORD 覆蓋（未設定時沿用本機預設值）。
 services:
   postgres:
     image: postgres:15-alpine
     container_name: ai_stock_postgres
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgrespassword}
       POSTGRES_DB: stock_db
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
 
@@ -17,7 +19,7 @@ services:
     image: redis:alpine
     container_name: ai_stock_redis
     ports:
-      - "6379:6379"
+      - "127.0.0.1:6379:6379"
 
 volumes:
   pgdata:
