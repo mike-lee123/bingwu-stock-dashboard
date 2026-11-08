@@ -17,11 +17,16 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
-# 研究流程實際用到的工具；其餘操作交給 auto 權限模式判斷，不使用 bypassPermissions
+# 研究流程實際用到的工具，盡量收窄：研究會讀網頁，網頁內容可能夾帶惡意指令（prompt injection）。
+# - 只能寫 work/ 底下（不能改 scripts/ 再拿去執行）
+# - Python 只准跑這三支固定腳本，不能執行任意程式碼（也就讀不到環境變數裡的 API 金鑰）
+# 本機 auto 模式下，清單外的動作交給權限分類器判斷；雲端 dontAsk 模式下一律拒絕。
 ALLOWED_TOOLS = [
-    "Read", "Write", "Edit", "Glob", "Grep", "WebSearch", "WebFetch", "Agent", "Skill",
-    "Bash(python *)", "Bash(export *)", "Bash(cd *)", "Bash(ls *)", "Bash(mkdir *)", "Bash(cp *)",
-    "Bash(cat *)", "Bash(head *)", "Bash(tail *)",
+    "Read", "Glob", "Grep", "WebSearch", "WebFetch", "Agent", "Skill",
+    "Edit(work/**)",  # Edit 規則涵蓋所有寫檔工具（含 Write）
+    "Bash(python scripts/fetch_prices.py *)",
+    "Bash(python scripts/render_report.py *)",
+    "Bash(python scripts/publish_research.py *)",
 ]
 
 

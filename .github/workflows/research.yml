@@ -1,6 +1,9 @@
 # 雲端 AI 研究團隊：由儀表板的「☁️ 在雲端啟動研究」或 GitHub Actions 頁面手動觸發。
-# 需要 repo Secret：ANTHROPIC_API_KEY（Anthropic API 金鑰，依用量另計費）。
-# 研究完成後由 publish_research.py 只提交該檔的研究檔案並推回 main，Streamlit Cloud 會自動重新部署。
+# 需要 repo Secret：ANTHROPIC_API_KEY（Anthropic API 金鑰，依用量另計費；建議在 console 設花費上限）。
+#
+# 安全設計：研究會讀網頁，網頁可能夾帶惡意指令，所以拆成兩個 job——
+#   research：跑 AI，只有讀取權限、不保留 git 推送憑證，AI 無法推送或改 repo。
+#   publish ：不跑 AI，只接收 research 產出的結果，經 publish_research.py 的白名單與金鑰掃描後推回 main。
 name: AI 研究團隊
 
 on:
@@ -12,27 +15,32 @@ on:
         type: string
 
 permissions:
-  contents: write
+  contents: read
 
 # 一次只跑一份研究，控制費用；後送出的會排隊
 concurrency:
   group: ai-research
   cancel-in-progress: false
 
+env:
+  TICKER: ${{ inputs.ticker }}
+  PYTHONIOENCODING: utf-8
+
 jobs:
   research:
     # Windows 機器內建 Edge（轉 PDF）與中文字型
     runs-on: windows-latest
     timeout-minutes: 90
+    permissions:
+      contents: read
     defaults:
       run:
         shell: pwsh
         working-directory: 股票Agent skills
-    env:
-      TICKER: ${{ inputs.ticker }}
-      PYTHONIOENCODING: utf-8
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: 檢查代號格式
         run: |
@@ -52,15 +60,11 @@ jobs:
       - name: 安裝 Claude Code
         run: npm install -g @anthropic-ai/claude-code
 
-      - name: 設定 git 身分
-        run: |
-          git config user.name "ai-research-bot"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-      - name: 執行 6 人研究團隊並上傳
+      - name: 執行 6 人研究團隊
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           BW_PERMISSION_MODE: dontAsk
+          BW_AUTO_PUBLISH: "0"   # 這個 job 不上傳，交給下面的 publish job
         run: |
           if (-not $env:ANTHROPIC_API_KEY) { throw "尚未設定 repo Secret：ANTHROPIC_API_KEY" }
           python scripts/run_research.py $env:TICKER
@@ -72,6 +76,15 @@ jobs:
           "狀態：$($job.status)  $($job.error)"
           if ($job.status -ne "done") { exit 1 }
 
+      - name: 交出研究結果
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-result
+          path: |
+            股票Agent skills/work/*/
+            股票Agent skills/reports/*.pdf
+          retention-days: 3
+
       - name: 保留執行記錄（7 天）
         if: always()
         uses: actions/upload-artifact@v4
@@ -80,3 +93,36 @@ jobs:
           path: 股票Agent skills/work/*/research.log
           retention-days: 7
           if-no-files-found: ignore
+
+  publish:
+    needs: research
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 取回研究結果
+        uses: actions/download-artifact@v4
+        with:
+          name: research-result
+          path: _result
+
+      - name: 只放回這一檔的研究與 PDF
+        shell: bash
+        run: |
+          T="${TICKER^^}"
+          mkdir -p "股票Agent skills/work" "股票Agent skills/reports"
+          rm -rf "股票Agent skills/work/$T"
+          cp -r "_result/work/$T" "股票Agent skills/work/$T"
+          cp _result/reports/"$T"_*.pdf "股票Agent skills/reports/" 2>/dev/null || true
+          rm -rf _result
+
+      - name: 上傳（白名單＋金鑰掃描）
+        shell: bash
+        working-directory: 股票Agent skills
+        run: |
+          git config user.name "ai-research-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          python3 scripts/publish_research.py "$TICKER"

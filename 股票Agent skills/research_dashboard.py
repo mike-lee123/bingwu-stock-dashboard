@@ -245,12 +245,22 @@ DEFAULT_REPO = "mike-lee123/bingwu-stock-dashboard"
 
 
 def cloud_config():
+    """GITHUB_TOKEN 與 LAUNCH_PASSWORD 都設定才啟用；缺密碼時不開放，避免任何看得到頁面的人花你的錢。"""
     try:
         token = st.secrets.get("GITHUB_TOKEN", "")
+        password = st.secrets.get("LAUNCH_PASSWORD", "")
         repo = st.secrets.get("GITHUB_REPO", DEFAULT_REPO)
+        limit = int(st.secrets.get("CLOUD_DAILY_LIMIT", 3))
     except Exception:  # 沒有 secrets.toml 時 st.secrets 會丟例外
         return None
-    return (token, repo) if token else None
+    if not token or not password:
+        return None
+    return {"token": token, "password": password, "repo": repo, "limit": limit}
+
+
+def password_ok(entered, cfg):
+    import hmac
+    return hmac.compare_digest((entered or "").encode(), cfg["password"].encode())
 
 
 def gh_api(method, path, token, body=None):
@@ -283,15 +293,27 @@ def cloud_busy(token, repo):
     return n
 
 
+def cloud_runs_today(token, repo):
+    """今天（UTC）已送出的雲端研究數；查詢失敗回傳 None。"""
+    from datetime import datetime, timezone
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    code, data = gh_api("GET", f"/repos/{repo}/actions/workflows/{WORKFLOW_FILE}/runs"
+                               f"?event=workflow_dispatch&created=%3E%3D{today}&per_page=1", token)
+    return data.get("total_count", 0) if code == 200 else None
+
+
 def cloud_launch(ticker, cfg):
-    token, repo = cfg
+    token, repo = cfg["token"], cfg["repo"]
     if not yahoo_has(ticker):
         return False, f"Yahoo Finance 查不到 {ticker}。台股上櫃請加 .TWO（例如 3105.TWO）。"
     busy = cloud_busy(token, repo)
-    if busy is None:
+    used = cloud_runs_today(token, repo)
+    if busy is None or used is None:
         return False, "連不上 GitHub，或 GITHUB_TOKEN 沒有 Actions 權限。"
     if busy >= MAX_RUNNING:
         return False, "雲端已有研究在進行，為控制費用一次只跑一份，請等它完成再送出。"
+    if used >= cfg["limit"]:
+        return False, f"今天已送出 {used} 份雲端研究，已達每日上限 {cfg['limit']} 份（UTC 換日後重置）。"
     code, _ = gh_api("POST", f"/repos/{repo}/actions/workflows/{WORKFLOW_FILE}/dispatches", token,
                      {"ref": "main", "inputs": {"ticker": ticker}})
     if code != 204:
@@ -310,12 +332,13 @@ def command_builder_panel(why):
         c1, c2 = st.columns([3, 1])
         raw = c1.text_input("股票代號", placeholder="例如 AMD、2317（台股上市可只打數字）、3105.TWO",
                             key="rs_cmd_ticker")
+        entered = c1.text_input("啟動密碼", type="password", key="rs_cloud_pw") if cfg else ""
         c2.markdown("<br>", unsafe_allow_html=True)
         submitted = c2.form_submit_button("☁️ 在雲端啟動研究" if cfg else "📋 產生研究指令",
                                           type="primary")
     if cfg:
         st.caption("在 GitHub 的雲端機器上跑 6 人研究團隊，使用 Anthropic API 金鑰（依用量計費，每份約數美元）。"
-                   "一次只跑一份。")
+                   f"一次只跑一份，每日上限 {cfg['limit']} 份。")
     if not submitted:
         return
     ticker = normalize_ticker(raw or "")
@@ -324,6 +347,9 @@ def command_builder_panel(why):
         return
     if (WORK / ticker / "report.json").exists():
         st.caption(f"🔁 {ticker} 已有研究，這次會以「更新」模式執行，舊版先封存。")
+    if cfg and not password_ok(entered, cfg):
+        st.warning("啟動密碼不正確，未送出雲端研究。")
+        return
     if cfg:
         with st.spinner(f"確認 {ticker} 並送出到雲端…"):
             ok, msg = cloud_launch(ticker, cfg)
