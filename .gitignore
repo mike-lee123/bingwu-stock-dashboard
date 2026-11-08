@@ -5,3 +5,10 @@ __pycache__/
 *.pyd
 *.exe
 .env
+
+# 執行產物與本機資料
+*.log
+*.db
+
+# 與 app.py 相同的本機備份檔
+bw_ultimate_dashboard_v18.82_dashboard_FullMaster.py

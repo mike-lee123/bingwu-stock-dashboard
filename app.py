@@ -3340,7 +3340,7 @@ elif col_sel == "🌅 0930強勢股艙":
               "放量": ok(ch["放量"]),
               "流動性": ok(ch["流動性"]),
               "回檔守住": ok(ch["回檔守住"]),
-              "漲停鎖單(張)": r["lock_bid"] if r["limit_locked"] else "",
+              "漲停鎖單(張)": r["lock_bid"] if r["limit_locked"] else None,
               "試撮": r["trial"],
               "盤前綜合分": r["rank_score"],
               "盤前理由": r["reasons"],

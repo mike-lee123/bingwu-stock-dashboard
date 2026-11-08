@@ -502,9 +502,16 @@ def tab_valuation(data, template=None):
         st.info("尚無估值資料。")
         return
     sens = (fund.get("valuation") or {}).get("sensitivity")
-    if sens and sens.get("one_notch_adverse"):
-        st.markdown("##### 敏感度：各假設往不利方向調一檔（基本面分析師）")
-        st.dataframe(pd.DataFrame(sens["one_notch_adverse"]).rename(
+    # 兩種格式：{"one_notch_adverse": [...]}（只看不利方向）或直接一個 list（上下雙向）
+    if isinstance(sens, dict) and sens.get("one_notch_adverse"):
+        rows, title = sens["one_notch_adverse"], "敏感度：各假設往不利方向調一檔（基本面分析師）"
+    elif isinstance(sens, list) and sens:
+        rows, title = sens, "敏感度：各假設上下調整（基本面分析師）"
+    else:
+        rows = None
+    if rows:
+        st.markdown(f"##### {title}")
+        st.dataframe(pd.DataFrame(rows).rename(
             columns={"variable": "假設", "price": "價格", "change": "變化"}), hide_index=True,
             width="stretch")
 
