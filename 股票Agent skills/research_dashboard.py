@@ -187,7 +187,8 @@ def normalize_ticker(raw):
 
 def can_launch():
     if not shutil.which("claude"):
-        return False, "這台電腦沒有 Claude Code CLI，無法從儀表板啟動研究（Streamlit Cloud 上也不支援）。"
+        return False, ("雲端版（或沒裝 Claude Code 的電腦）無法直接用你的 Claude 訂閱啟動研究。"
+                       "在本機雙擊 start_dashboard.bat 開 http://localhost:8501，這裡就會變成「🚀 開始研究」按鈕。")
     host = (st.context.headers.get("Host") or "").split(":")[0]
     if host not in ("localhost", "127.0.0.1"):
         return False, f"為避免他人替你啟動研究，只能從本機開啟（http://localhost:…）時使用；目前為 {host}。"
@@ -206,13 +207,17 @@ def running_jobs():
     return jobs
 
 
-def launch_research(ticker):
+def yahoo_has(ticker):
     import yfinance as yf
     try:
         hist = yf.Ticker(ticker).history(period="5d")
     except Exception:
-        hist = None
-    if hist is None or hist.empty:
+        return False
+    return hist is not None and not hist.empty
+
+
+def launch_research(ticker):
+    if not yahoo_has(ticker):
         return False, f"Yahoo Finance 查不到 {ticker}。台股上櫃請加 .TWO（例如 3105.TWO）。"
     if ticker in running_jobs():
         return False, f"{ticker} 已經在研究中。"
@@ -233,27 +238,101 @@ def launch_research(ticker):
     return True, f"已在背景啟動 {ticker} 的研究，約 15–30 分鐘完成，總覽會自動更新進度。"
 
 
+# ---------- 雲端啟動（GitHub Actions） ----------
+# Streamlit Secrets 設定 GITHUB_TOKEN（只對本 repo 有 Actions 讀寫權限的 fine-grained token）即啟用。
+WORKFLOW_FILE = "research.yml"
+DEFAULT_REPO = "mike-lee123/bingwu-stock-dashboard"
+
+
+def cloud_config():
+    try:
+        token = st.secrets.get("GITHUB_TOKEN", "")
+        repo = st.secrets.get("GITHUB_REPO", DEFAULT_REPO)
+    except Exception:  # 沒有 secrets.toml 時 st.secrets 會丟例外
+        return None
+    return (token, repo) if token else None
+
+
+def gh_api(method, path, token, body=None):
+    import urllib.error
+    import urllib.request
+    req = urllib.request.Request(
+        f"https://api.github.com{path}", method=method,
+        data=json.dumps(body).encode() if body is not None else None,
+        headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json",
+                 "X-GitHub-Api-Version": "2022-11-28", "User-Agent": "ai-research-dashboard"})
+    try:
+        with urllib.request.urlopen(req, timeout=20) as r:
+            raw = r.read()
+            return r.status, (json.loads(raw) if raw else {})
+    except urllib.error.HTTPError as e:
+        return e.code, {}
+    except OSError:
+        return 0, {}
+
+
+def cloud_busy(token, repo):
+    """回傳進行中／排隊中的雲端研究數；查詢失敗回傳 None。"""
+    n = 0
+    for status in ("in_progress", "queued"):
+        code, data = gh_api("GET", f"/repos/{repo}/actions/workflows/{WORKFLOW_FILE}/runs?status={status}",
+                            token)
+        if code != 200:
+            return None
+        n += data.get("total_count", 0)
+    return n
+
+
+def cloud_launch(ticker, cfg):
+    token, repo = cfg
+    if not yahoo_has(ticker):
+        return False, f"Yahoo Finance 查不到 {ticker}。台股上櫃請加 .TWO（例如 3105.TWO）。"
+    busy = cloud_busy(token, repo)
+    if busy is None:
+        return False, "連不上 GitHub，或 GITHUB_TOKEN 沒有 Actions 權限。"
+    if busy >= MAX_RUNNING:
+        return False, "雲端已有研究在進行，為控制費用一次只跑一份，請等它完成再送出。"
+    code, _ = gh_api("POST", f"/repos/{repo}/actions/workflows/{WORKFLOW_FILE}/dispatches", token,
+                     {"ref": "main", "inputs": {"ticker": ticker}})
+    if code != 204:
+        return False, f"GitHub 拒絕啟動（HTTP {code}）。請確認 workflow 已推上 main、token 有 Actions 寫入權限。"
+    return True, (f"☁️ 已在雲端啟動 {ticker} 的研究，約 20–40 分鐘完成。完成後會自動上傳，"
+                  f"Streamlit 重新部署後按「重新載入研究資料」即可看到。"
+                  f"進度：https://github.com/{repo}/actions/workflows/{WORKFLOW_FILE}")
+
+
 def command_builder_panel(why):
-    """無法從儀表板直接啟動時：填入代號，產生可複製的 Claude Code 指令。"""
-    st.caption(f"ℹ️ {why}")
+    """無法用本機 Claude Code 啟動時：有雲端設定就送到 GitHub Actions，否則產生可複製的指令。"""
+    cfg = cloud_config()
+    if not cfg:
+        st.caption(f"ℹ️ {why}")
     with st.form("rs_cmd_builder", border=False):
         c1, c2 = st.columns([3, 1])
         raw = c1.text_input("股票代號", placeholder="例如 AMD、2317（台股上市可只打數字）、3105.TWO",
                             key="rs_cmd_ticker")
         c2.markdown("<br>", unsafe_allow_html=True)
-        submitted = c2.form_submit_button("📋 產生研究指令", type="primary")
+        submitted = c2.form_submit_button("☁️ 在雲端啟動研究" if cfg else "📋 產生研究指令",
+                                          type="primary")
+    if cfg:
+        st.caption("在 GitHub 的雲端機器上跑 6 人研究團隊，使用 Anthropic API 金鑰（依用量計費，每份約數美元）。"
+                   "一次只跑一份。")
     if not submitted:
         return
     ticker = normalize_ticker(raw or "")
     if not ticker:
         st.warning("代號格式不正確。台股上市可只打數字（例如 2317），上櫃請加 .TWO（例如 3105.TWO）。")
         return
-    st.markdown("**複製下面這行**（右上角有複製鈕），貼到在 `股票Agent skills` 資料夾開啟的 Claude Code：")
-    st.code(f"/research-director {ticker}", language=None)
     if (WORK / ticker / "report.json").exists():
         st.caption(f"🔁 {ticker} 已有研究，這次會以「更新」模式執行，舊版先封存。")
-    st.caption("約 15–30 分鐘、使用你的 Claude 用量。完成後按上方「重新載入研究資料」；"
-               "雲端版需把 `work/` 與 `reports/` 推上 GitHub 才看得到新研究。")
+    if cfg:
+        with st.spinner(f"確認 {ticker} 並送出到雲端…"):
+            ok, msg = cloud_launch(ticker, cfg)
+        (st.success if ok else st.warning)(msg)
+        if ok:
+            return
+    st.markdown("**複製下面這行**（右上角有複製鈕），貼到在 `股票Agent skills` 資料夾開啟的 Claude Code：")
+    st.code(f"/research-director {ticker}", language=None)
+    st.caption("約 15–30 分鐘、使用你的 Claude 用量；完成後會自動上傳到 GitHub。")
 
 
 def new_research_panel(tickers):

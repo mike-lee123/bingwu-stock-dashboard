@@ -1,0 +1,82 @@
+# 雲端 AI 研究團隊：由儀表板的「☁️ 在雲端啟動研究」或 GitHub Actions 頁面手動觸發。
+# 需要 repo Secret：ANTHROPIC_API_KEY（Anthropic API 金鑰，依用量另計費）。
+# 研究完成後由 publish_research.py 只提交該檔的研究檔案並推回 main，Streamlit Cloud 會自動重新部署。
+name: AI 研究團隊
+
+on:
+  workflow_dispatch:
+    inputs:
+      ticker:
+        description: "股票代號（例如 2330.TW、3105.TWO、AMD）"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+# 一次只跑一份研究，控制費用；後送出的會排隊
+concurrency:
+  group: ai-research
+  cancel-in-progress: false
+
+jobs:
+  research:
+    # Windows 機器內建 Edge（轉 PDF）與中文字型
+    runs-on: windows-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: 股票Agent skills
+    env:
+      TICKER: ${{ inputs.ticker }}
+      PYTHONIOENCODING: utf-8
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 檢查代號格式
+        run: |
+          if ($env:TICKER -cnotmatch '^\^?[A-Za-z0-9][A-Za-z0-9.\-]{0,14}$') { throw "代號格式不正確：$env:TICKER" }
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 安裝 Python 套件
+        run: python -m pip install --quiet yfinance pandas numpy matplotlib plotly
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: 安裝 Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: 設定 git 身分
+        run: |
+          git config user.name "ai-research-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: 執行 6 人研究團隊並上傳
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          BW_PERMISSION_MODE: dontAsk
+        run: |
+          if (-not $env:ANTHROPIC_API_KEY) { throw "尚未設定 repo Secret：ANTHROPIC_API_KEY" }
+          python scripts/run_research.py $env:TICKER
+
+      - name: 檢查結果
+        run: |
+          $t = $env:TICKER.ToUpper()
+          $job = Get-Content "work/$t/_job.json" -Raw | ConvertFrom-Json
+          "狀態：$($job.status)  $($job.error)"
+          if ($job.status -ne "done") { exit 1 }
+
+      - name: 保留執行記錄（7 天）
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-log
+          path: 股票Agent skills/work/*/research.log
+          retention-days: 7
+          if-no-files-found: ignore

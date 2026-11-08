@@ -91,7 +91,9 @@ def main():
         subprocess.run([py, str(ROOT / "scripts" / "fetch_prices.py"), ticker],
                        cwd=ROOT, stdout=out, stderr=subprocess.STDOUT, env=env)
         rc = subprocess.run(
-            [claude, "-p", prompt, "--permission-mode", "auto", "--allowedTools", *ALLOWED_TOOLS],
+            # 本機用 auto；GitHub Actions 設 BW_PERMISSION_MODE=dontAsk：只准白名單工具，其餘一律拒絕
+            [claude, "-p", prompt, "--permission-mode", os.environ.get("BW_PERMISSION_MODE", "auto"),
+             "--allowedTools", *ALLOWED_TOOLS],
             cwd=ROOT, stdout=out, stderr=subprocess.STDOUT, env=env,
         ).returncode
         out.write(f"\n[{now()}] Claude Code 結束，returncode={rc}\n")
