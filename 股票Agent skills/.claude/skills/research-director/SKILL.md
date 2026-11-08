@@ -74,6 +74,15 @@ python scripts/render_report.py <TICKER>
 `fetch_prices.py` 下載股價並畫技術面圖；`render_report.py` 讀 `work/<TICKER>/` 所有 JSON，
 產出 `reports/<TICKER>_<YYYYMMDD>.pdf`。執行失敗要修到成功，不可以跳過。
 
+PDF 產出後，把結果推上 GitHub，讓 Streamlit Cloud 版的儀表板也看得到：
+
+```
+python scripts/publish_research.py <TICKER>
+```
+
+只會提交這一檔的 `work/<TICKER>/` 與 PDF。上傳失敗（例如沒有網路或 git 權限）不影響研究本身：
+在回報中註明失敗原因，請使用者之後手動重跑這行即可，不要為此改動 git 設定。
+
 最後在對話中回報：評等、目標價、一句話結論、致命／重大疑點的處理結果、PDF 路徑。
 
 ## report.json 格式

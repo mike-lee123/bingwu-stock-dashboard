@@ -99,6 +99,10 @@ def main():
     ok = rc == 0 and (wd / "report.json").exists()
     if ok:
         write_job(job, status="done", finished=now(), returncode=rc, error=None)
+        # 研究總監通常已在第 5 步上傳；這裡再跑一次當保險，沒有新變更時不會重複提交
+        with log.open("a", encoding="utf-8") as out:
+            subprocess.run([sys.executable, str(ROOT / "scripts" / "publish_research.py"), ticker],
+                           cwd=ROOT, stdout=out, stderr=subprocess.STDOUT, env=env)
         return
     tail = log.read_text(encoding="utf-8", errors="replace")[-2000:]
     limit = re.search(r"hit your (?:session|usage|weekly)? ?limit[^\n]*", tail, re.IGNORECASE)
