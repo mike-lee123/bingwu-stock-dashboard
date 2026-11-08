@@ -4,6 +4,7 @@
 嵌入其他 Streamlit 應用：import research_dashboard as rd; rd.render_cabin(api=已登入的 Shioaji 物件)
 """
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -216,6 +217,12 @@ def yahoo_has(ticker):
     return hist is not None and not hist.empty
 
 
+def local_api_key():
+    """側邊欄填的 Anthropic 金鑰（只在這次瀏覽工作階段、只給本機研究用）；沒填回傳空字串。"""
+    key = (st.session_state.get("rs_local_anthropic_key") or "").strip()
+    return key if key.startswith("sk-ant-") else ""
+
+
 def launch_research(ticker):
     if not yahoo_has(ticker):
         return False, f"Yahoo Finance 查不到 {ticker}。台股上櫃請加 .TWO（例如 3105.TWO）。"
@@ -232,10 +239,18 @@ def launch_research(ticker):
     if sys.platform == "win32":
         # 不用 DETACHED_PROCESS：沒有主控台時，子程序會收到 Ctrl+C 事件而中斷
         flags = subprocess.CREATE_NO_WINDOW | subprocess.CREATE_NEW_PROCESS_GROUP
+    # 側邊欄有填 Anthropic 金鑰就用金鑰（依用量計費），否則沿用 Claude 訂閱登入；金鑰只放進這個子程序的環境變數
+    env = dict(os.environ)
+    key = local_api_key()
+    if key:
+        env["ANTHROPIC_API_KEY"] = key
+    else:
+        env.pop("ANTHROPIC_API_KEY", None)
     subprocess.Popen([sys.executable, str(ROOT / "scripts" / "run_research.py"), ticker], cwd=ROOT,
                      stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-                     creationflags=flags, close_fds=True)
-    return True, f"已在背景啟動 {ticker} 的研究，約 15–30 分鐘完成，總覽會自動更新進度。"
+                     creationflags=flags, close_fds=True, env=env)
+    billing = "Anthropic API 金鑰（依用量計費）" if key else "你的 Claude 訂閱"
+    return True, f"已在背景啟動 {ticker} 的研究（使用{billing}），約 15–30 分鐘完成，總覽會自動更新進度。"
 
 
 # ---------- 雲端啟動（GitHub Actions） ----------
@@ -291,6 +306,19 @@ def token_status(token, repo):
 def cloud_sidebar():
     """左側欄：雲端研究設定。GitHub Token 只存在本次工作階段；儀表板不經手 Anthropic 金鑰。"""
     sb = st.sidebar
+    if can_launch()[0]:
+        sb.markdown("---")
+        sb.markdown("#### 🖥️ 本機研究設定")
+        sb.text_input("Anthropic API Key（選填）", type="password", key="rs_local_anthropic_key",
+                      help="只用於這台電腦啟動的研究，不會上傳到 GitHub，也不會存檔；關掉頁面就消失。"
+                           "留空則使用你的 Claude 訂閱。")
+        raw = (st.session_state.get("rs_local_anthropic_key") or "").strip()
+        if raw and not local_api_key():
+            sb.warning("看起來不是 Anthropic API 金鑰（應以 sk-ant- 開頭），這次研究會改用 Claude 訂閱。")
+        elif raw:
+            sb.caption("🔑 本機研究將使用這把 API 金鑰（依用量計費）。")
+        else:
+            sb.caption("本機研究使用你的 Claude 訂閱。")
     sb.markdown("---")
     sb.markdown("#### ☁️ 雲端研究設定")
     sb.text_input("GitHub Token", type="password", key="rs_gh_token",
@@ -432,7 +460,8 @@ def new_research_panel(tickers):
                                 key="rs_new_ticker")
             c2.markdown("<br>", unsafe_allow_html=True)
             submitted = c2.form_submit_button("🚀 開始研究", type="primary")
-        st.caption("會在背景啟動 6 人 AI 研究團隊（Claude Code），約 15–30 分鐘、使用你的 Claude 用量。"
+        st.caption("會在背景啟動 6 人 AI 研究團隊（Claude Code），約 15–30 分鐘；"
+                   "使用左側欄填的 Anthropic 金鑰，沒填則用你的 Claude 訂閱。"
                    "已研究過的代號會自動改為「更新」模式，舊版會先封存。")
         if submitted:
             ticker = normalize_ticker(raw)
