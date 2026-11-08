@@ -276,22 +276,6 @@ def password_ok(entered, cfg):
     return hmac.compare_digest((entered or "").encode(), cfg["password"].encode())
 
 
-def set_repo_secret(token, repo, name, value):
-    """用 repo 的公鑰加密後寫入 GitHub Actions Secret（GitHub 規定的 sealed box 加密）。"""
-    import base64
-    from nacl import encoding, public
-    code, key = gh_api("GET", f"/repos/{repo}/actions/secrets/public-key", token)
-    if code != 200:
-        return False, f"讀不到 repo 公鑰（HTTP {code}）。token 需要 Secrets 讀寫權限。"
-    box = public.SealedBox(public.PublicKey(key["key"].encode(), encoding.Base64Encoder()))
-    sealed = base64.b64encode(box.encrypt(value.encode())).decode()
-    code, _ = gh_api("PUT", f"/repos/{repo}/actions/secrets/{name}", token,
-                     {"encrypted_value": sealed, "key_id": key["key_id"]})
-    if code in (201, 204):
-        return True, f"✅ 已加密存到 GitHub Secrets（{name}）。"
-    return False, f"寫入失敗（HTTP {code}）。token 需要 Secrets 讀寫權限。"
-
-
 @st.cache_data(ttl=60, show_spinner=False)
 def repo_secret_exists(token, repo, name):
     code, _ = gh_api("GET", f"/repos/{repo}/actions/secrets/{name}", token)
@@ -305,12 +289,13 @@ def token_status(token, repo):
 
 
 def cloud_sidebar():
-    """左側欄：雲端研究設定。GitHub Token 只存在本次工作階段；Anthropic 金鑰加密後存到 GitHub。"""
+    """左側欄：雲端研究設定。GitHub Token 只存在本次工作階段；儀表板不經手 Anthropic 金鑰。"""
     sb = st.sidebar
     sb.markdown("---")
     sb.markdown("#### ☁️ 雲端研究設定")
     sb.text_input("GitHub Token", type="password", key="rs_gh_token",
-                  help="fine-grained token，只授權本 repo：Actions 與 Secrets 設為 Read and write。"
+                  help="fine-grained token，只授權本 repo：Actions 設為 Read and write；"
+                       "Secrets 設為 Read-only（選填，用來顯示 Anthropic 金鑰是否已設定）。"
                        "只存在這次瀏覽，關掉頁面就要重填。")
     token = (st.session_state.get("rs_gh_token") or "").strip()
     repo = _secret("GITHUB_REPO", DEFAULT_REPO)
@@ -320,25 +305,18 @@ def cloud_sidebar():
     if not token_status(token, repo):
         sb.error("GitHub Token 無效，或沒有這個 repo 的權限。")
         return
+    if sb.button("🔄 重新檢查金鑰狀態", key="rs_recheck"):
+        repo_secret_exists.clear()
     has_key = repo_secret_exists(token, repo, "ANTHROPIC_API_KEY")
+    secrets_page = f"https://github.com/{repo}/settings/secrets/actions"
     if has_key:
         sb.success("🟢 GitHub 已連線；Anthropic 金鑰已設定")
     elif has_key is False:
-        sb.warning("🟠 GitHub 已連線；還沒設定 Anthropic 金鑰")
+        sb.warning(f"🟠 GitHub 已連線；雲端還沒有 Anthropic 金鑰。"
+                   f"要用雲端研究，請自行到 [GitHub Secrets 頁面]({secrets_page}) "
+                   f"新增 `ANTHROPIC_API_KEY`。")
     else:
-        sb.info("GitHub 已連線（token 沒有 Secrets 讀取權限，無法確認 Anthropic 金鑰）")
-    with sb.form("rs_anthropic_form", clear_on_submit=True, border=False):
-        key = st.text_input("Anthropic API Key", type="password", key="rs_anthropic_key",
-                            help="只需設定一次：加密後存到 GitHub Secrets，不會留在儀表板。")
-        save = st.form_submit_button("🔐 儲存到 GitHub" if not has_key else "🔁 更新 Anthropic 金鑰")
-    if save:
-        key = (key or "").strip()
-        if not key.startswith("sk-ant-"):
-            sb.warning("看起來不是 Anthropic API 金鑰（應以 sk-ant- 開頭）。")
-        else:
-            ok, msg = set_repo_secret(token, repo, "ANTHROPIC_API_KEY", key)
-            (sb.success if ok else sb.error)(msg)
-            repo_secret_exists.clear()
+        sb.info(f"🟢 GitHub 已連線（無法確認 Anthropic 金鑰；可到 [GitHub Secrets 頁面]({secrets_page}) 查看）")
 
 
 def gh_api(method, path, token, body=None):
