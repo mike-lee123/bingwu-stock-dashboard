@@ -5,3 +5,4 @@ yfinance
 matplotlib
 numpy
 shioaji
+pynacl>=1.5

@@ -244,23 +244,101 @@ WORKFLOW_FILE = "research.yml"
 DEFAULT_REPO = "mike-lee123/bingwu-stock-dashboard"
 
 
-def cloud_config():
-    """GITHUB_TOKEN 與 LAUNCH_PASSWORD 都設定才啟用；缺密碼時不開放，避免任何看得到頁面的人花你的錢。"""
+def _secret(name, default=""):
     try:
-        token = st.secrets.get("GITHUB_TOKEN", "")
-        password = st.secrets.get("LAUNCH_PASSWORD", "")
-        repo = st.secrets.get("GITHUB_REPO", DEFAULT_REPO)
-        limit = int(st.secrets.get("CLOUD_DAILY_LIMIT", 3))
+        return st.secrets.get(name, default)
     except Exception:  # 沒有 secrets.toml 時 st.secrets 會丟例外
-        return None
+        return default
+
+
+def cloud_config():
+    """兩種啟用方式：
+    1. 側邊欄填 GitHub Token（只存在這次瀏覽工作階段）：持有 token 就是授權，不需另設密碼。
+    2. Streamlit Secrets 設 GITHUB_TOKEN：必須同時設 LAUNCH_PASSWORD，否則不開放，避免看得到頁面的人花你的錢。
+    """
+    repo = _secret("GITHUB_REPO", DEFAULT_REPO)
+    limit = int(_secret("CLOUD_DAILY_LIMIT", 3))
+    session_token = (st.session_state.get("rs_gh_token") or "").strip()
+    if session_token:
+        if not token_status(session_token, repo):
+            return None
+        return {"token": session_token, "password": None, "repo": repo, "limit": limit}
+    token, password = _secret("GITHUB_TOKEN"), _secret("LAUNCH_PASSWORD")
     if not token or not password:
         return None
     return {"token": token, "password": password, "repo": repo, "limit": limit}
 
 
 def password_ok(entered, cfg):
+    if cfg["password"] is None:  # 側邊欄 token 模式
+        return True
     import hmac
     return hmac.compare_digest((entered or "").encode(), cfg["password"].encode())
+
+
+def set_repo_secret(token, repo, name, value):
+    """用 repo 的公鑰加密後寫入 GitHub Actions Secret（GitHub 規定的 sealed box 加密）。"""
+    import base64
+    from nacl import encoding, public
+    code, key = gh_api("GET", f"/repos/{repo}/actions/secrets/public-key", token)
+    if code != 200:
+        return False, f"讀不到 repo 公鑰（HTTP {code}）。token 需要 Secrets 讀寫權限。"
+    box = public.SealedBox(public.PublicKey(key["key"].encode(), encoding.Base64Encoder()))
+    sealed = base64.b64encode(box.encrypt(value.encode())).decode()
+    code, _ = gh_api("PUT", f"/repos/{repo}/actions/secrets/{name}", token,
+                     {"encrypted_value": sealed, "key_id": key["key_id"]})
+    if code in (201, 204):
+        return True, f"✅ 已加密存到 GitHub Secrets（{name}）。"
+    return False, f"寫入失敗（HTTP {code}）。token 需要 Secrets 讀寫權限。"
+
+
+@st.cache_data(ttl=60, show_spinner=False)
+def repo_secret_exists(token, repo, name):
+    code, _ = gh_api("GET", f"/repos/{repo}/actions/secrets/{name}", token)
+    return {200: True, 404: False}.get(code)
+
+
+@st.cache_data(ttl=300, show_spinner=False)
+def token_status(token, repo):
+    code, _ = gh_api("GET", f"/repos/{repo}", token)
+    return code == 200
+
+
+def cloud_sidebar():
+    """左側欄：雲端研究設定。GitHub Token 只存在本次工作階段；Anthropic 金鑰加密後存到 GitHub。"""
+    sb = st.sidebar
+    sb.markdown("---")
+    sb.markdown("#### ☁️ 雲端研究設定")
+    sb.text_input("GitHub Token", type="password", key="rs_gh_token",
+                  help="fine-grained token，只授權本 repo：Actions 與 Secrets 設為 Read and write。"
+                       "只存在這次瀏覽，關掉頁面就要重填。")
+    token = (st.session_state.get("rs_gh_token") or "").strip()
+    repo = _secret("GITHUB_REPO", DEFAULT_REPO)
+    if not token:
+        sb.caption("填入 GitHub Token 後，研究艙的欄位就能直接在雲端啟動研究。")
+        return
+    if not token_status(token, repo):
+        sb.error("GitHub Token 無效，或沒有這個 repo 的權限。")
+        return
+    has_key = repo_secret_exists(token, repo, "ANTHROPIC_API_KEY")
+    if has_key:
+        sb.success("🟢 GitHub 已連線；Anthropic 金鑰已設定")
+    elif has_key is False:
+        sb.warning("🟠 GitHub 已連線；還沒設定 Anthropic 金鑰")
+    else:
+        sb.info("GitHub 已連線（token 沒有 Secrets 讀取權限，無法確認 Anthropic 金鑰）")
+    with sb.form("rs_anthropic_form", clear_on_submit=True, border=False):
+        key = st.text_input("Anthropic API Key", type="password", key="rs_anthropic_key",
+                            help="只需設定一次：加密後存到 GitHub Secrets，不會留在儀表板。")
+        save = st.form_submit_button("🔐 儲存到 GitHub" if not has_key else "🔁 更新 Anthropic 金鑰")
+    if save:
+        key = (key or "").strip()
+        if not key.startswith("sk-ant-"):
+            sb.warning("看起來不是 Anthropic API 金鑰（應以 sk-ant- 開頭）。")
+        else:
+            ok, msg = set_repo_secret(token, repo, "ANTHROPIC_API_KEY", key)
+            (sb.success if ok else sb.error)(msg)
+            repo_secret_exists.clear()
 
 
 def gh_api(method, path, token, body=None):
@@ -327,12 +405,13 @@ def command_builder_panel(why):
     """無法用本機 Claude Code 啟動時：有雲端設定就送到 GitHub Actions，否則產生可複製的指令。"""
     cfg = cloud_config()
     if not cfg:
-        st.caption(f"ℹ️ {why}")
+        st.caption(f"ℹ️ {why} 也可以在左側欄「☁️ 雲端研究設定」填入 GitHub Token，直接在雲端啟動研究。")
     with st.form("rs_cmd_builder", border=False):
         c1, c2 = st.columns([3, 1])
         raw = c1.text_input("股票代號", placeholder="例如 AMD、2317（台股上市可只打數字）、3105.TWO",
                             key="rs_cmd_ticker")
-        entered = c1.text_input("啟動密碼", type="password", key="rs_cloud_pw") if cfg else ""
+        entered = (c1.text_input("啟動密碼", type="password", key="rs_cloud_pw")
+                   if cfg and cfg["password"] else "")
         c2.markdown("<br>", unsafe_allow_html=True)
         submitted = c2.form_submit_button("☁️ 在雲端啟動研究" if cfg else "📋 產生研究指令",
                                           type="primary")
@@ -796,9 +875,10 @@ DARK_HOST_CSS = """
 
 
 def render_cabin(api=None, template="plotly_dark"):
-    """嵌入其他 Streamlit 應用時的入口：在主畫面選擇標的，不使用側邊欄。"""
+    """嵌入其他 Streamlit 應用時的入口：在主畫面選擇標的；側邊欄只加「雲端研究設定」。"""
     if template == "plotly_dark":
         st.markdown(DARK_HOST_CSS, unsafe_allow_html=True)
+    cloud_sidebar()
     tickers = list_tickers()
     if not tickers:
         st.warning("還沒有研究資料，先在下面填入代號開始第一份研究。")
