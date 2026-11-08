@@ -273,7 +273,7 @@ def cloud_config():
     """
     repo = _secret("GITHUB_REPO", DEFAULT_REPO)
     limit = int(_secret("CLOUD_DAILY_LIMIT", 3))
-    session_token = (st.session_state.get("rs_gh_token") or "").strip()
+    session_token = clean_token(st.session_state.get("rs_gh_token"))
     if session_token:
         if not token_status(session_token, repo):
             return None
@@ -297,10 +297,40 @@ def repo_secret_exists(token, repo, name):
     return {200: True, 404: False}.get(code)
 
 
+def clean_token(raw):
+    """去掉複製時常多出來的空白、換行、引號，以及誤貼的 "Bearer " / "token " 前綴。"""
+    t = (raw or "").strip().strip("\"'").strip()
+    for prefix in ("Bearer ", "bearer ", "token "):
+        if t.startswith(prefix):
+            t = t[len(prefix):].strip()
+    return t
+
+
 @st.cache_data(ttl=300, show_spinner=False)
-def token_status(token, repo):
+def token_check(token, repo):
+    """回傳 (是否可用, 說明)。用 /user 判斷 token 本身，再用 /repos 判斷能否存取 repo。"""
+    code, user = gh_api("GET", "/user", token)
+    if code == 0:
+        return False, "連不上 GitHub，請稍後再試。"
+    if code == 401:
+        return False, ("GitHub 不接受這個 token（HTTP 401）：可能複製不完整、已過期或已刪除。"
+                       "請重新產生並完整貼上（fine-grained 以 github_pat_ 開頭，classic 以 ghp_ 開頭）。")
+    login = user.get("login") if code == 200 else None
     code, _ = gh_api("GET", f"/repos/{repo}", token)
-    return code == 200
+    if code == 200:
+        return True, f"token 帳號：{login}" if login else ""
+    owner = repo.split("/")[0]
+    if code in (403, 404):
+        hint = (f"這個 token 屬於 **{login}**，但 repo 在 **{owner}** 底下；"
+                f"fine-grained token 只能存取建立者帳號擁有的 repo，請登入 {owner} 重新產生。"
+                if login and login.lower() != owner.lower() else
+                f"請確認建立 token 時 Repository access 有勾選 {repo}。")
+        return False, f"token 有效，但無法存取 {repo}（HTTP {code}）。{hint}"
+    return False, f"GitHub 回應 HTTP {code}，請稍後再試。"
+
+
+def token_status(token, repo):
+    return token_check(token, repo)[0]
 
 
 def cloud_sidebar():
@@ -325,16 +355,20 @@ def cloud_sidebar():
                   help="fine-grained token，只授權本 repo：Actions 設為 Read and write；"
                        "Secrets 設為 Read-only（選填，用來顯示 Anthropic 金鑰是否已設定）。"
                        "只存在這次瀏覽，關掉頁面就要重填。")
-    token = (st.session_state.get("rs_gh_token") or "").strip()
+    token = clean_token(st.session_state.get("rs_gh_token"))
     repo = _secret("GITHUB_REPO", DEFAULT_REPO)
     if not token:
         sb.caption("填入 GitHub Token 後，研究艙的欄位就能直接在雲端啟動研究。")
         return
-    if not token_status(token, repo):
-        sb.error("GitHub Token 無效，或沒有這個 repo 的權限。")
-        return
-    if sb.button("🔄 重新檢查金鑰狀態", key="rs_recheck"):
+    if sb.button("🔄 重新檢查", key="rs_recheck", help="改過 token 權限後按這裡，不用等快取過期。"):
+        token_check.clear()
         repo_secret_exists.clear()
+    ok, detail = token_check(token, repo)
+    if not ok:
+        sb.error(detail)
+        return
+    if detail:
+        sb.caption(detail)
     has_key = repo_secret_exists(token, repo, "ANTHROPIC_API_KEY")
     secrets_page = f"https://github.com/{repo}/settings/secrets/actions"
     if has_key:
