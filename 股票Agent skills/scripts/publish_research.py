@@ -13,11 +13,13 @@ reports/<TICKER>_*.pdf，不會動到其他未提交的修改。上傳前會掃�
 
 注意：GitHub repo 是公開的，上傳後研究內容任何人都看得到。
 """
+import math
 import os
 import re
 import shutil
 import subprocess
 import sys
+from collections import Counter
 from datetime import date
 from pathlib import Path
 
@@ -33,12 +35,36 @@ SECRET_PATTERNS = [
         r"sk-ant-[A-Za-z0-9_\-]{10,}",                  # Anthropic
         r"sk-[A-Za-z0-9]{32,}",                         # OpenAI 類
         r"AIza[0-9A-Za-z_\-]{35}",                      # Google
-        r"gh[pousr]_[A-Za-z0-9]{30,}",                  # GitHub token
+        r"gh[pousr]_[A-Za-z0-9]{30,}",                  # GitHub token（舊格式）
+        r"github_pat_[A-Za-z0-9_]{20,}",                # GitHub fine-grained token
         r"AKIA[0-9A-Z]{16}",                            # AWS
+        r"xox[abprs]-[A-Za-z0-9\-]{10,}",               # Slack
         r"-----BEGIN [A-Z ]*PRIVATE KEY-----",
-        r"(?i)(api[_-]?key|secret[_-]?key|password)\s*[\"']?\s*[:=]\s*[\"']?[A-Za-z0-9_\-]{16,}",
+        # 金鑰類賦值：API_KEY=…、SJ_SEC_KEY: …、GITHUB_TOKEN="…"、password=…（含 Shioaji 金鑰）
+        r"(?i)[A-Za-z0-9_]*(api[_-]?key|secret|sec[_-]?key|token|passw(or)?d|passwd)[A-Za-z0-9_]*"
+        r"\s*[\"']?\s*[:=]\s*[\"']?[A-Za-z0-9_\-+/=.]{16,}",
     )
 ]
+# 不明格式的長串高亂度字串（例如 Shioaji 的 API Key／Secret Key）一律視為可疑；網址裡的長串先排除
+URL_RX = re.compile(r"(?:https?://|www\.)\S+|\b[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+/\S*")   # 含沒寫 https:// 的「網域/路徑」
+LONG_TOKEN_RX = re.compile(r"[A-Za-z0-9_\-+/=]{32,}")
+ENTROPY_LIMIT = 4.0   # 每字元位元數；一般英文單字、日期、數字遠低於此，隨機金鑰通常 > 4.5
+
+
+def shannon_entropy(s):
+    return -sum(c / len(s) * math.log2(c / len(s)) for c in Counter(s).values())
+
+
+def high_entropy_tokens(text):
+    out = []
+    for tok in LONG_TOKEN_RX.findall(URL_RX.sub(" ", text)):
+        classes = sum(bool(re.search(p, tok)) for p in (r"[a-z]", r"[A-Z]", r"[0-9]"))
+        is_hex = re.fullmatch(r"[0-9a-fA-F]+", tok) and re.search(r"[0-9]", tok) and re.search(r"[a-fA-F]", tok)
+        ent = shannon_entropy(tok)
+        if ((classes >= 3 and ent >= ENTROPY_LIMIT) or (classes >= 2 and len(tok) >= 40 and ent >= 4.5)
+                or (is_hex and ent >= 3.0)):
+            out.append(tok)   # 十六進位金鑰只有 16 種字元，亂度上限 4，另用較低門檻
+    return out
 
 
 def publishable(path):
@@ -61,7 +87,7 @@ def scan_secrets(files):
         if p.suffix.lower() in {".png", ".pdf"}:
             continue
         text = p.read_text(encoding="utf-8", errors="replace")
-        if any(rx.search(text) for rx in SECRET_PATTERNS):
+        if any(rx.search(text) for rx in SECRET_PATTERNS) or high_entropy_tokens(text):
             hits.append(p.name)
     return hits
 

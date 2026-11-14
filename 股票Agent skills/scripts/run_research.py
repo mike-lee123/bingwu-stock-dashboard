@@ -18,15 +18,24 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 # 研究流程實際用到的工具，盡量收窄：研究會讀網頁，網頁內容可能夾帶惡意指令（prompt injection）。
+# - 只能讀研究需要的地方：work/（研究資料）、shared/（交件格式）、.claude/skills/（各角色說明）。
+#   Read 規則同時套用在 Grep、Glob；讀不到 .env 或其他程式，就算被網頁誘導也沒有機密可外洩，
+#   所以 WebFetch 不限網域（研究需要讀各家新聞與財報網站）。
 # - 只能寫 work/ 底下（不能改 scripts/ 再拿去執行）
-# - Python 只准跑這三支固定腳本，不能執行任意程式碼（也就讀不到環境變數裡的 API 金鑰）
+# - Python 只准跑兩支固定腳本，不能執行任意程式碼（也就讀不到環境變數裡的 API 金鑰）
+# - 不准自己上傳（git push）：研究結束後由本程式執行 publish_research.py，上傳前有白名單與金鑰掃描
 # 本機 auto 模式下，清單外的動作交給權限分類器判斷；雲端 dontAsk 模式下一律拒絕。
 ALLOWED_TOOLS = [
-    "Read", "Glob", "Grep", "WebSearch", "WebFetch", "Agent", "Skill",
-    "Edit(work/**)",  # Edit 規則涵蓋所有寫檔工具（含 Write）
+    "Read(./work/**)", "Read(./shared/**)", "Read(./.claude/skills/**)",
+    "WebSearch", "WebFetch", "Agent", "Skill",
+    "Edit(./work/**)",  # Edit 規則涵蓋所有寫檔工具（含 Write）
     "Bash(python scripts/fetch_prices.py *)",
     "Bash(python scripts/render_report.py *)",
-    "Bash(python scripts/publish_research.py *)",
+]
+# 明確禁止（優先於任何允許與本機的分類器判斷）：金鑰檔、自行上傳
+DISALLOWED_TOOLS = [
+    "Read(**/.env)", "Read(**/.env.*)", "Read(**/secrets.toml)", "Read(**/*.pfx)", "Read(**/*.p12)",
+    "Bash(python scripts/publish_research.py *)", "Bash(git push *)", "Bash(git commit *)",
 ]
 
 
@@ -98,7 +107,7 @@ def main():
         rc = subprocess.run(
             # 本機用 auto；GitHub Actions 設 BW_PERMISSION_MODE=dontAsk：只准白名單工具，其餘一律拒絕
             [claude, "-p", prompt, "--permission-mode", os.environ.get("BW_PERMISSION_MODE", "auto"),
-             "--allowedTools", *ALLOWED_TOOLS],
+             "--allowedTools", *ALLOWED_TOOLS, "--disallowedTools", *DISALLOWED_TOOLS],
             cwd=ROOT, stdout=out, stderr=subprocess.STDOUT, env=env,
         ).returncode
         out.write(f"\n[{now()}] Claude Code 結束，returncode={rc}\n")
@@ -106,7 +115,7 @@ def main():
     ok = rc == 0 and (wd / "report.json").exists()
     if ok:
         write_job(job, status="done", finished=now(), returncode=rc, error=None)
-        # 研究總監通常已在第 5 步上傳；這裡再跑一次當保險，沒有新變更時不會重複提交
+        # 上傳只在這裡做（AI 本身不准上傳）；沒有新變更時不會重複提交
         with log.open("a", encoding="utf-8") as out:
             subprocess.run([sys.executable, str(ROOT / "scripts" / "publish_research.py"), ticker],
                            cwd=ROOT, stdout=out, stderr=subprocess.STDOUT, env=env)

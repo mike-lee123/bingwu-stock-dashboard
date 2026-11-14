@@ -1,6 +1,6 @@
 """AI 投資研究團隊儀表板模組：讀取 work/<TICKER>/ 的研究成果與 reports/ 的 PDF。
 
-獨立執行：streamlit run app.py
+獨立執行：streamlit run app.py --server.address localhost（要從儀表板啟動研究必須綁 localhost）
 嵌入其他 Streamlit 應用：import research_dashboard as rd; rd.render_cabin(api=已登入的 Shioaji 物件)
 """
 import json
@@ -174,7 +174,7 @@ def stage(data):
 
 # ---------- 從儀表板新增研究 ----------
 # 按鈕會在背景啟動 Claude Code（scripts/run_research.py），會花費 Claude 用量並執行約 15–30 分鐘。
-# 只允許從本機（localhost）操作：宿主儀表板若開在區網，其他人不能替你啟動研究。
+# 只允許伺服器綁在 localhost 時操作：宿主儀表板若開在區網，其他人不能替你啟動研究。
 
 MAX_RUNNING = 1  # 一次研究會派出 5 個子代理，同時跑多檔很快就會碰到 Claude 用量上限
 
@@ -190,9 +190,13 @@ def can_launch():
     if not shutil.which("claude"):
         return False, ("雲端版（或沒裝 Claude Code 的電腦）無法直接用你的 Claude 訂閱啟動研究。"
                        "在本機雙擊 start_dashboard.bat 開 http://localhost:8501，這裡就會變成「🚀 開始研究」按鈕。")
-    host = (st.context.headers.get("Host") or "").split(":")[0]
-    if host not in ("localhost", "127.0.0.1"):
-        return False, f"為避免他人替你啟動研究，只能從本機開啟（http://localhost:…）時使用；目前為 {host}。"
+    # 不信任瀏覽器送來的 Host 標頭（可偽造）：改看伺服器實際綁定的位址。
+    # 只綁 localhost／127.0.0.1 時，區網與外部根本連不進來，能操作的一定是本機。
+    addr = (st.get_option("server.address") or "").strip().lower()
+    if addr not in ("localhost", "127.0.0.1", "::1"):
+        return False, ("為避免他人替你啟動研究，只有儀表板以 --server.address localhost 啟動時才能使用"
+                       "（雙擊 start_dashboard.bat 即是）；目前伺服器開放給 "
+                       f"{addr or '所有網路介面'}。")
     return True, ""
 
 

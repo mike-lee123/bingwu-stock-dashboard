@@ -1,6 +1,7 @@
 """AI 投資研究團隊儀表板（獨立版）。畫面與資料邏輯在 research_dashboard.py。
 
-執行：streamlit run app.py
+執行：streamlit run app.py --server.address localhost
+（加 --server.address localhost 才會出現「🚀 開始研究」按鈕；只綁本機，區網其他人連不進來）
 """
 import streamlit as st
 
