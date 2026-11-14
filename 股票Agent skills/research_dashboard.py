@@ -10,6 +10,7 @@ import shutil
 import subprocess
 import sys
 from pathlib import Path
+from urllib.parse import urlsplit
 
 import pandas as pd
 import plotly.graph_objects as go
@@ -190,13 +191,18 @@ def can_launch():
     if not shutil.which("claude"):
         return False, ("雲端版（或沒裝 Claude Code 的電腦）無法直接用你的 Claude 訂閱啟動研究。"
                        "在本機雙擊 start_dashboard.bat 開 http://localhost:8501，這裡就會變成「🚀 開始研究」按鈕。")
-    # 不信任瀏覽器送來的 Host 標頭（可偽造）：改看伺服器實際綁定的位址。
-    # 只綁 localhost／127.0.0.1 時，區網與外部根本連不進來，能操作的一定是本機。
+    # 兩道檢查都要過：
+    # 1. 伺服器只綁 localhost：區網與外部根本連不進來（Host 標頭可由非瀏覽器程式偽造，不能單獨依賴）。
+    # 2. Host 標頭是 localhost：擋 DNS rebinding——惡意網站把自己的網域解析到 127.0.0.1，
+    #    你的瀏覽器連進來時 Host 會是對方的網域；瀏覽器無法跨來源偽造 Host。
     addr = (st.get_option("server.address") or "").strip().lower()
     if addr not in ("localhost", "127.0.0.1", "::1"):
         return False, ("為避免他人替你啟動研究，只有儀表板以 --server.address localhost 啟動時才能使用"
                        "（雙擊 start_dashboard.bat 即是）；目前伺服器開放給 "
                        f"{addr or '所有網路介面'}。")
+    host = urlsplit("//" + (st.context.headers.get("Host") or "")).hostname or ""
+    if host not in ("localhost", "127.0.0.1", "::1"):
+        return False, f"為避免他人替你啟動研究，請用 http://localhost:… 開啟；目前網址的主機為 {host or '（不明）'}。"
     return True, ""
 
 
